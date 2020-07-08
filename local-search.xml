@@ -397,25 +397,6 @@
   
   
   <entry>
-    <title>Angular生命周期钩子</title>
-    <link href="/2019/04/25/Angular%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/"/>
-    <url>/2019/04/25/Angular%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/</url>
-    
-    <content type="html"><![CDATA[<p>1.ngOnChanges<br>当 Angular（重新）设置数据绑定输入属性时响应。 该方法接受当前和上一属性值的 SimpleChanges 对象。<br>在 ngOnInit() 之前以及所绑定的一个或多个输入属性的值发生变化时都会调用。</p><p>2.ngOnInit<br>在 Angular 第一次显示数据绑定和设置指令/组件的输入属性之后，初始化指令/组件。<br>在第一轮 ngOnChanges() 完成之后调用，只调用一次。</p><p>3.ngDoCheck<br>检测，并在发生 Angular 无法或不愿意自己检测的变化时作出反应。<br>在每个变更检测周期中，紧跟在 ngOnChanges() 和 ngOnInit() 后面调用。</p><p>4.ngAfterContentInit<br>没当 Angular 把外部内容投影进组件/指令的视图之后调用。<br>第一次 ngDoCheck() 之后调用，只调用一次。</p><p>5.ngAfterContentChecked<br>每当 Angular 完成被投影组件内容的变更检测之后调用。<br>ngAfterContentInit() 和每次 ngDoCheck() 之后调用。</p><p>6.ngAfterViewInit<br>每当 Angular 初始化完组件视图及其子视图之后调用。<br>第一次 ngAfterContentChecked() 之后调用，只调用一次。</p><p>7.ngAfterViewChecked<br>每当 Angular 做完组件视图和子视图的变更检测之后调用。<br>ngAfterViewInit() 和每次 ngAfterContentChecked() 之后调用。</p><p>8.ngOnDestroy<br>当 Angular 每次销毁指令/组件之前调用并清扫。 在这儿反订阅可观察对象和分离事件处理器，以防内存泄漏。<br>在 Angular 销毁指令/组件之前调用。</p><p><img src="/image/angular/img1.jpg" srcset="/img/loading.gif" alt=""></p>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>Angular</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>JS事件冒泡及阻止</title>
     <link href="/2019/04/25/JS%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%8F%8A%E9%98%BB%E6%AD%A2/"/>
     <url>/2019/04/25/JS%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%8F%8A%E9%98%BB%E6%AD%A2/</url>
@@ -427,6 +408,25 @@
     <tags>
       
       <tag>JavaScript</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Angular生命周期钩子</title>
+    <link href="/2019/04/25/Angular%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/"/>
+    <url>/2019/04/25/Angular%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/</url>
+    
+    <content type="html"><![CDATA[<p>1.ngOnChanges<br>当 Angular（重新）设置数据绑定输入属性时响应。 该方法接受当前和上一属性值的 SimpleChanges 对象。<br>在 ngOnInit() 之前以及所绑定的一个或多个输入属性的值发生变化时都会调用。</p><p>2.ngOnInit<br>在 Angular 第一次显示数据绑定和设置指令/组件的输入属性之后，初始化指令/组件。<br>在第一轮 ngOnChanges() 完成之后调用，只调用一次。</p><p>3.ngDoCheck<br>检测，并在发生 Angular 无法或不愿意自己检测的变化时作出反应。<br>在每个变更检测周期中，紧跟在 ngOnChanges() 和 ngOnInit() 后面调用。</p><p>4.ngAfterContentInit<br>没当 Angular 把外部内容投影进组件/指令的视图之后调用。<br>第一次 ngDoCheck() 之后调用，只调用一次。</p><p>5.ngAfterContentChecked<br>每当 Angular 完成被投影组件内容的变更检测之后调用。<br>ngAfterContentInit() 和每次 ngDoCheck() 之后调用。</p><p>6.ngAfterViewInit<br>每当 Angular 初始化完组件视图及其子视图之后调用。<br>第一次 ngAfterContentChecked() 之后调用，只调用一次。</p><p>7.ngAfterViewChecked<br>每当 Angular 做完组件视图和子视图的变更检测之后调用。<br>ngAfterViewInit() 和每次 ngAfterContentChecked() 之后调用。</p><p>8.ngOnDestroy<br>当 Angular 每次销毁指令/组件之前调用并清扫。 在这儿反订阅可观察对象和分离事件处理器，以防内存泄漏。<br>在 Angular 销毁指令/组件之前调用。</p><p><img src="/image/angular/img1.jpg" srcset="/img/loading.gif" alt=""></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Angular</tag>
       
     </tags>
     
