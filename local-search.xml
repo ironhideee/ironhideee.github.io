@@ -112,25 +112,6 @@
   
   
   <entry>
-    <title>模拟eventloop demo</title>
-    <link href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/"/>
-    <url>/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/</url>
-    
-    <content type="html"><![CDATA[<p>  Node的异步非阻塞I/O特性依赖于其内部的事件循环机制；<br>  下面简单模拟一下事件循环的实现：</p><pre><code>const eventloop = {    queue : [],    loop(){        while(this.queue.length &gt; 0){            var callback = this.queue.shift();            callback();        }        setTimeout(this.loop.bind(this),50);   //这里this指的是eventloop对象    },    add(callback){        this.queue.push(callback);    }}eventloop.loop();setTimeout(() =&gt; {    eventloop.add(function(){        console.log(1)    })},500)setTimeout(() =&gt; {    eventloop.add(function(){        console.log(2)    })},800)</code></pre><p>  这里间隔500毫秒和800毫秒向循环里添加了两个事件，eventloop会不间断得去监听是否有新事件进入执行栈。</p><div class="note note-success">            <p>事件循环：<br>每次循环过程称为Tick（即查看是否有但出来事件，将待处理事件存储在任务队列中），若有，则取出事件及回调函数放入stack由主线程执行。</p>          </div><div class="note note-success">            <p>任务队列：<br>异步操作将相关回调添加到Task Queue中，异步操作由浏览器内核webcore执行。</p>          </div>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>Node</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>super关键字</title>
     <link href="/2019/10/03/super%E5%85%B3%E9%94%AE%E5%AD%97/"/>
     <url>/2019/10/03/super%E5%85%B3%E9%94%AE%E5%AD%97/</url>
@@ -142,6 +123,25 @@
     <tags>
       
       <tag>JavaScript</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>模拟eventloop demo</title>
+    <link href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/"/>
+    <url>/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/</url>
+    
+    <content type="html"><![CDATA[<p>  Node的异步非阻塞I/O特性依赖于其内部的事件循环机制；<br>  下面简单模拟一下事件循环的实现：</p><pre><code>const eventloop = {    queue : [],    loop(){        while(this.queue.length &gt; 0){            var callback = this.queue.shift();            callback();        }        setTimeout(this.loop.bind(this),50);   //这里this指的是eventloop对象    },    add(callback){        this.queue.push(callback);    }}eventloop.loop();setTimeout(() =&gt; {    eventloop.add(function(){        console.log(1)    })},500)setTimeout(() =&gt; {    eventloop.add(function(){        console.log(2)    })},800)</code></pre><p>  这里间隔500毫秒和800毫秒向循环里添加了两个事件，eventloop会不间断得去监听是否有新事件进入执行栈。</p><div class="note note-success">            <p>事件循环：<br>每次循环过程称为Tick（即查看是否有但出来事件，将待处理事件存储在任务队列中），若有，则取出事件及回调函数放入stack由主线程执行。</p>          </div><div class="note note-success">            <p>任务队列：<br>异步操作将相关回调添加到Task Queue中，异步操作由浏览器内核webcore执行。</p>          </div>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Node</tag>
       
     </tags>
     
