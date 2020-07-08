@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Ironhideee">
+  <meta name="keywords" content="">
+  <title>JS优化技巧总结 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Ironhideee</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2019-05-03 00:00">
+      May 3, 2019 am
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      25
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>1.过滤唯一值<br>ES6 引入了 Set 对象和延展（spread）语法…，我们可以用它们来创建一个只包含唯一值的数组。</p>
+<pre><code>const array = [1, 1, 2, 3, 5, 5, 1]
+const uniqueArray = […new Set(array)];
+console.log(uniqueArray); // Result: [1, 2, 3, 5]</code></pre><p>在 ES6 之前，获得同样的数组需要更多的代码！<br>这个技巧可以支持包含原始类型的数组：undefined、null、boolean、string 和 number。但如果你的数组包含了对象、函数或其他嵌套数组，就不能使用这种方法了。</p>
+<p>2.在循环中缓存数组长度<br>在我们学习使用 for 循环时，一般建议使用这种结构：</p>
+<pre><code>for (let i = 0; i &lt; array.length; i++){
+    console.log(i);
+} </code></pre><p>在使用这种方式时，for 循环的每次迭代都会重复计算数组长度。<br>有时候这个会很有用，但在大多数情况下，如果能够缓存数组的长度会更好，这样只需要计算一次就够了。我们可以把数组长度复制给一个叫作 length 的变量，例如：</p>
+<pre><code>for (let i = 0, length = array.length; i &lt; length; i++){
+    console.log(i);
+} </code></pre><p>这段代码和上面的差不多，但从性能方面来看，即使数组变得很大，也不需要花费额外的运行时重复计算 array.length。</p>
+<p>3.短路求值<br>使用三元运算符可以很快地写出条件语句，例如：</p>
+<pre><code>x &gt; 100 ? ‘Above 100’ : ‘Below 100’;
+x &gt; 100 ? (x &gt; 200 ? ‘Above 200’ : ‘Between 100-200’) : ‘Below 100’;</code></pre><p>但有时候三元运算符仍然很复杂，我们可以使用逻辑运算符 &amp;&amp; 和||来替代，让代码更简洁一些。这种技巧通常被称为“短路求值”。<br>假设我们想要返回两个或多个选项中的一个，使用 &amp;&amp; 可以返回第一个 false。如果所有操作数的值都是 true，将返回最后一个表达式的值。</p>
+<pre><code>let one = 1, two = 2, three = 3;
+console.log(one &amp;&amp; two &amp;&amp; three); // Result: 3
+console.log(0 &amp;&amp; null); // Result: 0</code></pre><p>使用||可以返回第一个 true。如果所有操作数的值都是 false，将返回最后一个表达式的值。</p>
+<pre><code>let one = 1, two = 2, three = 3;
+console.log(one || two || three); // Result: 1
+console.log(0 || null); // Result: null</code></pre><p>示例 1<br>假设我们想要返回一个变量的 length，但又不知道变量的类型。<br>我们可以使用 if/else 来检查 foo 是否是一个可接受的类型，但这样会让代码变得很长。这个时候可以使用短路求值：</p>
+<pre><code>return (foo || []).length;</code></pre><p>对于上述两种情况，如果变量 foo 具有 length 属性，这个属性的值将被返回，否则将返回 0。</p>
+<p>示例 2<br>你是否曾经在访问嵌套对象属性时遇到过问题？你可能不知道对象或某个子属性是否存在，所以经常会碰到让你头疼的错误。<br>假设我们想要访问 this.state 中的一个叫作 data 的属性，但 data 却是 undefined 的。在某些情况下调用 this.state.data 会导致 App 无法运行。为了解决这个问题，我们可以使用条件语句：</p>
+<pre><code>if (this.state.data) {
+    return this.state.data;
+} else {
+    return ‘Fetching Data’;
+} </code></pre><p>但这样似乎有点啰嗦，而||提供了更简洁的解决方案：</p>
+<pre><code>return (this.state.data || ‘Fetching Data’);</code></pre><p>4.转换成布尔值<br>除了标准的布尔值 true 和 false，在 JavaScript 中，所有的值要么是“真值”要么是“假值”。<br>在 JavaScript 中，除了 0、“”、null、undefined、NaN 和 false 是假值之外，其他的都是真值。<br>我们可以使用! 云算法来切换 true 和 false。</p>
+<pre><code>const isTrue = !0;
+const isFalse = !1;
+const alsoFalse = !!0;
+console.log(true); // Result: true
+console.log(typeof true); // Result: “boolean”</code></pre><p>5.转换成字符串<br>要快速将数字转换成字符串，我们可以使用 + 运算符，然后在后面跟上一个空字符串。</p>
+<pre><code>const val = 1 + “”;
+console.log(val); // Result: “1”
+console.log(typeof val); // Result: “string”</code></pre><p>6.转换成数字<br>要把字符串转成数字，也可以使用 + 运算符。</p>
+<pre><code>let int = “15”;
+int = +int;
+console.log(int); // Result: 15
+console.log(typeof int); Result: “number”</code></pre><p>也可以使用这种方式将布尔值转成数字，例如：</p>
+<pre><code>console.log(+true); // Return: 1
+console.log(+false); // Return: 0</code></pre><p>在某些情况下，+ 运算符会被解析成连接操作，而不是加法操作。对于这种情况，可以使用两个波浪号：<del>。<br>一个波浪号表示按位取反操作，例如，</del>15 等于 -16。</p>
+<pre><code>const int = “15”
+console.log(int); // Result: 15
+console.log(typeof int); Result: “number”</code></pre><p>使用两个波浪号可以再次取反，因为 -(-n-1)=n+1-1=n，所以-16 等于 15。</p>
+<p>7.快速幂运算<br>从 ES7 开始，可以使用 ** 进行幂运算，比使用 Math.power(2,3) 要快得多。</p>
+<pre><code>console.log(2 ** 3); // Result: 8</code></pre><p>但要注意不要把这个运算符于 ^ 混淆在一起了，^ 通常用来表示指数运算，但在 JavaScript 中，^ 表示位异或运算。<br>在 ES7 之前，可以使用位左移运算符&lt;&lt;来表示以 2 为底的幂运算：</p>
+<pre><code>// 以下表达式是等效的:
+Math.pow(2, n);
+2 &lt;&lt; (n - 1);
+2*n;</code></pre><p>例如，2 &lt;&lt; 3 = 16 等同于 2 * 4 = 16。</p>
+<p>8.快速取整<br>我们可以使用 Math.floor()、Math.ceil() 或 Math.round() 将浮点数转换成整数，但有另一种更快的方式，即使用位或运算符 |。</p>
+<pre><code>console.log(23.9 | 0); // Result: 23
+console.log(-23.9 | 0); // Result: -23</code></pre><p>| 的实际行为取决于操作数是正数还是负数，所以在使用这个运算符时要确保你知道操作数是正是负。<br>如果 n 是正数，那么 n|0 向下取整，否则就是向上取整。它会移除小数部分，也可以使用~~ 达到同样的效果。<br>移除整数尾部数字<br>| 运算符也可以用来移除整数的尾部数字，这样就不需要像下面这样：</p>
+<pre><code>let str = “1553”;
+Number(str.substring(0, str.length - 1));</code></pre><p>相反，我们可以这样：</p>
+<pre><code>console.log(1553 / 10 | 0) // Result: 155
+console.log(1553 / 100 | 0) // Result: 15
+console.log(1553 / 1000 | 0) // Result: 1</code></pre><p>9.自动类绑定<br>在 ES6 中，我们可以使用箭头进行隐式绑定，这样可以为类的构造器省下一些代码，并跟一些重复出现的表达式说再见，比如 this.myMethod = this.myMethod.bind(this)。</p>
+<pre><code>import { React, Component } from React;
+export default class App extends Compononent {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    } 
+    myMethod = () =&gt; {
+        // This method is bound implicitly! 
+        render() {
+            return (
+                &lt;div&gt;
+                    {this.myMethod()}
+                &lt;/div&gt;
+            ) 
+        }
+    }
+}</code></pre><p>10.截取数组<br>如果你想从一个数组尾部移除某些元素，可以使用一种比 splice() 更快的方法。<br>例如，如果你知道初始数组的大小，可以像下面这样重新定义它的 length 属性：</p>
+<pre><code>let array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+array.length = 4;
+console.log(array); // Result: [0, 1, 2, 3]</code></pre><p>这显然是一种更简洁的解决方案。不过，我发现 slice() 的运行速度更快，所以，如果你更看重速度，可以像下面这样：</p>
+<pre><code>let array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+array = array.slice(0, 4);
+console.log(array); // Result: [0, 1, 2, 3]</code></pre><p>11.获取数组最后的元素<br>数组的 slice() 方法可以接受负整数，并从数组的尾部开始获取元素。</p>
+<pre><code>let array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log(array.slice(-1)); // Result: [9]
+console.log(array.slice(-2)); // Result: [8, 9]
+console.log(array.slice(-3)); // Result: [7, 8, 9]</code></pre><p>12.格式化 JSON<br>你之前可能使用过 JSON.stringify，但你是否知道它还可以用来给 JSON 添加缩进？<br>stringify() 方法可以接受两个额外的参数，一个是函数（形参为 replacer），用于过滤要显示的 JSON，另一个是空格个数（形参为 space）。</p>
+<p>space 可以是一个整数，表示空格的个数，也可以是一个字符串（比如’\t’表示制表符），这样得到的 JSON 更容易阅读。</p>
+<pre><code>console.log(JSON.stringify({ alpha: ‘A’, beta: ‘B’ }, null, ‘\t’));
+// Result:
+// ‘{
+// “alpha”: A,
+// “beta”: B
+// }’</code></pre><p>总结：<br>js的优化是一个循环往复的过程，通过不断的优化可以大幅减少冗余代码</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/05/10/%E5%88%A9%E7%94%A8postMessage%E5%AE%9E%E7%8E%B0%E8%B7%A8%E6%BA%90%E9%80%9A%E4%BF%A1/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">利用postMessage实现跨源通信</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2019/04/25/Angular%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/">
+                        <span class="hidden-mobile">Angular生命周期钩子</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "vdUMtfcvfJhPQmoYCWfqN02Y-gzGzoHsz",
+          app_key: "8OcQ9i9bBRpCSc0dzjSe3T5e",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    }
+    createObserver(loadValine, 'vcomments');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "JS优化技巧总结&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

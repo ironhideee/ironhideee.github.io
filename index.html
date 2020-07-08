@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Ironhideee">
+  <meta name="keywords" content="">
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Ironhideee</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/kv.webp') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/07/07/%E4%BC%AA%E5%85%83%E7%B4%A0%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A82020/">伪元素清除浮动2020</a>
+
+      <a href="/2020/07/07/%E4%BC%AA%E5%85%83%E7%B4%A0%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A82020/" class="index-excerpt">
+        
+        
+          
+        
+        <div>  在日常开发工作中，慎用“overflow:hidden;”清除浮动，对于父级元素内的绝对定位或者相对定位可能会起到遮挡作用。
+单伪元素标签法：
+.clearfix:after{
+    content:&quot;&quot;;
+    height:0;
+    lin-height:0;
+    display:block;
+    visibility:hidden;
+    clear</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-07-07
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CSS/">CSS</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/05/23/Ajax%E4%B8%8EFetch%E7%9A%84%E5%8C%BA%E5%88%AB/">Ajax与Fetch的区别</a>
+
+      <a href="/2020/05/23/Ajax%E4%B8%8EFetch%E7%9A%84%E5%8C%BA%E5%88%AB/" class="index-excerpt">
+        
+        
+          
+        
+        <div>fetch是ajax的替代品；基于标准Promise实现支持async/await，可读性更高，避免了ajax回调地狱的痛点。
+Ajax的核心是XMLHttpRequest对象，浏览器正是通过XMLHttpRequest对象进行http通信；
+//1.创建Ajax对象
+if(window.XMLHttpRequest){
+let oAjax=new XMLHttpRequest();
+}else{</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-05-23
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/">数据请求方式</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/01/30/%E7%AC%94%E8%AE%B0-1/">笔记-1</a>
+
+      <a href="/2020/01/30/%E7%AC%94%E8%AE%B0-1/" class="index-excerpt">
+        
+        
+          
+        
+        <div>  本着有输入有输出的原则记录一下《大癫狂-群体性狂热与泡沫经济》
+密西西比计划：1、十七世纪约翰劳经法国政府特许，建立可以发行货币的私有银行；以此推行纸币以逐渐取代硬币2、因为劳的特权，其所创立的密西西比公司拥有密西西比河流域独有的贸易特权，由于当时传闻密西西比河遍地所金银；所以公司股票疯涨3、为了解决国债负担的问题，劳利用皇家银行的发行纸币的权利和密西西比公司的股票价值，不断发行股票以偿还国债</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-01-30
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9D%82%E6%96%87/">杂文</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/01/09/Angular%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%AD%E4%BF%AE%E9%A5%B0%E7%AC%A6%E7%9A%84%E5%8C%BA%E5%88%AB/">Angular构造函数中修饰符的区别</a>
+
+      <a href="/2020/01/09/Angular%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%AD%E4%BF%AE%E9%A5%B0%E7%AC%A6%E7%9A%84%E5%8C%BA%E5%88%AB/" class="index-excerpt">
+        
+        
+          
+        
+        <div>  众所周知，Angular中引入了大量Java的语法思想，在日常开发中，常常定义变量的时候是不写修饰符的，对修饰符的理解也仅仅停留在Java阶段，如下：
+修饰符       当前类       同包          子类         其他包
+
+public       √           √            √             √
+protected    √      </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-01-09
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Angular/">Angular</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/12/05/ios%E5%BE%AE%E4%BF%A1%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5%E6%A1%86%E5%A4%B1%E5%8E%BB%E7%84%A6%E7%82%B9%E5%90%8E%E9%A1%B5%E9%9D%A2%E6%97%A0%E5%93%8D%E5%BA%94%E9%97%AE%E9%A2%98/">ios微信浏览器输入框失去焦点后页面无响应问题</a>
+
+      <a href="/2019/12/05/ios%E5%BE%AE%E4%BF%A1%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5%E6%A1%86%E5%A4%B1%E5%8E%BB%E7%84%A6%E7%82%B9%E5%90%8E%E9%A1%B5%E9%9D%A2%E6%97%A0%E5%93%8D%E5%BA%94%E9%97%AE%E9%A2%98/" class="index-excerpt">
+        
+        
+          
+        
+        <div>  问题描述：在ios微信浏览器上访问表单注册页面，当输入框输入文字完毕，微信键盘收回之后，页面出现失去焦点现象，点击仍和按钮或者输入框都没反应
+  原因：微信键盘弹起后，若愿输入框被遮挡，页面整体会向上移动，当键盘收起时页面却未恢复，导致页面点击没反应
+  解决方法：当输入框失去焦点时调用一下方法能完美解决问题
+function kickBack() {
+    setTimeout(() =&</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-12-05
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/">兼容性</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/10/14/EXIF%E5%A4%84%E7%90%86%E7%85%A7%E7%89%87%E4%BF%A1%E6%81%AF/">EXIF处理照片信息</a>
+
+      <a href="/2019/10/14/EXIF%E5%A4%84%E7%90%86%E7%85%A7%E7%89%87%E4%BF%A1%E6%81%AF/" class="index-excerpt">
+        
+        
+          
+        
+        <div>  最近在处理人脸照片时遇到一个奇怪现象，iphone 自拍照片总是显示未识别到人脸，Android 机则未出现任何问题。经过一番排查测试发现，iphone 手机在自拍时生成的人脸照片尽管显示是正常的，但是当转成 base64 格式之后恢复，自动逆时针旋转 45 度。导致人脸识别时，旋转之后的照片是无法检测出人脸的，带来极为糟糕的使用体验；所以需要在图片传给后端之前做一次复位操作。
+  解决方案就</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-10-14
+          </div>
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/">模拟eventloop demo</a>
+
+      <a href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/" class="index-excerpt">
+        
+        
+          
+        
+        <div>  Node的异步非阻塞I/O特性依赖于其内部的事件循环机制；  下面简单模拟一下事件循环的实现：
+const eventloop = {
+    queue : [],
+    loop(){
+        while(this.queue.length &gt; 0){
+            var callback = this.queue.shift();
+            ca</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-10-03
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Node/">Node</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/10/03/super%E5%85%B3%E9%94%AE%E5%AD%97/">super关键字</a>
+
+      <a href="/2019/10/03/super%E5%85%B3%E9%94%AE%E5%AD%97/" class="index-excerpt">
+        
+        
+          
+        
+        <div>  this和super的区别：  this关键词指向函数所在的当前对象  super指向的是当前对象的原型对象
+const EventEmitter  = require(&apos;events&apos;).EventEmitter;
+class Publishorder extends EventEmitter {
+    constructor(){
+        super();
+ </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-10-03
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/JavaScript/">JavaScript</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/09/07/ngFor-trackBy/">ngFor-trackBy</a>
+
+      <a href="/2019/09/07/ngFor-trackBy/" class="index-excerpt">
+        
+        
+          
+        
+        <div>  今天在开发自定义表单功能时遇到这么一个问题，场景大致是通过循环生成所需的n个输入框，彼此之间保持独立。
+先看这段代码存在到问题：
+&lt;div *ngFor=&quot;let child of item.option; let k = index&quot;&gt;
+    &lt;input nz-input class=&quot;option_input&quot; [(ngMode</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-09-07
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Angular/">Angular</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/09/03/xjb%E5%86%99/">xjb写</a>
+
+      <a href="/2019/09/03/xjb%E5%86%99/" class="index-excerpt">
+        
+        
+          
+        
+        <div>  今年南京的九月份是真tmd冷啊！
+  数了数，肖申克的救赎电影看了两遍了，这两天随手翻了翻把斯蒂芬金的原著也看了一遍，没想到原著比想象中的简短了许多，也和电影的剧情稍有不同。
+  第一遍看的时候大约是大三大四的时候，已经记不清什么了，只觉得安迪nb，真能忍，真有耐心，真不像个人。。。
+  第二遍是去年看的，逐渐能够感受到安迪也有脆弱想放弃的时候，但想不通他为什么早已挖好隧道却不立刻逃走，这段在</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-09-03
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9D%82%E6%96%87/">杂文</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "An elegant Material-Design theme for Hexo&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Ironhideee">
+  <meta name="keywords" content="">
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Ironhideee</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/kv.webp') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/09/02/%E8%B7%B3%E5%87%BAforEach%E5%BE%AA%E7%8E%AF/">跳出forEach循环</a>
+
+      <a href="/2019/09/02/%E8%B7%B3%E5%87%BAforEach%E5%BE%AA%E7%8E%AF/" class="index-excerpt">
+        
+        
+          
+        
+        <div>  在循环遍历数组时，for循环可以通过break或者continue进行终止跳出操作；但是箭头函数的普及更多得使用forEach去做循环遍历，这时候想要中途跳出该怎么办呢？
+构造场景,将数组中第一个值为5的元素改为10:
+const arr = [0,1,2,3,4,5,6,7,8,9];
+for (i=0;i&lt;arr.length;i++){
+    if(arr[i] == 5){
+ </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-09-02
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/JavaScript/">JavaScript</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/08/20/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E6%96%87%E4%BB%B6/">动态加载文件</a>
+
+      <a href="/2019/08/20/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E6%96%87%E4%BB%B6/" class="index-excerpt">
+        
+        
+          
+        
+        <div>  业务背景：在加载js或css文件时通常在页头使用head标签加载，然而有的情况需要动态加载文件，例如监听某个事件，当触发时执行加载代码，可以使用如下的方法。
+loadedScripts: string[] = [];//已经加载过的资源文件
+
+/**
+* @param sctipts
+* 某一组件中需要同步加载的js数组 如[&apos;a.js&apos;,[&apos;b.js,c.js&</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-08-20
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/JavaScript/">JavaScript</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/08/13/%E5%AF%84%E7%94%9F%E8%99%AB/">寄生虫</a>
+
+      <a href="/2019/08/13/%E5%AF%84%E7%94%9F%E8%99%AB/" class="index-excerpt">
+        
+        
+          
+        
+        <div>  听取男神的安利，看完了韩国电影寄生虫立刻写一篇影评。此外特地鸣谢钟博士提供的枪版链接，让我没了推辞到周末看的借口，FSNB（破音）！
+  影片刚开始对长子基宇家庭环境对描写让我一度以为是上个世纪拍的影片。一家四口生活在半地下室对简陋且拥挤对房屋里，游手好闲得浑浑噩噩得生活着。
+  故事的起因大致就是基宇借同学引荐机会进入富豪社长家当家教，一步步将一家四口都引荐到富豪家获得工作。一开始我也对剧情</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-08-13
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9D%82%E6%96%87/">杂文</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/08/03/%E5%93%8D%E5%BA%94%E7%A0%81%E6%8A%A5%E9%94%99%E7%9A%84%E4%BC%98%E5%8C%96%E5%86%99%E6%B3%95/">响应码报错的优化写法</a>
+
+      <a href="/2019/08/03/%E5%93%8D%E5%BA%94%E7%A0%81%E6%8A%A5%E9%94%99%E7%9A%84%E4%BC%98%E5%8C%96%E5%86%99%E6%B3%95/" class="index-excerpt">
+        
+        
+          
+        
+        <div>在接口调用时，根据不同的响应码返回给用户相应的提示；通常用简单的if else 就能实现；如下：
+this.orderService.getOrder(id)
+  .subscribe((res) =&gt; {
+    if (res.code == &apos;00000&apos;) {
+      &lt;!-- 响应正确的业务代码 --&gt;
+    }else if (res.cod</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-08-03
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/JavaScript/">JavaScript</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/07/27/HTTP%E7%BC%93%E5%AD%98%E4%BB%A3%E7%90%86%E7%AD%96%E7%95%A5/">HTTP缓存代理策略</a>
+
+      <a href="/2019/07/27/HTTP%E7%BC%93%E5%AD%98%E4%BB%A3%E7%90%86%E7%AD%96%E7%95%A5/" class="index-excerpt">
+        
+        
+          
+        
+        <div>  缓存代理，主要分为两部分，服务端的缓存控制和客户端的缓存控制；客户端的缓存控制由浏览器来实现，而服务端的缓存控制由代理服务器来实现。代理服务器介于浏览器客户端和源服务器之间，相当于一个数据中转站，将未更新可复用的数据缓存起来，以便降低源服务器的并发量。
+服务器端缓存控制策略可以同时控制客户端和代理首先总结一下常用的缓存控制属性的含义：服务器端的Cache-Control主要包括以下属性
+max</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-07-27
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/HTTP/">HTTP</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/07/24/CSRF%E6%94%BB%E5%87%BB%E9%98%B2%E8%8C%83/">CSRF攻击防范</a>
+
+      <a href="/2019/07/24/CSRF%E6%94%BB%E5%87%BB%E9%98%B2%E8%8C%83/" class="index-excerpt">
+        
+        
+          
+        
+        <div>
+            CSRF（Cross-site request forgery）:跨站请求伪造，是一种挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法。
+          
+
+CSRF原理：CSRF攻击思想如下：
+
+引用自https://www.cnblogs.com/hyddd/archive/2009/04/09/1432744.html
+CSRF攻击成功的两个必要</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-07-24
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AE%89%E5%85%A8/">安全</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/07/16/HTTP%E5%AE%9E%E7%8E%B0%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%8E%9F%E7%90%86/">HTTP实现大文件传输原理</a>
+
+      <a href="/2019/07/16/HTTP%E5%AE%9E%E7%8E%B0%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%8E%9F%E7%90%86/" class="index-excerpt">
+        
+        
+          
+        
+        <div>业务背景在编写视频播放功能时，没想明白如何实现大体积视频的一边加载一边播放，这里实际上是利用了HTTP所实现的分块传输，也可以称之为断点续传，下面介绍几个涉及到的关键字段。
+Transfer-Encoding: chunked对于响应报文，存在两种情况：报文长度已知、报文长度未知；这分别对应这响应头里Content-Length、Transfer-Encoding: chunked这两个互斥的字段</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-07-16
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/HTTP/">HTTP</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/07/06/%E9%80%9A%E8%BF%87a%E6%A0%87%E7%AD%BE%E7%9A%84download%E5%B1%9E%E6%80%A7-Blob%E9%87%8D%E5%91%BD%E5%90%8D%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6/">通过a标签的download属性+Blob重命名下载文件</a>
+
+      <a href="/2019/07/06/%E9%80%9A%E8%BF%87a%E6%A0%87%E7%AD%BE%E7%9A%84download%E5%B1%9E%E6%80%A7-Blob%E9%87%8D%E5%91%BD%E5%90%8D%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6/" class="index-excerpt">
+        
+        
+          
+        
+        <div>背景：从文件服务器下载文件资源时，通常存储的文件名称都经过二进制转译，导致下载时的文件名为失去语义的二进制字符串。对于定制化的文件服务器可以从后端进行下载重命名，再生成新的下载链接；而对于通用解决方案，可以由前端进行重命名操作。
+解决方案：常用的下载方式：
+&lt;a [href]=&quot;download_url&quot; target=&quot;_blank&quot;&gt;
+//或</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-07-06
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/JavaScript/">JavaScript</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/07/02/HTTP%E6%A6%82%E5%BF%B5%E6%80%A7%E6%80%BB%E7%BB%93/">HTTP概念性总结</a>
+
+      <a href="/2019/07/02/HTTP%E6%A6%82%E5%BF%B5%E6%80%A7%E6%80%BB%E7%BB%93/" class="index-excerpt">
+        
+        
+          
+        
+        <div>&emsp;&emsp;工作中几乎每天都在和HTTP协议打交道，但是感觉除了对状态码、请求头、请求体的使用外，对理论及底层协议的了解知之甚少，所有想总结一下HTTP协议的一些概念。
+
+            HTTP : Hyper Text Transfer Protocal 超文本传输协议
+          
+
+首先什么是文本？文本最初指报文、文字，如今发展为文字、图片、音频、视频、压缩包等</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-07-02
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/HTTP/">HTTP</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/05/10/%E5%88%A9%E7%94%A8postMessage%E5%AE%9E%E7%8E%B0%E8%B7%A8%E6%BA%90%E9%80%9A%E4%BF%A1/">利用postMessage实现跨源通信</a>
+
+      <a href="/2019/05/10/%E5%88%A9%E7%94%A8postMessage%E5%AE%9E%E7%8E%B0%E8%B7%A8%E6%BA%90%E9%80%9A%E4%BF%A1/" class="index-excerpt">
+        
+        
+          
+        
+        <div>一、业务背景：利用OpenCMS构建一个包含公用页头页脚的容器，中间用iframe标签引入Angular页面（我也不想用iframe这种古董，但是解决方案目前只有这个最合适）
+二、引发的问题：众所周知iframe高度自适应问题不是简单一句height:100%就能解决的，尤其是当子页面不断调用接口，页面高度不固定时，需要实时计算子页面的高度。为了解决这个问题，最初我设想的是在父页面通过onload</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-05-10
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/HTML5/">HTML5</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "An elegant Material-Design theme for Hexo&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
