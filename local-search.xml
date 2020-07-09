@@ -148,31 +148,6 @@
   
   
   <entry>
-    <title>super关键字</title>
-    <link href="/2019/10/03/super%E5%85%B3%E9%94%AE%E5%AD%97/"/>
-    <url>/2019/10/03/super%E5%85%B3%E9%94%AE%E5%AD%97/</url>
-    
-    <content type="html"><![CDATA[<p>  this和super的区别：<br>  this关键词指向函数所在的当前对象<br>  super指向的是当前对象的原型对象</p><pre><code>const EventEmitter  = require(&apos;events&apos;).EventEmitter;class Publishorder extends EventEmitter {    constructor(){        super();        setInterval(()=&gt;{            this.emit(&apos;neworder&apos;, { price: Math.random() * 100 });        },3000)    }}</code></pre><p>  上面写了一个每隔3秒发布一个随机价格订单的事件发射器的类Publishorder，其中super()指的是父类的构造函数，即Nodejs中的events.EventEmitter；如果不去调用父类构造函数，将无法在构造函数中使用this。即抛出这样一个错误：</p><pre><code>/Users/xuan/Desktop/Daily Demo/Daily-Demo/Node/eventemitter.js:6    setInterval(()=&gt;{    ^ReferenceError: Must call super constructor in derived class before accessing &apos;this&apos; or returning from derived constructor    at new Publishorder (/Users/xuan/Desktop/Daily Demo/Daily-Demo/Node/eventemitter.js:6:9)    at Object.&lt;anonymous&gt; (/Users/xuan/Desktop/Daily Demo/Daily-Demo/Node/eventemitter.js:12:22)    at Module._compile (internal/modules/cjs/loader.js:778:30)    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)    at Module.load (internal/modules/cjs/loader.js:653:32)    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)    at Function.Module._load (internal/modules/cjs/loader.js:585:3)    at Function.Module.runMain (internal/modules/cjs/loader.js:831:12)    at startup (internal/bootstrap/node.js:283:19)    at bootstrapNodeJSCore (internal/bootstrap/node.js:622:3)</code></pre><p>  那么为什么javascript要有这样一个限制？因为有继承关系，子类创建了对象会用到父类的属性方法，所以父类也要初始化，不然继承父类而不用父类的属性和方法，那继承还有什么意义。<br>  所以，Class中的 super()，它在这里表示父类的构造函数，用来新建父类的 this 对象。<br>这里的super()相当于Parent.prototype.constructor.call(this)</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>前端</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>JavaScript</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>模拟eventloop demo</title>
     <link href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/"/>
     <url>/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/</url>
@@ -190,6 +165,31 @@
     <tags>
       
       <tag>Node</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>super关键字</title>
+    <link href="/2019/10/03/super%E5%85%B3%E9%94%AE%E5%AD%97/"/>
+    <url>/2019/10/03/super%E5%85%B3%E9%94%AE%E5%AD%97/</url>
+    
+    <content type="html"><![CDATA[<p>  this和super的区别：<br>  this关键词指向函数所在的当前对象<br>  super指向的是当前对象的原型对象</p><pre><code>const EventEmitter  = require(&apos;events&apos;).EventEmitter;class Publishorder extends EventEmitter {    constructor(){        super();        setInterval(()=&gt;{            this.emit(&apos;neworder&apos;, { price: Math.random() * 100 });        },3000)    }}</code></pre><p>  上面写了一个每隔3秒发布一个随机价格订单的事件发射器的类Publishorder，其中super()指的是父类的构造函数，即Nodejs中的events.EventEmitter；如果不去调用父类构造函数，将无法在构造函数中使用this。即抛出这样一个错误：</p><pre><code>/Users/xuan/Desktop/Daily Demo/Daily-Demo/Node/eventemitter.js:6    setInterval(()=&gt;{    ^ReferenceError: Must call super constructor in derived class before accessing &apos;this&apos; or returning from derived constructor    at new Publishorder (/Users/xuan/Desktop/Daily Demo/Daily-Demo/Node/eventemitter.js:6:9)    at Object.&lt;anonymous&gt; (/Users/xuan/Desktop/Daily Demo/Daily-Demo/Node/eventemitter.js:12:22)    at Module._compile (internal/modules/cjs/loader.js:778:30)    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)    at Module.load (internal/modules/cjs/loader.js:653:32)    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)    at Function.Module._load (internal/modules/cjs/loader.js:585:3)    at Function.Module.runMain (internal/modules/cjs/loader.js:831:12)    at startup (internal/bootstrap/node.js:283:19)    at bootstrapNodeJSCore (internal/bootstrap/node.js:622:3)</code></pre><p>  那么为什么javascript要有这样一个限制？因为有继承关系，子类创建了对象会用到父类的属性方法，所以父类也要初始化，不然继承父类而不用父类的属性和方法，那继承还有什么意义。<br>  所以，Class中的 super()，它在这里表示父类的构造函数，用来新建父类的 this 对象。<br>这里的super()相当于Parent.prototype.constructor.call(this)</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>JavaScript</tag>
       
     </tags>
     
@@ -511,31 +511,6 @@
   
   
   <entry>
-    <title>Angular生命周期钩子</title>
-    <link href="/2019/04/25/Angular%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/"/>
-    <url>/2019/04/25/Angular%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/</url>
-    
-    <content type="html"><![CDATA[<p>1.ngOnChanges<br>当 Angular（重新）设置数据绑定输入属性时响应。 该方法接受当前和上一属性值的 SimpleChanges 对象。<br>在 ngOnInit() 之前以及所绑定的一个或多个输入属性的值发生变化时都会调用。</p><p>2.ngOnInit<br>在 Angular 第一次显示数据绑定和设置指令/组件的输入属性之后，初始化指令/组件。<br>在第一轮 ngOnChanges() 完成之后调用，只调用一次。</p><p>3.ngDoCheck<br>检测，并在发生 Angular 无法或不愿意自己检测的变化时作出反应。<br>在每个变更检测周期中，紧跟在 ngOnChanges() 和 ngOnInit() 后面调用。</p><p>4.ngAfterContentInit<br>没当 Angular 把外部内容投影进组件/指令的视图之后调用。<br>第一次 ngDoCheck() 之后调用，只调用一次。</p><p>5.ngAfterContentChecked<br>每当 Angular 完成被投影组件内容的变更检测之后调用。<br>ngAfterContentInit() 和每次 ngDoCheck() 之后调用。</p><p>6.ngAfterViewInit<br>每当 Angular 初始化完组件视图及其子视图之后调用。<br>第一次 ngAfterContentChecked() 之后调用，只调用一次。</p><p>7.ngAfterViewChecked<br>每当 Angular 做完组件视图和子视图的变更检测之后调用。<br>ngAfterViewInit() 和每次 ngAfterContentChecked() 之后调用。</p><p>8.ngOnDestroy<br>当 Angular 每次销毁指令/组件之前调用并清扫。 在这儿反订阅可观察对象和分离事件处理器，以防内存泄漏。<br>在 Angular 销毁指令/组件之前调用。</p><p><img src="/image/angular/img1.jpg" srcset="/img/loading.gif" alt=""></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>前端</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Angular</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>JS事件冒泡及阻止</title>
     <link href="/2019/04/25/JS%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%8F%8A%E9%98%BB%E6%AD%A2/"/>
     <url>/2019/04/25/JS%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%8F%8A%E9%98%BB%E6%AD%A2/</url>
@@ -553,6 +528,31 @@
     <tags>
       
       <tag>JavaScript</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Angular生命周期钩子</title>
+    <link href="/2019/04/25/Angular%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/"/>
+    <url>/2019/04/25/Angular%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/</url>
+    
+    <content type="html"><![CDATA[<p>1.ngOnChanges<br>当 Angular（重新）设置数据绑定输入属性时响应。 该方法接受当前和上一属性值的 SimpleChanges 对象。<br>在 ngOnInit() 之前以及所绑定的一个或多个输入属性的值发生变化时都会调用。</p><p>2.ngOnInit<br>在 Angular 第一次显示数据绑定和设置指令/组件的输入属性之后，初始化指令/组件。<br>在第一轮 ngOnChanges() 完成之后调用，只调用一次。</p><p>3.ngDoCheck<br>检测，并在发生 Angular 无法或不愿意自己检测的变化时作出反应。<br>在每个变更检测周期中，紧跟在 ngOnChanges() 和 ngOnInit() 后面调用。</p><p>4.ngAfterContentInit<br>没当 Angular 把外部内容投影进组件/指令的视图之后调用。<br>第一次 ngDoCheck() 之后调用，只调用一次。</p><p>5.ngAfterContentChecked<br>每当 Angular 完成被投影组件内容的变更检测之后调用。<br>ngAfterContentInit() 和每次 ngDoCheck() 之后调用。</p><p>6.ngAfterViewInit<br>每当 Angular 初始化完组件视图及其子视图之后调用。<br>第一次 ngAfterContentChecked() 之后调用，只调用一次。</p><p>7.ngAfterViewChecked<br>每当 Angular 做完组件视图和子视图的变更检测之后调用。<br>ngAfterViewInit() 和每次 ngAfterContentChecked() 之后调用。</p><p>8.ngOnDestroy<br>当 Angular 每次销毁指令/组件之前调用并清扫。 在这儿反订阅可观察对象和分离事件处理器，以防内存泄漏。<br>在 Angular 销毁指令/组件之前调用。</p><p><img src="/image/angular/img1.jpg" srcset="/img/loading.gif" alt=""></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Angular</tag>
       
     </tags>
     
@@ -611,31 +611,6 @@
   
   
   <entry>
-    <title>CSS规则</title>
-    <link href="/2019/03/03/CSS%E8%A7%84%E5%88%99/"/>
-    <url>/2019/03/03/CSS%E8%A7%84%E5%88%99/</url>
-    
-    <content type="html"><![CDATA[<p>@规则<br>1.@charset<br>用于提示CSS文件使用的字符编码方式，必须出现在最前面</p><pre><code>@charset “utf-8”</code></pre><p>2.@import<br>用于引入一个CSS文件，除了@charset规则不会被引入，其他文件的全部内容都能被引入</p><p>3.@media<br>对设备类型进行判断</p><p>4.@page<br>用于分页媒体访问网页时的表现设置</p><pre><code>@page {    size:8.5in 11in;    margin:10%;    @top-left {        content: “Hamlet”;    }    @top-right {        content: “Page” counter(page);    }}</code></pre><p>5.@counte-style<br>产生一种数据，用于定义列表项的表现</p><p>6.@key-frames<br>产生一种数据，用于定义动画关键帧</p><p>7.@fontface<br>用于定义一种字体， icon font技术就是利用这个特性来实现的</p><p>8.support<br>检查环境的特性，与media类似</p><p>9.@namespace<br>用于跟XML命名空间配合的一个规则，表示内部的CSS选择器全都带上特定命名空间</p><p>10.viewport<br>用于设置视口的一些特性，不过兼容性目前不是很好，多数时候被html的meta代替</p><p>普通规则<br>分为两块：选择器、声明列表（分为属性和值（值的类型、函数））</p><p>CSS支持的计算型函数（仅举例）<br>1、calc()支持加减乘除四则运算<br>针对纬度进行计算时，允许不同单位混合运算</p><pre><code>width：calc(100%/3 - 21rem -21px);</code></pre><p>2、max()</p><p>3、min()</p><p>4、clamp()<br>给一个值限定一个范围，超出范围外则使用范围的最大值或最小值</p><p>5、toggle()<br>在规则选中多个元素时生效，它会在几个值之间来回切换<br>例如想让一个列表项的样式圆点和方点间隔出现，可以使用</p><pre><code>ul { list-style-type: toggle( circle, square); }</code></pre><p>6、attr()<br>允许CSS接受属性值（html的属性值）的控制</p><p>后期查阅整理后，按功能分为5个类别</p><p>图片</p><pre><code>filterblur()brightness()contrast()drop-shadow()grayscale()hue_rotate()invert()opacity()saturate()sepia()cross-fade()element()image-set()imagefunction()</code></pre><p>图形绘制</p><pre><code>conic-gradient()linear-gradient()radial-gradient()repeating-linear-gradient()repeating-radial-gradient()shape()</code></pre><p>布局</p><pre><code>calc()clamp()fit-content()max()min()minmax()repeat()</code></pre><p>变形/动画</p><pre><code>transformmatrix()matrix3d()perspective()rotate()rotate3d()rotateX()rotateY()rotateZ()scale()scale3d()scaleX()scaleY()scaleZ()skew()skewX()skewY()translate()translate3d()translateX()translateY()translateZ()</code></pre><p>环境与元素</p><pre><code>var()env()attr()</code></pre>]]></content>
-    
-    
-    <categories>
-      
-      <category>前端</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>CSS</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>JavaScript原型</title>
     <link href="/2019/03/03/JavaScript%E5%8E%9F%E5%9E%8B/"/>
     <url>/2019/03/03/JavaScript%E5%8E%9F%E5%9E%8B/</url>
@@ -653,6 +628,31 @@
     <tags>
       
       <tag>JavaScript</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>CSS规则</title>
+    <link href="/2019/03/03/CSS%E8%A7%84%E5%88%99/"/>
+    <url>/2019/03/03/CSS%E8%A7%84%E5%88%99/</url>
+    
+    <content type="html"><![CDATA[<p>@规则<br>1.@charset<br>用于提示CSS文件使用的字符编码方式，必须出现在最前面</p><pre><code>@charset “utf-8”</code></pre><p>2.@import<br>用于引入一个CSS文件，除了@charset规则不会被引入，其他文件的全部内容都能被引入</p><p>3.@media<br>对设备类型进行判断</p><p>4.@page<br>用于分页媒体访问网页时的表现设置</p><pre><code>@page {    size:8.5in 11in;    margin:10%;    @top-left {        content: “Hamlet”;    }    @top-right {        content: “Page” counter(page);    }}</code></pre><p>5.@counte-style<br>产生一种数据，用于定义列表项的表现</p><p>6.@key-frames<br>产生一种数据，用于定义动画关键帧</p><p>7.@fontface<br>用于定义一种字体， icon font技术就是利用这个特性来实现的</p><p>8.support<br>检查环境的特性，与media类似</p><p>9.@namespace<br>用于跟XML命名空间配合的一个规则，表示内部的CSS选择器全都带上特定命名空间</p><p>10.viewport<br>用于设置视口的一些特性，不过兼容性目前不是很好，多数时候被html的meta代替</p><p>普通规则<br>分为两块：选择器、声明列表（分为属性和值（值的类型、函数））</p><p>CSS支持的计算型函数（仅举例）<br>1、calc()支持加减乘除四则运算<br>针对纬度进行计算时，允许不同单位混合运算</p><pre><code>width：calc(100%/3 - 21rem -21px);</code></pre><p>2、max()</p><p>3、min()</p><p>4、clamp()<br>给一个值限定一个范围，超出范围外则使用范围的最大值或最小值</p><p>5、toggle()<br>在规则选中多个元素时生效，它会在几个值之间来回切换<br>例如想让一个列表项的样式圆点和方点间隔出现，可以使用</p><pre><code>ul { list-style-type: toggle( circle, square); }</code></pre><p>6、attr()<br>允许CSS接受属性值（html的属性值）的控制</p><p>后期查阅整理后，按功能分为5个类别</p><p>图片</p><pre><code>filterblur()brightness()contrast()drop-shadow()grayscale()hue_rotate()invert()opacity()saturate()sepia()cross-fade()element()image-set()imagefunction()</code></pre><p>图形绘制</p><pre><code>conic-gradient()linear-gradient()radial-gradient()repeating-linear-gradient()repeating-radial-gradient()shape()</code></pre><p>布局</p><pre><code>calc()clamp()fit-content()max()min()minmax()repeat()</code></pre><p>变形/动画</p><pre><code>transformmatrix()matrix3d()perspective()rotate()rotate3d()rotateX()rotateY()rotateZ()scale()scale3d()scaleX()scaleY()scaleZ()skew()skewX()skewY()translate()translate3d()translateX()translateY()translateZ()</code></pre><p>环境与元素</p><pre><code>var()env()attr()</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CSS</tag>
       
     </tags>
     
