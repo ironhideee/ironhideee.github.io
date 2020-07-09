@@ -4,9 +4,9 @@
   
   
   <entry>
-    <title>伪元素清除浮动2020</title>
-    <link href="/2020/07/07/%E4%BC%AA%E5%85%83%E7%B4%A0%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A82020/"/>
-    <url>/2020/07/07/%E4%BC%AA%E5%85%83%E7%B4%A0%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A82020/</url>
+    <title>伪元素清除浮动</title>
+    <link href="/2020/07/07/%E4%BC%AA%E5%85%83%E7%B4%A0%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/"/>
+    <url>/2020/07/07/%E4%BC%AA%E5%85%83%E7%B4%A0%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/</url>
     
     <content type="html"><![CDATA[<p>  在日常开发工作中，慎用“overflow:hidden;”清除浮动，对于父级元素内的绝对定位或者相对定位可能会起到遮挡作用。</p><p>单伪元素标签法：</p><pre><code>.clearfix:after{    content:&quot;&quot;;    height:0;    lin-height:0;    display:block;    visibility:hidden;    clear:both;}.clearfix:after{    *zoom:1;        /*针对IE6/IE7*/}</code></pre><p>双伪元素标签法：</p><pre><code>.clearfix :before,.clearfix:after{    content: “”;    display: table;}.clearfix:after{}.clearfix {    zoom: 1;/兼容IE/ }</code></pre>]]></content>
     
@@ -511,31 +511,6 @@
   
   
   <entry>
-    <title>JS事件冒泡及阻止</title>
-    <link href="/2019/04/25/JS%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%8F%8A%E9%98%BB%E6%AD%A2/"/>
-    <url>/2019/04/25/JS%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%8F%8A%E9%98%BB%E6%AD%A2/</url>
-    
-    <content type="html"><![CDATA[<div class="note note-success">            <p>事件冒泡 ：当一个元素接收到事件的时候 会把他接收到的事件传给自己的父级，一直到window 。（注意这里传递的仅仅是事件 并不传递所绑定的事件函数；所以如果父级没有绑定事件函数，就算传递了事件 也不会有什么表现 但事件确实传递了）</p>          </div><p>举个例子，先点击一下父级按钮再点击一下子级按钮，可以发现click事件也被冒泡传递到了它的父级</p><p><img src="/image/event_bubbling/img1.png" srcset="/img/loading.gif" alt=""></p><p>避免冒泡事件的方法是event.stopPropagation()方法，同上的例子</p><p><img src="/image/event_bubbling/img2.png" srcset="/img/loading.gif" alt=""></p><p>类似的问题，阻止默认事件的发生可以采用event.preventDefault()方法，例如a标签在点击后不发生跳转。</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>前端</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>JavaScript</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Angular生命周期钩子</title>
     <link href="/2019/04/25/Angular%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/"/>
     <url>/2019/04/25/Angular%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/</url>
@@ -553,6 +528,31 @@
     <tags>
       
       <tag>Angular</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>JS事件冒泡及阻止</title>
+    <link href="/2019/04/25/JS%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%8F%8A%E9%98%BB%E6%AD%A2/"/>
+    <url>/2019/04/25/JS%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%8F%8A%E9%98%BB%E6%AD%A2/</url>
+    
+    <content type="html"><![CDATA[<div class="note note-success">            <p>事件冒泡 ：当一个元素接收到事件的时候 会把他接收到的事件传给自己的父级，一直到window 。（注意这里传递的仅仅是事件 并不传递所绑定的事件函数；所以如果父级没有绑定事件函数，就算传递了事件 也不会有什么表现 但事件确实传递了）</p>          </div><p>举个例子，先点击一下父级按钮再点击一下子级按钮，可以发现click事件也被冒泡传递到了它的父级</p><p><img src="/image/event_bubbling/img1.png" srcset="/img/loading.gif" alt=""></p><p>避免冒泡事件的方法是event.stopPropagation()方法，同上的例子</p><p><img src="/image/event_bubbling/img2.png" srcset="/img/loading.gif" alt=""></p><p>类似的问题，阻止默认事件的发生可以采用event.preventDefault()方法，例如a标签在点击后不发生跳转。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>JavaScript</tag>
       
     </tags>
     
