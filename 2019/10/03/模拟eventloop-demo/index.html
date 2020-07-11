@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/atom-one-dark.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
   
 
   
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      226 字
+      242 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      3
        分钟
     </span>
   
@@ -205,33 +205,34 @@
             
             <article class="markdown-body">
               <p>  Node的异步非阻塞I/O特性依赖于其内部的事件循环机制；<br>  下面简单模拟一下事件循环的实现：</p>
-<pre><code>const eventloop = {
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> eventloop = &#123;
     queue : [],
-    loop(){
-        while(this.queue.length &gt; 0){
-            var callback = this.queue.shift();
+    loop()&#123;
+        <span class="hljs-keyword">while</span>(<span class="hljs-keyword">this</span>.queue.length &gt; <span class="hljs-number">0</span>)&#123;
+            <span class="hljs-keyword">var</span> callback = <span class="hljs-keyword">this</span>.queue.shift();
             callback();
-        }
-        setTimeout(this.loop.bind(this),50);   //这里this指的是eventloop对象
-    },
-    add(callback){
-        this.queue.push(callback);
-    }
-}
+        &#125;
+        setTimeout(<span class="hljs-keyword">this</span>.loop.bind(<span class="hljs-keyword">this</span>),<span class="hljs-number">50</span>);   <span class="hljs-comment">//这里this指的是eventloop对象</span>
+    &#125;,
+    add(callback)&#123;
+        <span class="hljs-keyword">this</span>.queue.push(callback);
+    &#125;
+&#125;
 
 eventloop.loop();
 
-setTimeout(() =&gt; {
-    eventloop.add(function(){
-        console.log(1)
-    })
-},500)
+setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+    eventloop.add(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>)
+    &#125;)
+&#125;,<span class="hljs-number">500</span>)
 
-setTimeout(() =&gt; {
-    eventloop.add(function(){
-        console.log(2)
-    })
-},800)</code></pre><p>  这里间隔500毫秒和800毫秒向循环里添加了两个事件，eventloop会不间断得去监听是否有新事件进入执行栈。</p>
+setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+    eventloop.add(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>)
+    &#125;)
+&#125;,<span class="hljs-number">800</span>)</code></pre>
+<p>  这里间隔500毫秒和800毫秒向循环里添加了两个事件，eventloop会不间断得去监听是否有新事件进入执行栈。</p>
 <div class="note note-success">
             <p>事件循环：<br>每次循环过程称为Tick（即查看是否有但出来事件，将待处理事件存储在任务队列中），若有，则取出事件及回调函数放入stack由主线程执行。</p>
           </div>

@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/atom-one-dark.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
   
 
   
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      531 字
+      539 字
     </span>
   
 
@@ -209,43 +209,44 @@
 <p>  下图展示了照片 exif 方向参数的八种位置:</p>
 <p><img src="/image/exif/orient_flag.gif" srcset="/img/loading.gif" alt=""></p>
 <p>  经过测试，苹果手机前置摄像头直立拍照对应 6 号位，摄像头在右横向拍照对应 1 号位(常规位置)，摄像头在左横向拍照对应 8 号位(需要转 180 度)<br>  示例代码如下：</p>
-<pre><code>let imgObj = new Image();
+<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> imgObj = <span class="hljs-keyword">new</span> Image();
 imgObj.src = imagesrc;
-setTimeout(){()=&gt;{
-    let orientation;                            //方向参数
-    EXIF.getData(imgObj, function() {
-        orientation = EXIF.getTag(this, &apos;Orientation&apos;);
-    }
-    let imgWidth = imgObj.width;                   //图片宽度
-    let imgHeight = imgObj.height;                 //图片高度
-    let canvas = document.createElement(&apos;canvas&apos;);
-    let ctx = canvas.getContext(&apos;2d&apos;);
-    let ratio = imgWidth/imgHeight;
-    if(imgWidth&gt;imgHeight &amp;&amp; imgWidth&gt;750){
-        imgWidth = 750;
-        imgHeight = Math.ceil(750/ratio);
-    }else if(imgWidth&lt;imgHeight &amp;&amp; imgHeight&gt;1350){
-        imgWidth = Math.ceil(1350/ratio);
-        imgHeight = 1350;
-    }
-    if(orientation == 6){
+setTimeout()&#123;()=&gt;&#123;
+    <span class="hljs-keyword">let</span> orientation;                            <span class="hljs-comment">//方向参数</span>
+    EXIF.getData(imgObj, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+        orientation = EXIF.getTag(<span class="hljs-keyword">this</span>, <span class="hljs-string">'Orientation'</span>);
+    &#125;
+    <span class="hljs-keyword">let</span> imgWidth = imgObj.width;                   <span class="hljs-comment">//图片宽度</span>
+    <span class="hljs-keyword">let</span> imgHeight = imgObj.height;                 <span class="hljs-comment">//图片高度</span>
+    <span class="hljs-keyword">let</span> canvas = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'canvas'</span>);
+    <span class="hljs-keyword">let</span> ctx = canvas.getContext(<span class="hljs-string">'2d'</span>);
+    <span class="hljs-keyword">let</span> ratio = imgWidth/imgHeight;
+    <span class="hljs-keyword">if</span>(imgWidth&gt;imgHeight &amp;&amp; imgWidth&gt;<span class="hljs-number">750</span>)&#123;
+        imgWidth = <span class="hljs-number">750</span>;
+        imgHeight = <span class="hljs-built_in">Math</span>.ceil(<span class="hljs-number">750</span>/ratio);
+    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(imgWidth&lt;imgHeight &amp;&amp; imgHeight&gt;<span class="hljs-number">1350</span>)&#123;
+        imgWidth = <span class="hljs-built_in">Math</span>.ceil(<span class="hljs-number">1350</span>/ratio);
+        imgHeight = <span class="hljs-number">1350</span>;
+    &#125;
+    <span class="hljs-keyword">if</span>(orientation == <span class="hljs-number">6</span>)&#123;
         canvas.width = imgHeight;
         canvas.height = imgWidth;
-        ctx.rotate(90 * Math.PI / 180);
-        ctx.drawImage(imgObj, 0, -imgHeight, imgWidth, imgHeight);
-        //画布以(0,-imgHeight)为焦点顺时针旋转90度，此时宽为图片高，高为图片宽
-    }else if(orientation == 3) {
+        ctx.rotate(<span class="hljs-number">90</span> * <span class="hljs-built_in">Math</span>.PI / <span class="hljs-number">180</span>);
+        ctx.drawImage(imgObj, <span class="hljs-number">0</span>, -imgHeight, imgWidth, imgHeight);
+        <span class="hljs-comment">//画布以(0,-imgHeight)为焦点顺时针旋转90度，此时宽为图片高，高为图片宽</span>
+    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(orientation == <span class="hljs-number">3</span>) &#123;
         canvas.width = imgWidth;
         canvas.height = imgHeight;
-        ctx.rotate(180 * Math.PI / 180);
+        ctx.rotate(<span class="hljs-number">180</span> * <span class="hljs-built_in">Math</span>.PI / <span class="hljs-number">180</span>);
         ctx.drawImage(imgObj, -imgWidth, -imgHeight, imgWidth, imgHeight);
-    }else {
+    &#125;<span class="hljs-keyword">else</span> &#123;
         canvas.width = imgWidth;
         canvas.height = imgHeight;
-        ctx.drawImage(imgObj, 0, 0, imgWidth, imgHeight);
-    }
-    let database64 = canvas.toDataURL(&quot;image/jpeg&quot;,0.6)
-},500}</code></pre><p>  p.s. exif-js 代码库存在一个类型校验缺陷，使用时需要修正一下，如下所示</p>
+        ctx.drawImage(imgObj, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, imgWidth, imgHeight);
+    &#125;
+    <span class="hljs-keyword">let</span> database64 = canvas.toDataURL(<span class="hljs-string">"image/jpeg"</span>,<span class="hljs-number">0.6</span>)
+&#125;,<span class="hljs-number">500</span>&#125;</code></pre>
+<p>  p.s. exif-js 代码库存在一个类型校验缺陷，使用时需要修正一下，如下所示</p>
 <p><img src="/image/exif/github.png" srcset="/img/loading.gif" alt=""></p>
 
             </article>

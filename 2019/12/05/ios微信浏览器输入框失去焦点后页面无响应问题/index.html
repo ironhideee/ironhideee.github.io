@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/atom-one-dark.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
   
 
   
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      162 字
+      166 字
     </span>
   
 
@@ -207,12 +207,12 @@
               <p>  问题描述：在ios微信浏览器上访问表单注册页面，当输入框输入文字完毕，微信键盘收回之后，页面出现失去焦点现象，点击仍和按钮或者输入框都没反应</p>
 <p>  原因：微信键盘弹起后，若愿输入框被遮挡，页面整体会向上移动，当键盘收起时页面却未恢复，导致页面点击没反应</p>
 <p>  解决方法：当输入框失去焦点时调用一下方法能完美解决问题</p>
-<pre><code>function kickBack() {
-    setTimeout(() =&gt; {
-        window.scrollTo(0, document.body.scrollTop + 1);
-        document.body.scrollTop &gt;= 1 &amp;&amp; window.scrollTo(0, document.body.scrollTop - 1);  
-    }, 10)
-}</code></pre>
+<pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">kickBack</span>(<span class="hljs-params"></span>) </span>&#123;
+    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+        <span class="hljs-built_in">window</span>.scrollTo(<span class="hljs-number">0</span>, <span class="hljs-built_in">document</span>.body.scrollTop + <span class="hljs-number">1</span>);
+        <span class="hljs-built_in">document</span>.body.scrollTop &gt;= <span class="hljs-number">1</span> &amp;&amp; <span class="hljs-built_in">window</span>.scrollTo(<span class="hljs-number">0</span>, <span class="hljs-built_in">document</span>.body.scrollTop - <span class="hljs-number">1</span>);  
+    &#125;, <span class="hljs-number">10</span>)
+&#125;</code></pre>
             </article>
             <hr>
             <div>

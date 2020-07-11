@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/atom-one-dark.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
   
 
   
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      354 字
+      375 字
     </span>
   
 
@@ -206,66 +206,71 @@
             <article class="markdown-body">
               <p>  在循环遍历数组时，for循环可以通过break或者continue进行终止跳出操作；但是箭头函数的普及更多得使用forEach去做循环遍历，这时候想要中途跳出该怎么办呢？</p>
 <p>构造场景,将数组中第一个值为5的元素改为10:</p>
-<pre><code>const arr = [0,1,2,3,4,5,6,7,8,9];
-for (i=0;i&lt;arr.length;i++){
-    if(arr[i] == 5){
-        arr[i] = 10;
-        break;
-    }
-    console.log(arr[i]);
-}
-//0,1,2,3,4,10</code></pre><p>用forEach改写<br>方案一：</p>
-<pre><code>arr.forEach(item =&gt; {
-    if(item == 5){
-        item = 10;
-        break;
-    }
-    console.log(item);
-})
-//Uncaught SyntaxError: Illegal break statement</code></pre><p>所以原生forEach()不支持break操作；</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>];
+<span class="hljs-keyword">for</span> (i=<span class="hljs-number">0</span>;i&lt;arr.length;i++)&#123;
+    <span class="hljs-keyword">if</span>(arr[i] == <span class="hljs-number">5</span>)&#123;
+        arr[i] = <span class="hljs-number">10</span>;
+        <span class="hljs-keyword">break</span>;
+    &#125;
+    <span class="hljs-built_in">console</span>.log(arr[i]);
+&#125;
+<span class="hljs-comment">//0,1,2,3,4,10</span></code></pre>
+<p>用forEach改写<br>方案一：</p>
+<pre><code class="hljs javascript">arr.forEach(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> &#123;
+    <span class="hljs-keyword">if</span>(item == <span class="hljs-number">5</span>)&#123;
+        item = <span class="hljs-number">10</span>;
+        <span class="hljs-keyword">break</span>;
+    &#125;
+    <span class="hljs-built_in">console</span>.log(item);
+&#125;)
+<span class="hljs-comment">//Uncaught SyntaxError: Illegal break statement</span></code></pre>
+<p>所以原生forEach()不支持break操作；</p>
 <p>方案二：</p>
-<pre><code>arr.forEach(item =&gt; {
-    if(item == 5){
-        item = 10;
-        return false;
-    }
-    console.log(item);
-})
-//0,1,2,3,4,6,7,8,9</code></pre><p>return false起作用了，但仅仅是终止本次继续执行，后续的循环继续执行；</p>
+<pre><code class="hljs javascript">arr.forEach(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> &#123;
+    <span class="hljs-keyword">if</span>(item == <span class="hljs-number">5</span>)&#123;
+        item = <span class="hljs-number">10</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    &#125;
+    <span class="hljs-built_in">console</span>.log(item);
+&#125;)
+<span class="hljs-comment">//0,1,2,3,4,6,7,8,9</span></code></pre>
+<p>return false起作用了，但仅仅是终止本次继续执行，后续的循环继续执行；</p>
 <p>方案三：</p>
-<pre><code>try {
-    const arr = [0,1,2,3,4,5,6,7,8,9];
-    arr.forEach(item =&gt; {
-        if(item == 5){
-            item = 10;
-            throw new Error(&quot;EndIterative&quot;);
-        }
-        console.log(item);
-    })
-}catch(e){
-    if(e.message!=&quot;EndIterative&quot;) throw e;
-}
-//0,1,2,3,4</code></pre><p>forEach()无法通过正常流程终止，所以可以通过抛出异常的方式实现终止循环的目的；</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">try</span> &#123;
+    <span class="hljs-keyword">const</span> arr = [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>];
+    arr.forEach(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> &#123;
+        <span class="hljs-keyword">if</span>(item == <span class="hljs-number">5</span>)&#123;
+            item = <span class="hljs-number">10</span>;
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"EndIterative"</span>);
+        &#125;
+        <span class="hljs-built_in">console</span>.log(item);
+    &#125;)
+&#125;<span class="hljs-keyword">catch</span>(e)&#123;
+    <span class="hljs-keyword">if</span>(e.message!=<span class="hljs-string">"EndIterative"</span>) <span class="hljs-keyword">throw</span> e;
+&#125;
+<span class="hljs-comment">//0,1,2,3,4</span></code></pre>
+<p>forEach()无法通过正常流程终止，所以可以通过抛出异常的方式实现终止循环的目的；</p>
 <p>方案四：</p>
-<pre><code>arr.every(item =&gt; {
-    if(item == 5){
-        item = 10;
-        return false;
+<pre><code class="javascript">arr.every(<span class="function"><span class="params">item</span> =&gt;</span> {
+    <span class="keyword">if</span>(item == <span class="number">5</span>){
+        item = <span class="number">10</span>;
+        <span class="keyword">return</span> <span class="literal">false</span>;
     }
-    console.log(item);
-    return true;
+    <span class="built_in">console</span>.log(item);
+    <span class="keyword">return</span> <span class="literal">true</span>;
 })
-//0,1,2,3,4,false
+<span class="comment">//0,1,2,3,4,false</span>
 
-arr.some(item =&gt; {
-    if(item == 5){
-        item = 10;
-        return true;
+arr.some(<span class="function"><span class="params">item</span> =&gt;</span> {
+    <span class="keyword">if</span>(item == <span class="number">5</span>){
+        item = <span class="number">10</span>;
+        <span class="keyword">return</span> <span class="literal">true</span>;
     }
-    console.log(item);
-    return false;
+    <span class="built_in">console</span>.log(item);
+    <span class="keyword">return</span> <span class="literal">false</span>;
 })
-//0,1,2,3,4,true</code></pre><p>可以对于some(),return true时会终止循环，对于every()，return false时会种植循环。</p>
+<span class="comment">//0,1,2,3,4,true</span></code></pre>
+<p>可以对于some(),return true时会终止循环，对于every()，return false时会种植循环。</p>
 
             </article>
             <hr>

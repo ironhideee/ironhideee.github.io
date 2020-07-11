@@ -178,9 +178,8 @@
         <div>  在循环遍历数组时，for循环可以通过break或者continue进行终止跳出操作；但是箭头函数的普及更多得使用forEach去做循环遍历，这时候想要中途跳出该怎么办呢？
 构造场景,将数组中第一个值为5的元素改为10:
 const arr = [0,1,2,3,4,5,6,7,8,9];
-for (i=0;i&lt;arr.length;i++){
-    if(arr[i] == 5){
- </div>
+for (i=0;i&lt;arr.length;i++)&#123;
+    if(arr[i] == </div>
       </a>
 
       <div class="index-btm post-metas">
@@ -222,10 +221,9 @@ for (i=0;i&lt;arr.length;i++){
         
         <div>  业务背景：在加载js或css文件时通常在页头使用head标签加载，然而有的情况需要动态加载文件，例如监听某个事件，当触发时执行加载代码，可以使用如下的方法。
 loadedScripts: string[] = [];//已经加载过的资源文件
-
 /**
 * @param sctipts
-* 某一组件中需要同步加载的js数组 如[&apos;a.js&apos;,[&apos;b.js,c.js&</div>
+* 某一组件中需要同步加载的js数组 如['a.js',['b.js,c.js'].'d.js']表示a加载完成</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -302,10 +300,10 @@ loadedScripts: string[] = [];//已经加载过的资源文件
         
         <div>在接口调用时，根据不同的响应码返回给用户相应的提示；通常用简单的if else 就能实现；如下：
 this.orderService.getOrder(id)
-  .subscribe((res) =&gt; {
-    if (res.code == &apos;00000&apos;) {
+  .subscribe((res) =&gt; &#123;
+    if (res.code == '00000') &#123;
       &lt;!-- 响应正确的业务代码 --&gt;
-    }else if (res.cod</div>
+    &#125;else if (re</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -477,8 +475,9 @@ Transfer-Encoding: chunked对于响应报文，存在两种情况：报文长度
         
         <div>背景：从文件服务器下载文件资源时，通常存储的文件名称都经过二进制转译，导致下载时的文件名为失去语义的二进制字符串。对于定制化的文件服务器可以从后端进行下载重命名，再生成新的下载链接；而对于通用解决方案，可以由前端进行重命名操作。
 解决方案：常用的下载方式：
-&lt;a [href]=&quot;download_url&quot; target=&quot;_blank&quot;&gt;
-//或</div>
+&lt;a [href]="download_url" target="_blank"&gt;
+//或者
+window.location.hr</div>
       </a>
 
       <div class="index-btm post-metas">

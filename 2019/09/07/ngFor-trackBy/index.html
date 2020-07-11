@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/atom-one-dark.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
   
 
   
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      887 字
+      815 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11
+      10
        分钟
     </span>
   
@@ -206,23 +206,27 @@
             <article class="markdown-body">
               <p>  今天在开发自定义表单功能时遇到这么一个问题，场景大致是通过循环生成所需的n个输入框，彼此之间保持独立。</p>
 <p>先看这段代码存在到问题：</p>
-<pre><code>&lt;div *ngFor=&quot;let child of item.option; let k = index&quot;&gt;
-    &lt;input nz-input class=&quot;option_input&quot; [(ngModel)]=&quot;child&quot;&gt;
-    &lt;i nz-icon [nzType]=&quot;&apos;close&apos;&quot; class=&quot;btnIcon closeBtn&quot; (click)=&quot;delItem(i,k)&quot; *ngIf=&apos;item.option.length&gt;1&apos;&gt;&lt;/i&gt;
-    &lt;i nz-icon [nzType]=&quot;&apos;plus&apos;&quot; class=&quot;btnIcon plusBtn&quot; (click)=&quot;addItem(i,k)&quot;&gt;&lt;/i&gt;
-&lt;/div&gt;</code></pre><p>  现象是新增输入框时正常工作，但在删除时，尽管ts代码获取到了所需要删除的index并在数据层更新了列表数组，但在页面渲染时删除的却是数组的最后一项。这时猜测视图上输入框双向绑定的属性与数组里到元素并没有一一对应上，才导致渲染的错误；于是修改为以下代码：</p>
-<pre><code>&lt;div *ngFor=&quot;let child of item.option; let k = index&quot;&gt;
-    &lt;input nz-input class=&quot;option_input&quot; [(ngModel)]=&quot;item.option[k]&quot;&gt;
-    &lt;i nz-icon [nzType]=&quot;&apos;close&apos;&quot; class=&quot;btnIcon closeBtn&quot; (click)=&quot;delItem(i,k)&quot; *ngIf=&apos;item.option.length&gt;1&apos;&gt;&lt;/i&gt;
-    &lt;i nz-icon [nzType]=&quot;&apos;plus&apos;&quot; class=&quot;btnIcon plusBtn&quot; (click)=&quot;addItem(i,k)&quot;&gt;&lt;/i&gt;
-&lt;/div&gt;</code></pre><p>  但问题并没有解决，删除索引错乱的问题解决了，但对于每个input框都存在按键之后立即失去焦点的问题，想了一下还是视图与模型并没有对应的问题，于是翻文档找到了如下解决方案：</p>
-<pre><code>&lt;div *ngFor=&quot;let child of item.option; trackBy: trackByIndex; let k = index&quot;&gt;
-    &lt;input nz-input class=&quot;option_input&quot; [(ngModel)]=&quot;item.option[k]&quot;&gt;
-    &lt;i nz-icon [nzType]=&quot;&apos;close&apos;&quot; class=&quot;btnIcon closeBtn&quot; (click)=&quot;delItem(i,k)&quot; *ngIf=&apos;item.option.length&gt;1&apos;&gt;&lt;/i&gt;
-    &lt;i nz-icon [nzType]=&quot;&apos;plus&apos;&quot; class=&quot;btnIcon plusBtn&quot; (click)=&quot;addItem(i,k)&quot;&gt;&lt;/i&gt;
-&lt;/div&gt;</code></pre><p>  以上问题全部解决，先解释一下一开始两种情况出现的原因。只删除最后一项的场景，通过打印集合数据可以知道页面输入值根据[(ngModel)]=”child”并未同步给数组，数组中仍然是初始化的空字符串，所以当删除一项时，视图只知道循环减一并不知道删除哪项。而对于[(ngModel)]=”item.option[k]”，视图与集合同步，只删除最后一项的问题解决，但存在另一个问题。</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let child of item.option; let k = index"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nz-input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"option_input"</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">"child"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">nz-icon</span> [<span class="hljs-attr">nzType</span>]=<span class="hljs-string">"'close'"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btnIcon closeBtn"</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"delItem(i,k)"</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">'item.option.length&gt;1'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">nz-icon</span> [<span class="hljs-attr">nzType</span>]=<span class="hljs-string">"'plus'"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btnIcon plusBtn"</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"addItem(i,k)"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+<p>  现象是新增输入框时正常工作，但在删除时，尽管ts代码获取到了所需要删除的index并在数据层更新了列表数组，但在页面渲染时删除的却是数组的最后一项。这时猜测视图上输入框双向绑定的属性与数组里到元素并没有一一对应上，才导致渲染的错误；于是修改为以下代码：</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let child of item.option; let k = index"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nz-input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"option_input"</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">"item.option[k]"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">nz-icon</span> [<span class="hljs-attr">nzType</span>]=<span class="hljs-string">"'close'"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btnIcon closeBtn"</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"delItem(i,k)"</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">'item.option.length&gt;1'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">nz-icon</span> [<span class="hljs-attr">nzType</span>]=<span class="hljs-string">"'plus'"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btnIcon plusBtn"</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"addItem(i,k)"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+<p>  但问题并没有解决，删除索引错乱的问题解决了，但对于每个input框都存在按键之后立即失去焦点的问题，想了一下还是视图与模型并没有对应的问题，于是翻文档找到了如下解决方案：</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let child of item.option; trackBy: trackByIndex; let k = index"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nz-input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"option_input"</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">"item.option[k]"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">nz-icon</span> [<span class="hljs-attr">nzType</span>]=<span class="hljs-string">"'close'"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btnIcon closeBtn"</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"delItem(i,k)"</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">'item.option.length&gt;1'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">nz-icon</span> [<span class="hljs-attr">nzType</span>]=<span class="hljs-string">"'plus'"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btnIcon plusBtn"</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"addItem(i,k)"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+<p>  以上问题全部解决，先解释一下一开始两种情况出现的原因。只删除最后一项的场景，通过打印集合数据可以知道页面输入值根据[(ngModel)]=”child”并未同步给数组，数组中仍然是初始化的空字符串，所以当删除一项时，视图只知道循环减一并不知道删除哪项。而对于[(ngModel)]=”item.option[k]”，视图与集合同步，只删除最后一项的问题解决，但存在另一个问题。</p>
 <p>  我们知道对于双向绑定的属性可以做到同步更新视图，但是对于一个集合（这里是一个数组），视图无法去跟踪集合里每一个项，也就是当集合数据发生改变时，视图并不知道哪一项多了或哪一项少了，Angular所做的只能是将集合里的项全部移除再重新添加，涉及到的页面重新渲染，造成大量不必要到DOM操作，引入trackBy的目的是优化渲染性能，视图根据trackBy返回的唯一标示去重新绘制仅发生改变的项。</p>
-<pre><code>const trackByIdentity = (index: number, item: any) =&gt; item;</code></pre><p>  trackBy函数需要两个参数，第一个是当前项的index，第二个是当前项，并返回一个唯一的标识,相当于同步返回集合内发生了什么变化给视图用于重新绘制页面。</p>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> trackByIdentity = <span class="hljs-function">(<span class="hljs-params">index: number, item: any</span>) =&gt;</span> item;</code></pre>
+<p>  trackBy函数需要两个参数，第一个是当前项的index，第二个是当前项，并返回一个唯一的标识,相当于同步返回集合内发生了什么变化给视图用于重新绘制页面。</p>
 
             </article>
             <hr>

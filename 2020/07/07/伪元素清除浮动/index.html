@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/atom-one-dark.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
   
 
   
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      96 字
+      106 字
     </span>
   
 
@@ -206,27 +206,29 @@
             <article class="markdown-body">
               <p>  在日常开发工作中，慎用“overflow:hidden;”清除浮动，对于父级元素内的绝对定位或者相对定位可能会起到遮挡作用。</p>
 <p>单伪元素标签法：</p>
-<pre><code>.clearfix:after{
-    content:&quot;&quot;;
-    height:0;
-    lin-height:0;
-    display:block;
-    visibility:hidden;
-    clear:both;
-}
-.clearfix:after{
+<pre><code class="hljs css"><span class="hljs-selector-class">.clearfix</span><span class="hljs-selector-pseudo">:after</span>&#123;
+    <span class="hljs-attribute">content</span>:<span class="hljs-string">""</span>;
+    <span class="hljs-attribute">height</span>:<span class="hljs-number">0</span>;
+    <span class="hljs-attribute">line-height</span>:<span class="hljs-number">0</span>;
+    <span class="hljs-attribute">display</span>:block;
+    <span class="hljs-attribute">visibility</span>:hidden;
+    <span class="hljs-attribute">clear</span>:both;
+&#125;
+<span class="hljs-selector-class">.clearfix</span><span class="hljs-selector-pseudo">:after</span>&#123;
     *zoom:1;        /*针对IE6/IE7*/
-}</code></pre><p>双伪元素标签法：</p>
-<pre><code>.clearfix :before,.clearfix:after{
-    content: “”;
-    display: table;
-}
-.clearfix:after{
-
-}
-.clearfix {
+&#125;</code></pre>
+<p>双伪元素标签法：</p>
+<pre><code class="hljs css"><span class="hljs-selector-class">.clearfix</span> <span class="hljs-selector-pseudo">:before</span>,<span class="hljs-selector-class">.clearfix</span><span class="hljs-selector-pseudo">:after</span>&#123;
+    <span class="hljs-attribute">content</span>: “”;
+    <span class="hljs-attribute">display</span>: table;
+&#125;
+<span class="hljs-selector-class">.clearfix</span><span class="hljs-selector-pseudo">:after</span>&#123;
+    <span class="hljs-attribute">clear</span>:both;
+&#125;
+<span class="hljs-selector-class">.clearfix</span> &#123;
     zoom: 1;/兼容IE/ 
-}</code></pre>
+&#125;</code></pre>
+
             </article>
             <hr>
             <div>

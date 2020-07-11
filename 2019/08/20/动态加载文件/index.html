@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/atom-one-dark.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
   
 
   
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      868 字
+      849 字
     </span>
   
 
@@ -205,97 +205,99 @@
             
             <article class="markdown-body">
               <p>  业务背景：在加载js或css文件时通常在页头使用head标签加载，然而有的情况需要动态加载文件，例如监听某个事件，当触发时执行加载代码，可以使用如下的方法。</p>
-<pre><code>loadedScripts: string[] = [];//已经加载过的资源文件
+<pre><code class="hljs javascript">loadedScripts: string[] = [];<span class="hljs-comment">//已经加载过的资源文件</span>
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment">* <span class="hljs-doctag">@param <span class="hljs-variable">sctipts</span></span></span>
+<span class="hljs-comment">* 某一组件中需要同步加载的js数组 如['a.js',['b.js,c.js'].'d.js']表示a加载完成后，加载b和c，最后加载d</span>
+<span class="hljs-comment">* <span class="hljs-doctag">@param </span>callback </span>
+<span class="hljs-comment">* 全部加载完成后的回调函数</span>
+<span class="hljs-comment">*/</span>
 
-/**
-* @param sctipts
-* 某一组件中需要同步加载的js数组 如[&apos;a.js&apos;,[&apos;b.js,c.js&apos;].&apos;d.js&apos;]表示a加载完成后，加载b和c，最后加载d
-* @param callback 
-* 全部加载完成后的回调函数
-*/
-
-loadScript(path,scripts,callback){
-let _t = this;
-if(scripts.length){
-    let item = scripts.shift();
-    if (typeof item === &apos;string&apos;) {
-        if (_t.loadedScripts.indexOf(item)&gt;=0) {
+loadScript(path,scripts,callback)&#123;
+<span class="hljs-keyword">let</span> _t = <span class="hljs-keyword">this</span>;
+<span class="hljs-keyword">if</span>(scripts.length)&#123;
+    <span class="hljs-keyword">let</span> item = scripts.shift();
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> item === <span class="hljs-string">'string'</span>) &#123;
+        <span class="hljs-keyword">if</span> (_t.loadedScripts.indexOf(item)&gt;=<span class="hljs-number">0</span>) &#123;
             _t.loadScript(path,scripts,callback);
-        }else{
-            let onload = () =&gt; {
+        &#125;<span class="hljs-keyword">else</span>&#123;
+            <span class="hljs-keyword">let</span> onload = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
                 _t.loadedScripts.push(item);
                 _t.loadScript(path,scripts,callback);
-            }
-            let name = item.split(&apos;.css&apos;);
-            let isCss = name.length===2 &amp;&amp; !name[1];
-            if (isCss) {
-                let link = document.createElement(&apos;link&apos;);
-                document.head.appendChild(link);
-                link.rel = &apos;stylesheet&apos;;
+            &#125;
+            <span class="hljs-keyword">let</span> name = item.split(<span class="hljs-string">'.css'</span>);
+            <span class="hljs-keyword">let</span> isCss = name.length===<span class="hljs-number">2</span> &amp;&amp; !name[<span class="hljs-number">1</span>];
+            <span class="hljs-keyword">if</span> (isCss) &#123;
+                <span class="hljs-keyword">let</span> link = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'link'</span>);
+                <span class="hljs-built_in">document</span>.head.appendChild(link);
+                link.rel = <span class="hljs-string">'stylesheet'</span>;
                 link.onload = onload;
-                link.type = &apos;text/css&apos;;
-                link.href = &apos;./assets/lib&apos; + path + &apos;/&apos; + item;
-            } else {
-                let script = document.createElement(&apos;script&apos;);
-                document.head.appendChild(script);
+                link.type = <span class="hljs-string">'text/css'</span>;
+                link.href = <span class="hljs-string">'./assets/lib'</span> + path + <span class="hljs-string">'/'</span> + item;
+            &#125; <span class="hljs-keyword">else</span> &#123;
+                <span class="hljs-keyword">let</span> script = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'script'</span>);
+                <span class="hljs-built_in">document</span>.head.appendChild(script);
                 script.onload = onload;
-                script.src = &apos;./assets/lib&apos; + path + &apos;/&apos; + item + &apos;.js&apos;;
-            }
-        }
-    }else if (Object.prototype.toString.call(item)===&quot;[object Array]&quot;) {
-        if (item.length) {
-            let loadCount = 0;
-            item.forEach(s=&gt;{
-                if (_t.loadedScripts.indexOf(s)&gt;=0) {
+                script.src = <span class="hljs-string">'./assets/lib'</span> + path + <span class="hljs-string">'/'</span> + item + <span class="hljs-string">'.js'</span>;
+            &#125;
+        &#125;
+    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Object</span>.prototype.toString.call(item)===<span class="hljs-string">"[object Array]"</span>) &#123;
+        <span class="hljs-keyword">if</span> (item.length) &#123;
+            <span class="hljs-keyword">let</span> loadCount = <span class="hljs-number">0</span>;
+            item.forEach(<span class="hljs-function"><span class="hljs-params">s</span>=&gt;</span>&#123;
+                <span class="hljs-keyword">if</span> (_t.loadedScripts.indexOf(s)&gt;=<span class="hljs-number">0</span>) &#123;
                     loadCount++;
                     _t.loadedScripts.push(s);
-                    if (loadCount===item.length) {
+                    <span class="hljs-keyword">if</span> (loadCount===item.length) &#123;
                         _t.loadScript(path,scripts,callback);
-                    }
-                } else {
-                    let onload = ()=&gt;{
+                    &#125;
+                &#125; <span class="hljs-keyword">else</span> &#123;
+                    <span class="hljs-keyword">let</span> onload = <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;
                         loadCount++;
                         _t.loadedScripts.push(s);
-                        if (loadCount===item.length) {
+                        <span class="hljs-keyword">if</span> (loadCount===item.length) &#123;
                             _t.loadScript(path,scripts,callback);
-                        }
-                    }
-                    let name = item.split(&apos;.css&apos;);
-                    let isCss = name.length===2 &amp;&amp; !name[1];
-                    if (isCss) {
-                        let link = document.createElement(&apos;link&apos;);
-                        document.head.appendChild(link);
-                        link.rel = &apos;stylesheet&apos;;
+                        &#125;
+                    &#125;
+                    <span class="hljs-keyword">let</span> name = item.split(<span class="hljs-string">'.css'</span>);
+                    <span class="hljs-keyword">let</span> isCss = name.length===<span class="hljs-number">2</span> &amp;&amp; !name[<span class="hljs-number">1</span>];
+                    <span class="hljs-keyword">if</span> (isCss) &#123;
+                        <span class="hljs-keyword">let</span> link = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'link'</span>);
+                        <span class="hljs-built_in">document</span>.head.appendChild(link);
+                        link.rel = <span class="hljs-string">'stylesheet'</span>;
                         link.onload = onload;
-                        link.type = &apos;text/css&apos;;
-                        link.href = &apos;./assets/lib&apos; + path + &apos;/&apos; + item;
-                    } else {
-                        let script = document.createElement(&apos;script&apos;);
-                        document.head.appendChild(script);
+                        link.type = <span class="hljs-string">'text/css'</span>;
+                        link.href = <span class="hljs-string">'./assets/lib'</span> + path + <span class="hljs-string">'/'</span> + item;
+                    &#125; <span class="hljs-keyword">else</span> &#123;
+                        <span class="hljs-keyword">let</span> script = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'script'</span>);
+                        <span class="hljs-built_in">document</span>.head.appendChild(script);
                         script.onload = onload;
-                        script.src = &apos;./assets/lib&apos; + path + &apos;/&apos; + item + &apos;.js&apos;;
-                    }
-                }
-            })
-        } else {
+                        script.src = <span class="hljs-string">'./assets/lib'</span> + path + <span class="hljs-string">'/'</span> + item + <span class="hljs-string">'.js'</span>;
+                    &#125;
+                &#125;
+            &#125;)
+        &#125; <span class="hljs-keyword">else</span> &#123;
             _t.loadScript(path,[],callback);
-        }
-    }
-}else{
-    callback &amp;&amp; callback(window);
-}</code></pre><p>P.S. 为什么要用Object.prototype.toString.call(obj)检测对象类型？</p>
+        &#125;
+    &#125;
+&#125;<span class="hljs-keyword">else</span>&#123;
+    callback &amp;&amp; callback(<span class="hljs-built_in">window</span>);
+&#125;</code></pre>
+<p>P.S. 为什么要用Object.prototype.toString.call(obj)检测对象类型？</p>
 <p>  首先想到的是typeof，但是它只能检测六种基本数据类型，当需要区分同为Object的各种引用类型时不适用。<br>其次想到的是instanceof，它是用来用来测试一个对象在其原型链中是否存在一个构造函数的 prototype 属性；</p>
-<pre><code>let arr = [];
-let str = &quot;&quot;;
-arr instanceof Array; //true
-str instanceof Array; //false</code></pre><p>这样可以达到检测引用类型值的目的，但是不能直接返回值的类型。</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arr = [];
+<span class="hljs-keyword">let</span> str = <span class="hljs-string">""</span>;
+arr <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>; <span class="hljs-comment">//true</span>
+str <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>; <span class="hljs-comment">//false</span></code></pre>
+<p>这样可以达到检测引用类型值的目的，但是不能直接返回值的类型。</p>
 <p>  所以使用Object.prototype.toString.call(obj)<br>  这里引入另一个问题，同样是将对象转换为字符串，为什么不能使用obj.toString()呢？<br>因为toString为Object的原型方法，而Array 、Function等类型作为Object的实例，都重写了toString方法。不同的对象类型调用toString方法时，根据原型链的知识，调用的是对应的重写之后的toString方法（Function类型返回内容为函数体的字符串，Array类型返回元素组成的字符串等等），而不会去调用Object上原型toString方法（返回对象的具体类型），所以采用obj.toString()不能得到其对象类型，只能将obj转换为字符串类型；因此，在想要得到对象的具体类型时，应该调用Object上原型toString方法。</p>
-<pre><code>let arr=[1,2,3];
-console.log(Array.prototype.hasOwnProperty(&quot;toString&quot;));//true
-console.log(arr.toString());//1,2,3
-delete Array.prototype.toString;//delete操作符可以删除实例属性
-console.log(Array.prototype.hasOwnProperty(&quot;toString&quot;));//false
-console.log(arr.toString());//&quot;[object Array]&quot;</code></pre><p>  当删除Array重写的toString()后，arr.toString()将不再屏蔽Object原型方法的实例方法，而是沿着原型链去调用Object的toString方法，返回结果与Object.prototype.toString.call(arr)相同。</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arr=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Array</span>.prototype.hasOwnProperty(<span class="hljs-string">"toString"</span>));<span class="hljs-comment">//true</span>
+<span class="hljs-built_in">console</span>.log(arr.toString());<span class="hljs-comment">//1,2,3</span>
+<span class="hljs-keyword">delete</span> <span class="hljs-built_in">Array</span>.prototype.toString;<span class="hljs-comment">//delete操作符可以删除实例属性</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Array</span>.prototype.hasOwnProperty(<span class="hljs-string">"toString"</span>));<span class="hljs-comment">//false</span>
+<span class="hljs-built_in">console</span>.log(arr.toString());<span class="hljs-comment">//"[object Array]"</span></code></pre>
+<p>  当删除Array重写的toString()后，arr.toString()将不再屏蔽Object原型方法的实例方法，而是沿着原型链去调用Object的toString方法，返回结果与Object.prototype.toString.call(arr)相同。</p>
 
             </article>
             <hr>

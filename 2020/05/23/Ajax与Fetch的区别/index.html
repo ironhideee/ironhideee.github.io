@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/atom-one-dark.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
   
 
   
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      459 字
+      457 字
     </span>
   
 
@@ -206,48 +206,50 @@
             <article class="markdown-body">
               <p>fetch是ajax的替代品；基于标准Promise实现支持async/await，可读性更高，避免了ajax回调地狱的痛点。</p>
 <p>Ajax的核心是XMLHttpRequest对象，浏览器正是通过XMLHttpRequest对象进行http通信；</p>
-<pre><code>//1.创建Ajax对象
-if(window.XMLHttpRequest){
-    let oAjax=new XMLHttpRequest();
-}else{
-    let oAjax=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;); //兼容老版本IE
-}
-//2.连接服务器（打开和服务器的连接）
-oAjax.open(&apos;GET&apos;, url, true);
-//3.发送
+<pre><code class="hljs javascript"><span class="hljs-comment">//1.创建Ajax对象</span>
+<span class="hljs-keyword">if</span>(<span class="hljs-built_in">window</span>.XMLHttpRequest)&#123;
+    <span class="hljs-keyword">let</span> oAjax=<span class="hljs-keyword">new</span> XMLHttpRequest();
+&#125;<span class="hljs-keyword">else</span>&#123;
+    <span class="hljs-keyword">let</span> oAjax=<span class="hljs-keyword">new</span> ActiveXObject(<span class="hljs-string">"Microsoft.XMLHTTP"</span>); <span class="hljs-comment">//兼容老版本IE</span>
+&#125;
+<span class="hljs-comment">//2.连接服务器（打开和服务器的连接）</span>
+oAjax.open(<span class="hljs-string">'GET'</span>, url, <span class="hljs-literal">true</span>);
+<span class="hljs-comment">//3.发送</span>
 oAjax.send();
-//4.接收
-oAjax.onreadystatechange=function (){
-if(oAjax.readyState==4){
-    console.log(oAjax)
-    if(oAjax.status==200){
-        //alert(&apos;成功了：&apos;+oAjax.responseText);
-        console.log(oAjax)
+<span class="hljs-comment">//4.接收</span>
+oAjax.onreadystatechange=<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>)</span>&#123;
+<span class="hljs-keyword">if</span>(oAjax.readyState==<span class="hljs-number">4</span>)&#123;
+    <span class="hljs-built_in">console</span>.log(oAjax)
+    <span class="hljs-keyword">if</span>(oAjax.status==<span class="hljs-number">200</span>)&#123;
+        <span class="hljs-comment">//alert('成功了：'+oAjax.responseText);</span>
+        <span class="hljs-built_in">console</span>.log(oAjax)
         fnSucc(oAjax.responseText);
-    }else{
-        //alert(&apos;失败了&apos;);
-        if(fnFaild){
+    &#125;<span class="hljs-keyword">else</span>&#123;
+        <span class="hljs-comment">//alert('失败了');</span>
+        <span class="hljs-keyword">if</span>(fnFaild)&#123;
             fnFaild();
-        }
-    }
-    }
-};</code></pre><p>onreadystatechange 是一个事件句柄。它的值 (state_Change) 是一个函数的名称，当 XMLHttpRequest 对象的状态发生改变时，会触发此函数。状态从 0 (uninitialized) 到 4 (complete) 进行变化。仅在状态为 4 时，我们才执行代码。</p>
-<pre><code>fetch(&apos;http://localhost:3000/api/data&apos;, {
-    method:&apos;GET&apos;,
-    headers: { // 请求头（可以是Headers对象，也可是JSON对象）
-        &apos;Content-Type&apos;: &apos;application/json&apos;,
-        &apos;Accept&apos;: &apos;application/json&apos;
-    },
-    mode:&apos;cors&apos;,// 允许发送跨域请求
-    credentials: &apos;include&apos;
-}).then(function(response){
-    //打印返回的json数据
-    response.json().then(function(data){
-        console.log(data);
-    })
-}).catch(function(e){
-    console.log(&apos;error: &apos; + e.toString());
-})</code></pre><p>1）fetch只对网络请求报错，对400，500都当做成功的请求，需要封装去处理<br>2）fetch默认不会带cookie，需要添加配置项<br>3）fetch不支持abort，不支持超时控制，使用setTimeout及Promise.reject的实现的超时控制并不能阻止请求过程继续在后台运行，造成了流量的浪费<br>4）fetch没有办法原生监测请求的进度，而XHR可以</p>
+        &#125;
+    &#125;
+    &#125;
+&#125;;</code></pre>
+<p>onreadystatechange 是一个事件句柄。它的值 (state_Change) 是一个函数的名称，当 XMLHttpRequest 对象的状态发生改变时，会触发此函数。状态从 0 (uninitialized) 到 4 (complete) 进行变化。仅在状态为 4 时，我们才执行代码。</p>
+<pre><code class="hljs javascript">fetch(<span class="hljs-string">'http://localhost:3000/api/data'</span>, &#123;
+    method:<span class="hljs-string">'GET'</span>,
+    headers: &#123; <span class="hljs-comment">// 请求头（可以是Headers对象，也可是JSON对象）</span>
+        <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span>,
+        <span class="hljs-string">'Accept'</span>: <span class="hljs-string">'application/json'</span>
+    &#125;,
+    mode:<span class="hljs-string">'cors'</span>,<span class="hljs-comment">// 允许发送跨域请求</span>
+    credentials: <span class="hljs-string">'include'</span>
+&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">response</span>)</span>&#123;
+    <span class="hljs-comment">//打印返回的json数据</span>
+    response.json().then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>&#123;
+        <span class="hljs-built_in">console</span>.log(data);
+    &#125;)
+&#125;).catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)</span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'error: '</span> + e.toString());
+&#125;)</code></pre>
+<p>1）fetch只对网络请求报错，对400，500都当做成功的请求，需要封装去处理<br>2）fetch默认不会带cookie，需要添加配置项<br>3）fetch不支持abort，不支持超时控制，使用setTimeout及Promise.reject的实现的超时控制并不能阻止请求过程继续在后台运行，造成了流量的浪费<br>4）fetch没有办法原生监测请求的进度，而XHR可以</p>
 <p>ajax和fetch在调用本地文件的时候都存在跨域的问题；ajax可以通过关闭cors限制的chrome实现；fetch却不行，只能用express起本地服务来调用。</p>
 
             </article>

@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/atom-one-dark.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
   
 
   
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      377 字
+      391 字
     </span>
   
 
@@ -212,58 +212,61 @@ protected    √           √            √             ×
 default      √           √            ×             ×
 private      √           ×            ×             ×</code></pre><p>  在Angular中public、protected、private这几个修饰符也有着类似的意义</p>
 <p>1、public：公有类型（默认），既可以在当前类里使用，也可以在类之外使用</p>
-<pre><code>export class PublicService {
-    constructor(){}
-    public country: string = &apos;China&apos;;
-}
-//另一个组件component调用时
-constructor(public service: PublicService){
-    console.log(this.service.country) //China
-}</code></pre><p>2、protected： 保护类型，只有在当前类和子类中可以使用</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PublicService</span> </span>&#123;
+    <span class="hljs-keyword">constructor</span>()&#123;&#125;
+    public country: string = <span class="hljs-string">'China'</span>;
+&#125;
+<span class="hljs-comment">//另一个组件component调用时</span>
+<span class="hljs-keyword">constructor</span>(public service: PublicService)&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.service.country) <span class="hljs-comment">//China</span>
+&#125;</code></pre>
+<p>2、protected： 保护类型，只有在当前类和子类中可以使用</p>
 <p>3、private： 私有类型，只有在当前类中可以使用</p>
-<pre><code>export class ParentViewComponent implements OnInit {
-    constructor(){}
-    public a:string = &apos;aaa&apos;;
-    protected b:string = &apos;bbb&apos;;
-    private c:string = &apos;ccc&apos;;
-}
-//  这里子类继承父类
-export class ChildViewComponent extends ParentViewComponent implements OnInit {
-    constructor(){
-        super()//执行父类的构造函数；必须至少执行一次，用来创建父类的this
-    }
+<pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ParentViewComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">OnInit</span> </span>&#123;
+    <span class="hljs-keyword">constructor</span>()&#123;&#125;
+    public a:string = <span class="hljs-string">'aaa'</span>;
+    protected b:string = <span class="hljs-string">'bbb'</span>;
+    private c:string = <span class="hljs-string">'ccc'</span>;
+&#125;
+<span class="hljs-comment">//  这里子类继承父类</span>
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ChildViewComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ParentViewComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">OnInit</span> </span>&#123;
+    <span class="hljs-keyword">constructor</span>()&#123;
+        <span class="hljs-keyword">super</span>()<span class="hljs-comment">//执行父类的构造函数；必须至少执行一次，用来创建父类的this</span>
+    &#125;
 
-    ngOnInit(){
-        console.log(this.a);//能访问
-        console.log(this.b);//能访问
-        console.log(this.c);//报错
-    }
-}</code></pre><p>4、既然详细了解了修饰符，typescript的关键字super()也是类似于java里super的思想</p>
-<pre><code>class Parent {
-constructor() {
-        console.log(&apos;parent&apos;)
-}
-get() {
-        console.log(&quot;吃饭&quot;)
-}     
-}  
-class Child extends Parent {
-    constructor() {
-        console.log(&quot;child&quot;)
-        super()
-    }
-    get() {
-        console.log(&quot;不吃饭&quot;)
-    }
-    init() {
-        super.get()
-    }
-}  
-var children = new Child();
+    ngOnInit()&#123;
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.a);<span class="hljs-comment">//能访问</span>
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.b);<span class="hljs-comment">//能访问</span>
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.c);<span class="hljs-comment">//报错</span>
+    &#125;
+&#125;</code></pre>
+<p>4、既然详细了解了修饰符，typescript的关键字super()也是类似于java里super的思想</p>
+<pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Parent</span> </span>&#123;
+    <span class="hljs-keyword">constructor</span>() &#123;
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'parent'</span>)
+    &#125;
+    <span class="hljs-keyword">get</span>() &#123;
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"吃饭"</span>)
+    &#125;     
+&#125;  
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Child</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Parent</span> </span>&#123;
+    <span class="hljs-keyword">constructor</span>() &#123;
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"child"</span>)
+        <span class="hljs-keyword">super</span>()
+    &#125;
+    <span class="hljs-keyword">get</span>() &#123;
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"不吃饭"</span>)
+    &#125;
+    init() &#123;
+        <span class="hljs-keyword">super</span>.get()
+    &#125;
+&#125;  
+<span class="hljs-keyword">var</span> children = <span class="hljs-keyword">new</span> Child();
 children.init();
-//child
-//parent
-//吃饭</code></pre><p>这个例子说明typescript的super.method()可以调用父类同名的方法；<br>实际上就是js中的Parent.prototype.method.call(this)</p>
+<span class="hljs-comment">//child</span>
+<span class="hljs-comment">//parent</span>
+<span class="hljs-comment">//吃饭</span></code></pre>
+<p>这个例子说明typescript的super.method()可以调用父类同名的方法；<br>实际上就是js中的Parent.prototype.method.call(this)</p>
 
             </article>
             <hr>

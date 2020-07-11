@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/atom-one-dark.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
   
 
   
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      368 字
+      342 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      4
        分钟
     </span>
   
@@ -205,51 +205,52 @@
             
             <article class="markdown-body">
               <p>在接口调用时，根据不同的响应码返回给用户相应的提示；通常用简单的if else 就能实现；<br>如下：</p>
-<pre><code>this.orderService.getOrder(id)
-  .subscribe((res) =&gt; {
-    if (res.code == &apos;00000&apos;) {
+<pre><code class="hljs javascript"><span class="hljs-keyword">this</span>.orderService.getOrder(id)
+  .subscribe(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">if</span> (res.code == <span class="hljs-string">'00000'</span>) &#123;
       &lt;!-- 响应正确的业务代码 --&gt;
-    }else if (res.code == &apos;00001&apos;) {
-        alert(&quot;报错原因A&quot;)
-    }else if (res.code == &apos;00002&apos;) {
-        alert(&quot;报错原因B&quot;)
-    }else if (res.code == &apos;00003&apos;) {
-        alert(&quot;报错原因C&quot;)
-    }else if (res.code == &apos;00004&apos;) {
-        alert(&quot;报错原因D&quot;)
-    }else if (res.code == &apos;00005&apos;) {
-        alert(&quot;报错原因E&quot;)
-    }else if (res.code == &apos;00006&apos;) {
-        alert(&quot;报错原因F&quot;)
-    }else {
-        alert(&quot;统一通用报错&quot;)
-    }
-  }, (error) =&gt; {
-    console.error(&apos;请求异常&apos;);
-  });
-}</code></pre><p>这是一个很常见也很简单的写法，但是当响应码的情况越来越多时会出现代码冗余的缺点；<br>当然这里可以用switch来改写,但是还是不够简洁；<br>所以推荐以下写法，核心思想是利用Object类型的hasOwnProperty()方法。</p>
-<pre><code>const error_code = {
-    &apos;00001&apos;: &apos;报错原因A&apos;,
-    &apos;00002&apos;: &apos;报错原因B&apos;,
-    &apos;00003&apos;: &apos;报错原因C&apos;,
-    &apos;00004&apos;: &apos;报错原因D&apos;,
-    &apos;00005&apos;: &apos;报错原因E&apos;,
-    &apos;00006&apos;: &apos;报错原因F&apos;
-}
+    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (res.code == <span class="hljs-string">'00001'</span>) &#123;
+        alert(<span class="hljs-string">"报错原因A"</span>)
+    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (res.code == <span class="hljs-string">'00002'</span>) &#123;
+        alert(<span class="hljs-string">"报错原因B"</span>)
+    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (res.code == <span class="hljs-string">'00003'</span>) &#123;
+        alert(<span class="hljs-string">"报错原因C"</span>)
+    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (res.code == <span class="hljs-string">'00004'</span>) &#123;
+        alert(<span class="hljs-string">"报错原因D"</span>)
+    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (res.code == <span class="hljs-string">'00005'</span>) &#123;
+        alert(<span class="hljs-string">"报错原因E"</span>)
+    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (res.code == <span class="hljs-string">'00006'</span>) &#123;
+        alert(<span class="hljs-string">"报错原因F"</span>)
+    &#125;<span class="hljs-keyword">else</span> &#123;
+        alert(<span class="hljs-string">"统一通用报错"</span>)
+    &#125;
+  &#125;, (error) =&gt; &#123;
+    <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'请求异常'</span>);
+  &#125;);
+&#125;</code></pre>
+<p>这是一个很常见也很简单的写法，但是当响应码的情况越来越多时会出现代码冗余的缺点；<br>当然这里可以用switch来改写,但是还是不够简洁；<br>所以推荐以下写法，核心思想是利用Object类型的hasOwnProperty()方法。</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> error_code = &#123;
+    <span class="hljs-string">'00001'</span>: <span class="hljs-string">'报错原因A'</span>,
+    <span class="hljs-string">'00002'</span>: <span class="hljs-string">'报错原因B'</span>,
+    <span class="hljs-string">'00003'</span>: <span class="hljs-string">'报错原因C'</span>,
+    <span class="hljs-string">'00004'</span>: <span class="hljs-string">'报错原因D'</span>,
+    <span class="hljs-string">'00005'</span>: <span class="hljs-string">'报错原因E'</span>,
+    <span class="hljs-string">'00006'</span>: <span class="hljs-string">'报错原因F'</span>
+&#125;
 
-this.orderService.getOrder(id)
-  .subscribe((res) =&gt; {
-    if (res.code == &apos;00000&apos;) {
+<span class="hljs-keyword">this</span>.orderService.getOrder(id)
+  .subscribe(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">if</span> (res.code == <span class="hljs-string">'00000'</span>) &#123;
       &lt;!-- 响应正确的业务代码 --&gt;
-    }else if (this.error_code.hasOwnProperty(res.code)) {
-        alert(this.error_code[res.code])
-    }else {
-        alert(&quot;统一通用报错&quot;)
-    }
-  }, (error) =&gt; {
-    console.error(&apos;请求异常&apos;);
-  });
-}</code></pre>
+    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.error_code.hasOwnProperty(res.code)) &#123;
+        alert(<span class="hljs-keyword">this</span>.error_code[res.code])
+    &#125;<span class="hljs-keyword">else</span> &#123;
+        alert(<span class="hljs-string">"统一通用报错"</span>)
+    &#125;
+  &#125;, (error) =&gt; &#123;
+    <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'请求异常'</span>);
+  &#125;);
+&#125;</code></pre>
             </article>
             <hr>
             <div>

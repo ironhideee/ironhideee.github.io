@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/atom-one-dark.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
   
 
   
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      394 字
+      398 字
     </span>
   
 
@@ -205,15 +205,16 @@
             
             <article class="markdown-body">
               <p>  this和super的区别：<br>  this关键词指向函数所在的当前对象<br>  super指向的是当前对象的原型对象</p>
-<pre><code>const EventEmitter  = require(&apos;events&apos;).EventEmitter;
-class Publishorder extends EventEmitter {
-    constructor(){
-        super();
-        setInterval(()=&gt;{
-            this.emit(&apos;neworder&apos;, { price: Math.random() * 100 });
-        },3000)
-    }
-}</code></pre><p>  上面写了一个每隔3秒发布一个随机价格订单的事件发射器的类Publishorder，其中super()指的是父类的构造函数，即Nodejs中的events.EventEmitter；如果不去调用父类构造函数，将无法在构造函数中使用this。即抛出这样一个错误：</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> EventEmitter  = <span class="hljs-built_in">require</span>(<span class="hljs-string">'events'</span>).EventEmitter;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Publishorder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">EventEmitter</span> </span>&#123;
+    <span class="hljs-keyword">constructor</span>()&#123;
+        <span class="hljs-keyword">super</span>();
+        setInterval(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;
+            <span class="hljs-keyword">this</span>.emit(<span class="hljs-string">'neworder'</span>, &#123; <span class="hljs-attr">price</span>: <span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100</span> &#125;);
+        &#125;,<span class="hljs-number">3000</span>)
+    &#125;
+&#125;</code></pre>
+<p>  上面写了一个每隔3秒发布一个随机价格订单的事件发射器的类Publishorder，其中super()指的是父类的构造函数，即Nodejs中的events.EventEmitter；如果不去调用父类构造函数，将无法在构造函数中使用this。即抛出这样一个错误：</p>
 <pre><code>/Users/xuan/Desktop/Daily Demo/Daily-Demo/Node/eventemitter.js:6
     setInterval(()=&gt;{
     ^
