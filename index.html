@@ -168,6 +168,50 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/07/23/CSS%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/">CSS变量设置</a>
+
+      <a href="/2020/07/23/CSS%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/" class="index-excerpt">
+        
+        
+          
+        
+        <div>  背景：之前对于大段文案的样式处理，通常采用富文本编辑器里设计颜色、字体等；如果需要根据运营人员配置的颜色来作为一个作用域内的非文本的，比如说分页的数字icon的底色、按钮的颜色、上传组件的颜色时，就需要用到CSS变量来进行样式控制。
+  声明变量的时候，变量名前面要加两根连词线（–）(大小写敏感)
+body &#123;
+    --foo: #7F583F;
+    --bar: #F7EF</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-07-23
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CSS/">CSS</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a class="index-header" href="/2020/07/07/%E4%BC%AA%E5%85%83%E7%B4%A0%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/">伪元素清除浮动</a>
 
       <a href="/2020/07/07/%E4%BC%AA%E5%85%83%E7%B4%A0%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/" class="index-excerpt">
@@ -423,51 +467,6 @@ function kickBack() &#123;
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/">模拟eventloop demo</a>
-
-      <a href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/" class="index-excerpt">
-        
-        
-          
-        
-        <div>  Node的异步非阻塞I/O特性依赖于其内部的事件循环机制；  下面简单模拟一下事件循环的实现：
-const eventloop = &#123;
-    queue : [],
-    loop()&#123;
-        while(this.queue.length &gt; 0)&#123;
-            var callback = this.queue.shift();</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2019-10-03
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Node/">Node</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
       <a class="index-header" href="/2019/10/03/super%E5%85%B3%E9%94%AE%E5%AD%97/">super关键字</a>
 
       <a href="/2019/10/03/super%E5%85%B3%E9%94%AE%E5%AD%97/" class="index-excerpt">
@@ -502,6 +501,51 @@ class Publishorder extends EventEmitter &#123;
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/JavaScript/">JavaScript</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/">模拟eventloop demo</a>
+
+      <a href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/" class="index-excerpt">
+        
+        
+          
+        
+        <div>  Node的异步非阻塞I/O特性依赖于其内部的事件循环机制；  下面简单模拟一下事件循环的实现：
+const eventloop = &#123;
+    queue : [],
+    loop()&#123;
+        while(this.queue.length &gt; 0)&#123;
+            var callback = this.queue.shift();</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-10-03
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Node/">Node</a>
             
           </div>
         
@@ -548,42 +592,6 @@ class Publishorder extends EventEmitter &#123;
               <a href="/tags/Angular/">Angular</a>
             
           </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2019/09/03/xjb%E5%86%99/">xjb写</a>
-
-      <a href="/2019/09/03/xjb%E5%86%99/" class="index-excerpt">
-        
-        
-          
-        
-        <div>  今年南京的九月份是真tmd冷啊！
-  数了数，肖申克的救赎电影看了两遍了，这两天随手翻了翻把斯蒂芬金的原著也看了一遍，没想到原著比想象中的简短了许多，也和电影的剧情稍有不同。
-  第一遍看的时候大约是大三大四的时候，已经记不清什么了，只觉得安迪nb，真能忍，真有耐心，真不像个人。。。
-  第二遍是去年看的，逐渐能够感受到安迪也有脆弱想放弃的时候，但想不通他为什么早已挖好隧道却不立刻逃走，这段在</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2019-09-03
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E6%9D%82%E6%96%87/">杂文</a>
-            
-          </div>
-        
         
       </div>
     </div>

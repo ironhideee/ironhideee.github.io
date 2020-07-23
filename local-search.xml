@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>CSS变量设置</title>
+    <link href="/2020/07/23/CSS%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/"/>
+    <url>/2020/07/23/CSS%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/</url>
+    
+    <content type="html"><![CDATA[<p>  背景：之前对于大段文案的样式处理，通常采用富文本编辑器里设计颜色、字体等；如果需要根据运营人员配置的颜色来作为一个作用域内的非文本的，比如说分页的数字icon的底色、按钮的颜色、上传组件的颜色时，就需要用到CSS变量来进行样式控制。</p><p>  声明变量的时候，变量名前面要加两根连词线（–）(大小写敏感)</p><pre><code class="hljs css"><span class="hljs-selector-tag">body</span> &#123;    <span class="hljs-attribute">--foo</span>: <span class="hljs-number">#7F583F</span>;    <span class="hljs-attribute">--bar</span>: <span class="hljs-number">#F7EFD2</span>;&#125;</code></pre><p>  使用var()函数读取变量</p><pre><code class="hljs css"><span class="hljs-selector-tag">a</span> &#123;    <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--foo);    <span class="hljs-attribute">text-decoration-color</span>: <span class="hljs-built_in">var</span>(--bar);&#125;</code></pre><p>  Js操作CSS变量如下：</p><pre><code class="hljs javascript"><span class="hljs-comment">// 设置变量</span><span class="hljs-built_in">document</span>.body.style.setProperty(<span class="hljs-string">'--primary'</span>, <span class="hljs-string">'#7F583F'</span>);<span class="hljs-comment">// 读取变量</span><span class="hljs-built_in">document</span>.body.style.getPropertyValue(<span class="hljs-string">'--primary'</span>).trim();<span class="hljs-comment">// '#7F583F'</span><span class="hljs-comment">// 删除变量</span><span class="hljs-built_in">document</span>.body.style.removeProperty(<span class="hljs-string">'--primary'</span>);</code></pre><p>  这样就可以做到通过后端返回的数据，来渲染非富文本场景的样式，例如渲染一个按钮的背景色；其中需要注意的是需要等dom节点根据数据渲染完成之后再进行js操作CSS变量的行为；可以采用setTimeout()或者在渲染完成的生命周期钩子里写。</p><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> mockData = [    &#123;<span class="hljs-attr">text</span>:text1,<span class="hljs-attr">color</span>:red&#125;,    &#123;<span class="hljs-attr">text</span>:text2,<span class="hljs-attr">color</span>:blue&#125;,    &#123;<span class="hljs-attr">text</span>:text3,<span class="hljs-attr">color</span>:green&#125;,    &#123;<span class="hljs-attr">text</span>:text4,<span class="hljs-attr">color</span>:gray&#125;,]mockData.foreach(<span class="hljs-function">(<span class="hljs-params">item,index</span>)=&gt;</span>&#123;    <span class="hljs-built_in">document</span>.getElementById(index+<span class="hljs-string">''</span>).style.setProperty(<span class="hljs-string">'--bg'</span>, item.color);&#125;)</code></pre><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngfor</span>=<span class="hljs-string">"let item of mockData,let i =index"</span>&gt;</span>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> [<span class="hljs-attr">id</span>]=<span class="hljs-string">"i"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"selectedColor"</span>&gt;</span>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>&#123;&#123;item.text&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>different color<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre><pre><code class="hljs css"><span class="hljs-selector-class">.selectedColor</span> <span class="hljs-selector-tag">button</span> &#123;    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">var</span>(--bg);&#125;</code></pre><p>  这样CSS变量就提供里js与css通信的一种途径；js可以将任意值存入样式表,不仅是样式元素，事件信息也可以存入样式表中。</p><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> docStyle = <span class="hljs-built_in">document</span>.documentElement.style;<span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'mousemove'</span>,(e)=&gt;&#123;    docStyle.setProperty(<span class="hljs-string">'--mouse-x'</span>,e.clientX);    docStyle.setProperty(<span class="hljs-string">'--mouse-y'</span>,e.clientY);&#125;)</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CSS</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>伪元素清除浮动</title>
     <link href="/2020/07/07/%E4%BC%AA%E5%85%83%E7%B4%A0%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/"/>
     <url>/2020/07/07/%E4%BC%AA%E5%85%83%E7%B4%A0%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/</url>
@@ -148,31 +173,6 @@
   
   
   <entry>
-    <title>模拟eventloop demo</title>
-    <link href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/"/>
-    <url>/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/</url>
-    
-    <content type="html"><![CDATA[<p>  Node的异步非阻塞I/O特性依赖于其内部的事件循环机制；<br>  下面简单模拟一下事件循环的实现：</p><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> eventloop = &#123;    queue : [],    loop()&#123;        <span class="hljs-keyword">while</span>(<span class="hljs-keyword">this</span>.queue.length &gt; <span class="hljs-number">0</span>)&#123;            <span class="hljs-keyword">var</span> callback = <span class="hljs-keyword">this</span>.queue.shift();            callback();        &#125;        setTimeout(<span class="hljs-keyword">this</span>.loop.bind(<span class="hljs-keyword">this</span>),<span class="hljs-number">50</span>);   <span class="hljs-comment">//这里this指的是eventloop对象</span>    &#125;,    add(callback)&#123;        <span class="hljs-keyword">this</span>.queue.push(callback);    &#125;&#125;eventloop.loop();setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;    eventloop.add(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;        <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>)    &#125;)&#125;,<span class="hljs-number">500</span>)setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;    eventloop.add(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;        <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>)    &#125;)&#125;,<span class="hljs-number">800</span>)</code></pre><p>  这里间隔500毫秒和800毫秒向循环里添加了两个事件，eventloop会不间断得去监听是否有新事件进入执行栈。</p><div class="note note-success">            <p>事件循环：<br>每次循环过程称为Tick（即查看是否有但出来事件，将待处理事件存储在任务队列中），若有，则取出事件及回调函数放入stack由主线程执行。</p>          </div><div class="note note-success">            <p>任务队列：<br>异步操作将相关回调添加到Task Queue中，异步操作由浏览器内核webcore执行。</p>          </div>]]></content>
-    
-    
-    <categories>
-      
-      <category>前端</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Node</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>super关键字</title>
     <link href="/2019/10/03/super%E5%85%B3%E9%94%AE%E5%AD%97/"/>
     <url>/2019/10/03/super%E5%85%B3%E9%94%AE%E5%AD%97/</url>
@@ -190,6 +190,31 @@
     <tags>
       
       <tag>JavaScript</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>模拟eventloop demo</title>
+    <link href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/"/>
+    <url>/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/</url>
+    
+    <content type="html"><![CDATA[<p>  Node的异步非阻塞I/O特性依赖于其内部的事件循环机制；<br>  下面简单模拟一下事件循环的实现：</p><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> eventloop = &#123;    queue : [],    loop()&#123;        <span class="hljs-keyword">while</span>(<span class="hljs-keyword">this</span>.queue.length &gt; <span class="hljs-number">0</span>)&#123;            <span class="hljs-keyword">var</span> callback = <span class="hljs-keyword">this</span>.queue.shift();            callback();        &#125;        setTimeout(<span class="hljs-keyword">this</span>.loop.bind(<span class="hljs-keyword">this</span>),<span class="hljs-number">50</span>);   <span class="hljs-comment">//这里this指的是eventloop对象</span>    &#125;,    add(callback)&#123;        <span class="hljs-keyword">this</span>.queue.push(callback);    &#125;&#125;eventloop.loop();setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;    eventloop.add(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;        <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>)    &#125;)&#125;,<span class="hljs-number">500</span>)setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;    eventloop.add(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;        <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>)    &#125;)&#125;,<span class="hljs-number">800</span>)</code></pre><p>  这里间隔500毫秒和800毫秒向循环里添加了两个事件，eventloop会不间断得去监听是否有新事件进入执行栈。</p><div class="note note-success">            <p>事件循环：<br>每次循环过程称为Tick（即查看是否有但出来事件，将待处理事件存储在任务队列中），若有，则取出事件及回调函数放入stack由主线程执行。</p>          </div><div class="note note-success">            <p>任务队列：<br>异步操作将相关回调添加到Task Queue中，异步操作由浏览器内核webcore执行。</p>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Node</tag>
       
     </tags>
     
@@ -490,7 +515,32 @@
     <link href="/2019/05/03/JS%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/"/>
     <url>/2019/05/03/JS%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/</url>
     
-    <content type="html"><![CDATA[<p>1.过滤唯一值<br>ES6 引入了 Set 对象和延展（spread）语法…，我们可以用它们来创建一个只包含唯一值的数组。</p><pre><code>const array = [1, 1, 2, 3, 5, 5, 1]const uniqueArray = […new Set(array)];console.log(uniqueArray); // Result: [1, 2, 3, 5]</code></pre><p>在 ES6 之前，获得同样的数组需要更多的代码！<br>这个技巧可以支持包含原始类型的数组：undefined、null、boolean、string 和 number。但如果你的数组包含了对象、函数或其他嵌套数组，就不能使用这种方法了。</p><p>2.在循环中缓存数组长度<br>在我们学习使用 for 循环时，一般建议使用这种结构：</p><pre><code>for (let i = 0; i &lt; array.length; i++){    console.log(i);} </code></pre><p>在使用这种方式时，for 循环的每次迭代都会重复计算数组长度。<br>有时候这个会很有用，但在大多数情况下，如果能够缓存数组的长度会更好，这样只需要计算一次就够了。我们可以把数组长度复制给一个叫作 length 的变量，例如：</p><pre><code>for (let i = 0, length = array.length; i &lt; length; i++){    console.log(i);} </code></pre><p>这段代码和上面的差不多，但从性能方面来看，即使数组变得很大，也不需要花费额外的运行时重复计算 array.length。</p><p>3.短路求值<br>使用三元运算符可以很快地写出条件语句，例如：</p><pre><code>x &gt; 100 ? ‘Above 100’ : ‘Below 100’;x &gt; 100 ? (x &gt; 200 ? ‘Above 200’ : ‘Between 100-200’) : ‘Below 100’;</code></pre><p>但有时候三元运算符仍然很复杂，我们可以使用逻辑运算符 &amp;&amp; 和||来替代，让代码更简洁一些。这种技巧通常被称为“短路求值”。<br>假设我们想要返回两个或多个选项中的一个，使用 &amp;&amp; 可以返回第一个 false。如果所有操作数的值都是 true，将返回最后一个表达式的值。</p><pre><code>let one = 1, two = 2, three = 3;console.log(one &amp;&amp; two &amp;&amp; three); // Result: 3console.log(0 &amp;&amp; null); // Result: 0</code></pre><p>使用||可以返回第一个 true。如果所有操作数的值都是 false，将返回最后一个表达式的值。</p><pre><code>let one = 1, two = 2, three = 3;console.log(one || two || three); // Result: 1console.log(0 || null); // Result: null</code></pre><p>示例 1<br>假设我们想要返回一个变量的 length，但又不知道变量的类型。<br>我们可以使用 if/else 来检查 foo 是否是一个可接受的类型，但这样会让代码变得很长。这个时候可以使用短路求值：</p><pre><code>return (foo || []).length;</code></pre><p>对于上述两种情况，如果变量 foo 具有 length 属性，这个属性的值将被返回，否则将返回 0。</p><p>示例 2<br>你是否曾经在访问嵌套对象属性时遇到过问题？你可能不知道对象或某个子属性是否存在，所以经常会碰到让你头疼的错误。<br>假设我们想要访问 this.state 中的一个叫作 data 的属性，但 data 却是 undefined 的。在某些情况下调用 this.state.data 会导致 App 无法运行。为了解决这个问题，我们可以使用条件语句：</p><pre><code>if (this.state.data) {    return this.state.data;} else {    return ‘Fetching Data’;} </code></pre><p>但这样似乎有点啰嗦，而||提供了更简洁的解决方案：</p><pre><code>return (this.state.data || ‘Fetching Data’);</code></pre><p>4.转换成布尔值<br>除了标准的布尔值 true 和 false，在 JavaScript 中，所有的值要么是“真值”要么是“假值”。<br>在 JavaScript 中，除了 0、“”、null、undefined、NaN 和 false 是假值之外，其他的都是真值。<br>我们可以使用! 云算法来切换 true 和 false。</p><pre><code>const isTrue = !0;const isFalse = !1;const alsoFalse = !!0;console.log(true); // Result: trueconsole.log(typeof true); // Result: “boolean”</code></pre><p>5.转换成字符串<br>要快速将数字转换成字符串，我们可以使用 + 运算符，然后在后面跟上一个空字符串。</p><pre><code>const val = 1 + “”;console.log(val); // Result: “1”console.log(typeof val); // Result: “string”</code></pre><p>6.转换成数字<br>要把字符串转成数字，也可以使用 + 运算符。</p><pre><code>let int = “15”;int = +int;console.log(int); // Result: 15console.log(typeof int); Result: “number”</code></pre><p>也可以使用这种方式将布尔值转成数字，例如：</p><pre><code>console.log(+true); // Return: 1console.log(+false); // Return: 0</code></pre><p>在某些情况下，+ 运算符会被解析成连接操作，而不是加法操作。对于这种情况，可以使用两个波浪号：<del>。<br>一个波浪号表示按位取反操作，例如，</del>15 等于 -16。</p><pre><code>const int = “15”console.log(int); // Result: 15console.log(typeof int); Result: “number”</code></pre><p>使用两个波浪号可以再次取反，因为 -(-n-1)=n+1-1=n，所以-16 等于 15。</p><p>7.快速幂运算<br>从 ES7 开始，可以使用 ** 进行幂运算，比使用 Math.power(2,3) 要快得多。</p><pre><code>console.log(2 ** 3); // Result: 8</code></pre><p>但要注意不要把这个运算符于 ^ 混淆在一起了，^ 通常用来表示指数运算，但在 JavaScript 中，^ 表示位异或运算。<br>在 ES7 之前，可以使用位左移运算符&lt;&lt;来表示以 2 为底的幂运算：</p><pre><code>// 以下表达式是等效的:Math.pow(2, n);2 &lt;&lt; (n - 1);2*n;</code></pre><p>例如，2 &lt;&lt; 3 = 16 等同于 2 * 4 = 16。</p><p>8.快速取整<br>我们可以使用 Math.floor()、Math.ceil() 或 Math.round() 将浮点数转换成整数，但有另一种更快的方式，即使用位或运算符 |。</p><pre><code>console.log(23.9 | 0); // Result: 23console.log(-23.9 | 0); // Result: -23</code></pre><p>| 的实际行为取决于操作数是正数还是负数，所以在使用这个运算符时要确保你知道操作数是正是负。<br>如果 n 是正数，那么 n|0 向下取整，否则就是向上取整。它会移除小数部分，也可以使用~~ 达到同样的效果。<br>移除整数尾部数字<br>| 运算符也可以用来移除整数的尾部数字，这样就不需要像下面这样：</p><pre><code>let str = “1553”;Number(str.substring(0, str.length - 1));</code></pre><p>相反，我们可以这样：</p><pre><code>console.log(1553 / 10 | 0) // Result: 155console.log(1553 / 100 | 0) // Result: 15console.log(1553 / 1000 | 0) // Result: 1</code></pre><p>9.自动类绑定<br>在 ES6 中，我们可以使用箭头进行隐式绑定，这样可以为类的构造器省下一些代码，并跟一些重复出现的表达式说再见，比如 this.myMethod = this.myMethod.bind(this)。</p><pre><code>import { React, Component } from React;export default class App extends Compononent {    constructor(props) {        super(props);        this.state = {};    }     myMethod = () =&gt; {        // This method is bound implicitly!         render() {            return (                &lt;div&gt;                    {this.myMethod()}                &lt;/div&gt;            )         }    }}</code></pre><p>10.截取数组<br>如果你想从一个数组尾部移除某些元素，可以使用一种比 splice() 更快的方法。<br>例如，如果你知道初始数组的大小，可以像下面这样重新定义它的 length 属性：</p><pre><code>let array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];array.length = 4;console.log(array); // Result: [0, 1, 2, 3]</code></pre><p>这显然是一种更简洁的解决方案。不过，我发现 slice() 的运行速度更快，所以，如果你更看重速度，可以像下面这样：</p><pre><code>let array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];array = array.slice(0, 4);console.log(array); // Result: [0, 1, 2, 3]</code></pre><p>11.获取数组最后的元素<br>数组的 slice() 方法可以接受负整数，并从数组的尾部开始获取元素。</p><pre><code>let array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];console.log(array.slice(-1)); // Result: [9]console.log(array.slice(-2)); // Result: [8, 9]console.log(array.slice(-3)); // Result: [7, 8, 9]</code></pre><p>12.格式化 JSON<br>你之前可能使用过 JSON.stringify，但你是否知道它还可以用来给 JSON 添加缩进？<br>stringify() 方法可以接受两个额外的参数，一个是函数（形参为 replacer），用于过滤要显示的 JSON，另一个是空格个数（形参为 space）。</p><p>space 可以是一个整数，表示空格的个数，也可以是一个字符串（比如’\t’表示制表符），这样得到的 JSON 更容易阅读。</p><pre><code>console.log(JSON.stringify({ alpha: ‘A’, beta: ‘B’ }, null, ‘\t’));// Result:// ‘{// “alpha”: A,// “beta”: B// }’</code></pre><p>总结：<br>js的优化是一个循环往复的过程，通过不断的优化可以大幅减少冗余代码</p>]]></content>
+    <content type="html"><![CDATA[<p>1.过滤唯一值<br>ES6 引入了 Set 对象和延展（spread）语法…，我们可以用它们来创建一个只包含唯一值的数组。</p><pre><code class="hljs js"><span class="hljs-keyword">const</span> array = [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">1</span>]<span class="hljs-keyword">const</span> uniqueArray = […<span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>(array)];<span class="hljs-built_in">console</span>.log(uniqueArray); <span class="hljs-comment">// Result: [1, 2, 3, 5]</span></code></pre><p>在 ES6 之前，获得同样的数组需要更多的代码！<br>这个技巧可以支持包含原始类型的数组：undefined、null、boolean、string 和 number。但如果你的数组包含了对象、函数或其他嵌套数组，就不能使用这种方法了。</p><p>2.在循环中缓存数组长度<br>在我们学习使用 for 循环时，一般建议使用这种结构：</p><pre><code class="hljs js"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; array.length; i++)&#123;    <span class="hljs-built_in">console</span>.log(i);&#125;</code></pre><p>在使用这种方式时，for 循环的每次迭代都会重复计算数组长度。<br>有时候这个会很有用，但在大多数情况下，如果能够缓存数组的长度会更好，这样只需要计算一次就够了。我们可以把数组长度复制给一个叫作 length 的变量，例如：</p><pre><code class="hljs js"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>, length = array.length; i &lt; length; i++)&#123;    <span class="hljs-built_in">console</span>.log(i);&#125;</code></pre><p>这段代码和上面的差不多，但从性能方面来看，即使数组变得很大，也不需要花费额外的运行时重复计算 array.length。</p><p>3.短路求值<br>使用三元运算符可以很快地写出条件语句，例如：</p><pre><code class="hljs js">x &gt; <span class="hljs-number">100</span> ? ‘Above <span class="hljs-number">100</span>’ : ‘Below <span class="hljs-number">100</span>’;x &gt; <span class="hljs-number">100</span> ? (x &gt; <span class="hljs-number">200</span> ? ‘Above <span class="hljs-number">200</span>’ : ‘Between <span class="hljs-number">100</span><span class="hljs-number">-200</span>’) : ‘Below <span class="hljs-number">100</span>’;</code></pre><p>但有时候三元运算符仍然很复杂，我们可以使用逻辑运算符 &amp;&amp; 和||来替代，让代码更简洁一些。这种技巧通常被称为“短路求值”。<br>假设我们想要返回两个或多个选项中的一个，使用 &amp;&amp; 可以返回第一个 false。如果所有操作数的值都是 true，将返回最后一个表达式的值。</p><pre><code class="hljs js"><span class="hljs-keyword">let</span> one = <span class="hljs-number">1</span>, two = <span class="hljs-number">2</span>, three = <span class="hljs-number">3</span>;<span class="hljs-built_in">console</span>.log(one &amp;&amp; two &amp;&amp; three); <span class="hljs-comment">// Result: 3</span><span class="hljs-built_in">console</span>.log(<span class="hljs-number">0</span> &amp;&amp; <span class="hljs-literal">null</span>); <span class="hljs-comment">// Result: 0</span></code></pre><p>使用||可以返回第一个 true。如果所有操作数的值都是 false，将返回最后一个表达式的值。</p><pre><code class="hljs js"><span class="hljs-keyword">let</span> one = <span class="hljs-number">1</span>, two = <span class="hljs-number">2</span>, three = <span class="hljs-number">3</span>;<span class="hljs-built_in">console</span>.log(one || two || three); <span class="hljs-comment">// Result: 1</span><span class="hljs-built_in">console</span>.log(<span class="hljs-number">0</span> || <span class="hljs-literal">null</span>); <span class="hljs-comment">// Result: null</span></code></pre><p>示例 1<br>假设我们想要返回一个变量的 length，但又不知道变量的类型。<br>我们可以使用 if/else 来检查 foo 是否是一个可接受的类型，但这样会让代码变得很长。这个时候可以使用短路求值：</p><pre><code class="hljs js"><span class="hljs-keyword">return</span> (foo || []).length;</code></pre><p>对于上述两种情况，如果变量 foo 具有 length 属性，这个属性的值将被返回，否则将返回 0。</p><p>示例 2<br>你是否曾经在访问嵌套对象属性时遇到过问题？你可能不知道对象或某个子属性是否存在，所以经常会碰到让你头疼的错误。<br>假设我们想要访问 this.state 中的一个叫作 data 的属性，但 data 却是 undefined 的。在某些情况下调用 this.state.data 会导致 App 无法运行。为了解决这个问题，我们可以使用条件语句：</p><pre><code class="hljs js"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.state.data) &#123;    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.state.data;&#125; <span class="hljs-keyword">else</span> &#123;    <span class="hljs-keyword">return</span> ‘Fetching Data’;&#125;</code></pre><p>但这样似乎有点啰嗦，而||提供了更简洁的解决方案：</p><pre><code class="hljs js"><span class="hljs-keyword">return</span> (<span class="hljs-keyword">this</span>.state.data || ‘Fetching Data’);</code></pre><p>4.转换成布尔值<br>除了标准的布尔值 true 和 false，在 JavaScript 中，所有的值要么是“真值”要么是“假值”。<br>在 JavaScript 中，除了 0、“”、null、undefined、NaN 和 false 是假值之外，其他的都是真值。<br>我们可以使用! 云算法来切换 true 和 false。</p><pre><code class="hljs js"><span class="hljs-keyword">const</span> isTrue = !<span class="hljs-number">0</span>;<span class="hljs-keyword">const</span> isFalse = !<span class="hljs-number">1</span>;<span class="hljs-keyword">const</span> alsoFalse = !!<span class="hljs-number">0</span>;<span class="hljs-built_in">console</span>.log(<span class="hljs-literal">true</span>); <span class="hljs-comment">// Result: true</span><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> <span class="hljs-literal">true</span>); <span class="hljs-comment">// Result: “boolean”</span></code></pre><p>5.转换成字符串<br>要快速将数字转换成字符串，我们可以使用 + 运算符，然后在后面跟上一个空字符串。</p><pre><code class="hljs js"><span class="hljs-keyword">const</span> val = <span class="hljs-number">1</span> + “”;<span class="hljs-built_in">console</span>.log(val); <span class="hljs-comment">// Result: “1”</span><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> val); <span class="hljs-comment">// Result: “string”</span></code></pre><p>6.转换成数字<br>要把字符串转成数字，也可以使用 + 运算符。</p><pre><code class="hljs js"><span class="hljs-keyword">let</span> int = “<span class="hljs-number">15</span>”;int = +int;<span class="hljs-built_in">console</span>.log(int); <span class="hljs-comment">// Result: 15</span><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> int); Result: “number”</code></pre><p>也可以使用这种方式将布尔值转成数字，例如：</p><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(+<span class="hljs-literal">true</span>); <span class="hljs-comment">// Return: 1</span><span class="hljs-built_in">console</span>.log(+<span class="hljs-literal">false</span>); <span class="hljs-comment">// Return: 0</span></code></pre><p>在某些情况下，+ 运算符会被解析成连接操作，而不是加法操作。对于这种情况，可以使用两个波浪号：<del>。<br>一个波浪号表示按位取反操作，例如，</del>15 等于 -16。</p><pre><code class="hljs js"><span class="hljs-keyword">const</span> int = “<span class="hljs-number">15</span>”<span class="hljs-built_in">console</span>.log(int); <span class="hljs-comment">// Result: 15</span><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> int); Result: “number”</code></pre><p>使用两个波浪号可以再次取反，因为 -(-n-1)=n+1-1=n，所以-16 等于 15。</p><p>7.快速幂运算<br>从 ES7 开始，可以使用 ** 进行幂运算，比使用 Math.power(2,3) 要快得多。</p><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span> ** <span class="hljs-number">3</span>); <span class="hljs-comment">// Result: 8</span></code></pre><p>但要注意不要把这个运算符于 ^ 混淆在一起了，^ 通常用来表示指数运算，但在 JavaScript 中，^ 表示位异或运算。<br>在 ES7 之前，可以使用位左移运算符&lt;&lt;来表示以 2 为底的幂运算：</p><pre><code class="hljs js"><span class="hljs-comment">// 以下表达式是等效的:</span><span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">2</span>, n);<span class="hljs-number">2</span> &lt;&lt; (n - <span class="hljs-number">1</span>);<span class="hljs-number">2</span>*n;</code></pre><p>例如，2 &lt;&lt; 3 = 16 等同于 2 * 4 = 16。</p><p>8.快速取整<br>我们可以使用 Math.floor()、Math.ceil() 或 Math.round() 将浮点数转换成整数，但有另一种更快的方式，即使用位或运算符 |。</p><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<span class="hljs-number">23.9</span> | <span class="hljs-number">0</span>); <span class="hljs-comment">// Result: 23</span><span class="hljs-built_in">console</span>.log(<span class="hljs-number">-23.9</span> | <span class="hljs-number">0</span>); <span class="hljs-comment">// Result: -23</span></code></pre><p>| 的实际行为取决于操作数是正数还是负数，所以在使用这个运算符时要确保你知道操作数是正是负。<br>如果 n 是正数，那么 n|0 向下取整，否则就是向上取整。它会移除小数部分，也可以使用~~ 达到同样的效果。<br>移除整数尾部数字<br>| 运算符也可以用来移除整数的尾部数字，这样就不需要像下面这样：</p><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = “<span class="hljs-number">1553</span>”;<span class="hljs-built_in">Number</span>(str.substring(<span class="hljs-number">0</span>, str.length - <span class="hljs-number">1</span>));</code></pre><p>相反，我们可以这样：</p><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<span class="hljs-number">1553</span> / <span class="hljs-number">10</span> | <span class="hljs-number">0</span>) <span class="hljs-comment">// Result: 155</span><span class="hljs-built_in">console</span>.log(<span class="hljs-number">1553</span> / <span class="hljs-number">100</span> | <span class="hljs-number">0</span>) <span class="hljs-comment">// Result: 15</span><span class="hljs-built_in">console</span>.log(<span class="hljs-number">1553</span> / <span class="hljs-number">1000</span> | <span class="hljs-number">0</span>) <span class="hljs-comment">// Result: 1</span></code></pre><p>9.自动类绑定<br>在 ES6 中，我们可以使用箭头进行隐式绑定，这样可以为类的构造器省下一些代码，并跟一些重复出现的表达式说再见，比如 this.myMethod = this.myMethod.bind(this)。</p><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; React, Component &#125; <span class="hljs-keyword">from</span> React;<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Compononent</span> </span>&#123;    <span class="hljs-keyword">constructor</span>(props) &#123;        <span class="hljs-keyword">super</span>(props);        <span class="hljs-keyword">this</span>.state = &#123;&#125;;    &#125;     myMethod = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;        <span class="hljs-comment">// This method is bound implicitly! </span>        render() &#123;            <span class="hljs-keyword">return</span> (                &lt;div&gt;                    &#123;<span class="hljs-keyword">this</span>.myMethod()&#125;                &lt;<span class="hljs-regexp">/div&gt;</span><span class="hljs-regexp">            ) </span><span class="hljs-regexp">        &#125;</span><span class="hljs-regexp">    &#125;</span><span class="hljs-regexp">&#125;</span></code></pre><p>10.截取数组<br>如果你想从一个数组尾部移除某些元素，可以使用一种比 splice() 更快的方法。<br>例如，如果你知道初始数组的大小，可以像下面这样重新定义它的 length 属性：</p><pre><code class="hljs js"><span class="hljs-keyword">let</span> array = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>];array.length = <span class="hljs-number">4</span>;<span class="hljs-built_in">console</span>.log(array); <span class="hljs-comment">// Result: [0, 1, 2, 3]</span></code></pre><p>这显然是一种更简洁的解决方案。不过，我发现 slice() 的运行速度更快，所以，如果你更看重速度，可以像下面这样：</p><pre><code class="hljs js"><span class="hljs-keyword">let</span> array = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>];array = array.slice(<span class="hljs-number">0</span>, <span class="hljs-number">4</span>);<span class="hljs-built_in">console</span>.log(array); <span class="hljs-comment">// Result: [0, 1, 2, 3]</span></code></pre><p>11.获取数组最后的元素<br>数组的 slice() 方法可以接受负整数，并从数组的尾部开始获取元素。</p><pre><code class="hljs js"><span class="hljs-keyword">let</span> array = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>];<span class="hljs-built_in">console</span>.log(array.slice(<span class="hljs-number">-1</span>)); <span class="hljs-comment">// Result: [9]</span><span class="hljs-built_in">console</span>.log(array.slice(<span class="hljs-number">-2</span>)); <span class="hljs-comment">// Result: [8, 9]</span><span class="hljs-built_in">console</span>.log(array.slice(<span class="hljs-number">-3</span>)); <span class="hljs-comment">// Result: [7, 8, 9]</span></code></pre><p>12.格式化 JSON<br>你之前可能使用过 JSON.stringify，但你是否知道它还可以用来给 JSON 添加缩进？<br>stringify() 方法可以接受两个额外的参数，一个是函数（形参为 replacer），用于过滤要显示的 JSON，另一个是空格个数（形参为 space）。</p><p>space 可以是一个整数，表示空格的个数，也可以是一个字符串（比如’\t’表示制表符），这样得到的 JSON 更容易阅读。</p><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(&#123; <span class="hljs-attr">alpha</span>: ‘A’, <span class="hljs-attr">beta</span>: ‘B’ &#125;, <span class="hljs-literal">null</span>, ‘\t’));<span class="hljs-comment">// Result:</span><span class="hljs-comment">// ‘&#123;</span><span class="hljs-comment">// “alpha”: A,</span><span class="hljs-comment">// “beta”: B</span><span class="hljs-comment">// &#125;’</span></code></pre><p>总结：<br>js的优化是一个循环往复的过程，通过不断的优化可以大幅减少冗余代码</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>JavaScript</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>JS事件冒泡及阻止</title>
+    <link href="/2019/04/25/JS%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%8F%8A%E9%98%BB%E6%AD%A2/"/>
+    <url>/2019/04/25/JS%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%8F%8A%E9%98%BB%E6%AD%A2/</url>
+    
+    <content type="html"><![CDATA[<div class="note note-success">            <p>事件冒泡 ：当一个元素接收到事件的时候 会把他接收到的事件传给自己的父级，一直到window 。（注意这里传递的仅仅是事件 并不传递所绑定的事件函数；所以如果父级没有绑定事件函数，就算传递了事件 也不会有什么表现 但事件确实传递了）</p>          </div><p>举个例子，先点击一下父级按钮再点击一下子级按钮，可以发现click事件也被冒泡传递到了它的父级</p><p><img src="/image/event_bubbling/img1.png" srcset="/img/loading.gif" alt=""></p><p>避免冒泡事件的方法是event.stopPropagation()方法，同上的例子</p><p><img src="/image/event_bubbling/img2.png" srcset="/img/loading.gif" alt=""></p><p>类似的问题，阻止默认事件的发生可以采用event.preventDefault()方法，例如a标签在点击后不发生跳转。</p>]]></content>
     
     
     <categories>
@@ -528,31 +578,6 @@
     <tags>
       
       <tag>Angular</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>JS事件冒泡及阻止</title>
-    <link href="/2019/04/25/JS%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%8F%8A%E9%98%BB%E6%AD%A2/"/>
-    <url>/2019/04/25/JS%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%8F%8A%E9%98%BB%E6%AD%A2/</url>
-    
-    <content type="html"><![CDATA[<div class="note note-success">            <p>事件冒泡 ：当一个元素接收到事件的时候 会把他接收到的事件传给自己的父级，一直到window 。（注意这里传递的仅仅是事件 并不传递所绑定的事件函数；所以如果父级没有绑定事件函数，就算传递了事件 也不会有什么表现 但事件确实传递了）</p>          </div><p>举个例子，先点击一下父级按钮再点击一下子级按钮，可以发现click事件也被冒泡传递到了它的父级</p><p><img src="/image/event_bubbling/img1.png" srcset="/img/loading.gif" alt=""></p><p>避免冒泡事件的方法是event.stopPropagation()方法，同上的例子</p><p><img src="/image/event_bubbling/img2.png" srcset="/img/loading.gif" alt=""></p><p>类似的问题，阻止默认事件的发生可以采用event.preventDefault()方法，例如a标签在点击后不发生跳转。</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>前端</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>JavaScript</tag>
       
     </tags>
     
