@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -25,11 +25,11 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -38,6 +38,7 @@
 
 
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 4.2.1"></head>
 
 
@@ -120,8 +121,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -129,12 +136,12 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('https://image-1302604489.cos.ap-nanjing.myqcloud.com/kv.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
@@ -167,22 +174,29 @@
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2019/05/10/%E5%88%A9%E7%94%A8postMessage%E5%AE%9E%E7%8E%B0%E8%B7%A8%E6%BA%90%E9%80%9A%E4%BF%A1/">利用postMessage实现跨源通信</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/05/10/%E5%88%A9%E7%94%A8postMessage%E5%AE%9E%E7%8E%B0%E8%B7%A8%E6%BA%90%E9%80%9A%E4%BF%A1/">利用postMessage实现跨源通信</a>
+      </h1>
 
-      <a href="/2019/05/10/%E5%88%A9%E7%94%A8postMessage%E5%AE%9E%E7%8E%B0%E8%B7%A8%E6%BA%90%E9%80%9A%E4%BF%A1/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2019/05/10/%E5%88%A9%E7%94%A8postMessage%E5%AE%9E%E7%8E%B0%E8%B7%A8%E6%BA%90%E9%80%9A%E4%BF%A1/">
           
-        
-        <div>一、业务背景：利用OpenCMS构建一个包含公用页头页脚的容器，中间用iframe标签引入Angular页面（我也不想用iframe这种古董，但是解决方案目前只有这个最合适）
-二、引发的问题：众所周知iframe高度自适应问题不是简单一句height:100%就能解决的，尤其是当子页面不断调用接口，页面高度不固定时，需要实时计算子页面的高度。为了解决这个问题，最初我设想的是在父页面通过onload</div>
-      </a>
+          
+            
+          
+          一、业务背景：利用OpenCMS构建一个包含公用页头页脚的容器，中间用iframe标签引入Angular页面（我也不想用iframe这种古董，但是解决方案目前只有这个最合适）
+二、引发的问题：众所周知iframe高度自适应问题不是简单一句height:100%就能解决的，尤其是当子页面不断调用接口，页面高度不固定时，需要实时计算子页面的高度。为了解决这个问题，最初我设想的是在父页面通过onload
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2019-05-10
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-05-10 00:00" pubdate>
+              2019-05-10
+            </time>
           </div>
         
         
@@ -202,31 +216,38 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2019/05/03/JS%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/">JS优化技巧总结</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/05/03/JS%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/">JS优化技巧总结</a>
+      </h1>
 
-      <a href="/2019/05/03/JS%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2019/05/03/JS%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/">
           
-        
-        <div>1.过滤唯一值ES6 引入了 Set 对象和延展（spread）语法…，我们可以用它们来创建一个只包含唯一值的数组。
+          
+            
+          
+          1.过滤唯一值ES6 引入了 Set 对象和延展（spread）语法…，我们可以用它们来创建一个只包含唯一值的数组。
 const array = [1, 1, 2, 3, 5, 5, 1]
 const uniqueArray = […new Set(array)];
 console.log(uniqueArray); // Result: [1, 2, 3, 5]
-在 ES6 之前，获得同样的数组</div>
-      </a>
+在 ES6 之前，获得同样的数组
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2019-05-03
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-05-03 00:00" pubdate>
+              2019-05-03
+            </time>
           </div>
         
         
@@ -246,74 +267,35 @@ console.log(uniqueArray); // Result: [1, 2, 3, 5]
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2019/04/25/JS%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%8F%8A%E9%98%BB%E6%AD%A2/">JS事件冒泡及阻止</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/04/25/Angular%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/">Angular生命周期钩子</a>
+      </h1>
 
-      <a href="/2019/04/25/JS%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%8F%8A%E9%98%BB%E6%AD%A2/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2019/04/25/Angular%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/">
           
-        
-        <div>
-            事件冒泡 ：当一个元素接收到事件的时候 会把他接收到的事件传给自己的父级，一直到window 。（注意这里传递的仅仅是事件 并不传递所绑定的事件函数；所以如果父级没有绑定事件函数，就算传递了事件 也不会有什么表现 但事件确实传递了）
           
-
-举个例子，先点击一下父级按钮再点击一下子级按钮，可以发现click事件也被冒泡传递到了它的父级
-
-避免冒泡事件的方法</div>
-      </a>
+            
+          
+          1.ngOnChanges当 Angular（重新）设置数据绑定输入属性时响应。 该方法接受当前和上一属性值的 SimpleChanges 对象。在 ngOnInit() 之前以及所绑定的一个或多个输入属性的值发生变化时都会调用。
+2.ngOnInit在 Angular 第一次显示数据绑定和设置指令/组件的输入属性之后，初始化指令/组件。在第一轮 ngOnChanges() 完成之后调用，只调用一
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2019-04-25
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/JavaScript/">JavaScript</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2019/04/25/Angular%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/">Angular生命周期钩子</a>
-
-      <a href="/2019/04/25/Angular%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/" class="index-excerpt">
-        
-        
-          
-        
-        <div>1.ngOnChanges当 Angular（重新）设置数据绑定输入属性时响应。 该方法接受当前和上一属性值的 SimpleChanges 对象。在 ngOnInit() 之前以及所绑定的一个或多个输入属性的值发生变化时都会调用。
-2.ngOnInit在 Angular 第一次显示数据绑定和设置指令/组件的输入属性之后，初始化指令/组件。在第一轮 ngOnChanges() 完成之后调用，只调用一</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2019-04-25
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-04-25 00:00" pubdate>
+              2019-04-25
+            </time>
           </div>
         
         
@@ -333,32 +315,40 @@ console.log(uniqueArray); // Result: [1, 2, 3, 5]
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2019/04/02/getClientRects-%E5%92%8C-getBoundingClientRect-%E7%9A%84%E5%8C%BA%E5%88%AB/">getClientRects() 和 getBoundingClientRect()的区别</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/04/25/JS%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%8F%8A%E9%98%BB%E6%AD%A2/">JS事件冒泡及阻止</a>
+      </h1>
 
-      <a href="/2019/04/02/getClientRects-%E5%92%8C-getBoundingClientRect-%E7%9A%84%E5%8C%BA%E5%88%AB/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2019/04/25/JS%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%8F%8A%E9%98%BB%E6%AD%A2/">
           
-        
-        <div>&emsp;&emsp;简单来说，getClientRects返回的其实是个数组，数组中有很多个类似getBoundingClientRect返回的对象(这样的对象称为TextRectangleList)。getBoundingClientRect返回的永远是最外框框的那个矩形区域相关的坐标偏移对象；而getClientRects是多行文字区域的坐标偏移集合。
-例如：
+          
+            
+          
+          
+            事件冒泡 ：当一个元素接收到事件的时候 会把他接收到的事件传给自己的父级，一直到window 。（注意这里传递的仅仅是事件 并不传递所绑定的事件函数；所以如果父级没有绑定事件函数，就算传递了事件 也不会有什么表现 但事件确实传递了）
+          
 
-结果为：
+举个例子，先点击一下父级按钮再点击一下子级按钮，可以发现click事件也被冒泡传递到了它的父级
 
-</div>
-      </a>
+避免冒泡事件的方法
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2019-04-02
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-04-25 00:00" pubdate>
+              2019-04-25
+            </time>
           </div>
         
         
@@ -378,28 +368,87 @@ console.log(uniqueArray); // Result: [1, 2, 3, 5]
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2019/03/31/%E5%B8%B8%E7%94%A8%E7%9A%84CSS3%E6%96%B0%E7%89%B9%E6%80%A7/">常用的CSS3新特性</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/04/02/getClientRects-%E5%92%8C-getBoundingClientRect-%E7%9A%84%E5%8C%BA%E5%88%AB/">getClientRects() 和 getBoundingClientRect()的区别</a>
+      </h1>
 
-      <a href="/2019/03/31/%E5%B8%B8%E7%94%A8%E7%9A%84CSS3%E6%96%B0%E7%89%B9%E6%80%A7/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2019/04/02/getClientRects-%E5%92%8C-getBoundingClientRect-%E7%9A%84%E5%8C%BA%E5%88%AB/">
           
-        
-        <div>圆角1.border-radius 圆角边框2.box-shadow 阴影框3.border-image （不支持ie）边界图片
-背景1.background-image2.background-size3.background-origin 指定背景图片的位置区域（border-box, padding-box, content-box）4.background-clip 背景剪裁（指从指定位置</div>
-      </a>
+          
+            
+          
+          &emsp;&emsp;简单来说，getClientRects返回的其实是个数组，数组中有很多个类似getBoundingClientRect返回的对象(这样的对象称为TextRectangleList)。getBoundingClientRect返回的永远是最外框框的那个矩形区域相关的坐标偏移对象；而getClientRects是多行文字区域的坐标偏移集合。
+例如：
+
+结果为：
+
+
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2019-03-31
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-04-02 00:00" pubdate>
+              2019-04-02
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/JavaScript/">JavaScript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/03/31/%E5%B8%B8%E7%94%A8%E7%9A%84CSS3%E6%96%B0%E7%89%B9%E6%80%A7/">常用的CSS3新特性</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/03/31/%E5%B8%B8%E7%94%A8%E7%9A%84CSS3%E6%96%B0%E7%89%B9%E6%80%A7/">
+          
+          
+            
+          
+          圆角1.border-radius 圆角边框2.box-shadow 阴影框3.border-image （不支持ie）边界图片
+背景1.background-image2.background-size3.background-origin 指定背景图片的位置区域（border-box, padding-box, content-box）4.background-clip 背景剪裁（指从指定位置
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-03-31 00:00" pubdate>
+              2019-03-31
+            </time>
           </div>
         
         
@@ -419,34 +468,89 @@ console.log(uniqueArray); // Result: [1, 2, 3, 5]
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2019/03/03/CSS%E8%A7%84%E5%88%99/">CSS规则</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/03/03/JavaScript%E5%8E%9F%E5%9E%8B/">JavaScript原型</a>
+      </h1>
 
-      <a href="/2019/03/03/CSS%E8%A7%84%E5%88%99/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2019/03/03/JavaScript%E5%8E%9F%E5%9E%8B/">
           
+          
+            
+          
+          一、JavaScript 的原型：1、如果所有对象都有私有字段[[prototype]]，就是对象都原型；2、读一个属性，如果对象本身没有，则会继续访问对象的原型，直到原型为空或者找到为止。
+二、ES6提供了三个直接访问操作原型的方法1、Object.create 根据指定的原型创建新对象，原型可以是null;2、Object.getPrototypeOf 获取一个对象的原型；3、Object.s
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
         
-        <div>@规则1.@charset用于提示CSS文件使用的字符编码方式，必须出现在最前面
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-03-03 00:00" pubdate>
+              2019-03-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/JavaScript/">JavaScript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/03/03/CSS%E8%A7%84%E5%88%99/">CSS规则</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/03/03/CSS%E8%A7%84%E5%88%99/">
+          
+          
+            
+          
+          @规则1.@charset用于提示CSS文件使用的字符编码方式，必须出现在最前面
 @charset “utf-8”2.@import用于引入一个CSS文件，除了@charset规则不会被引入，其他文件的全部内容都能被引入
 3.@media对设备类型进行判断
 4.@page用于分页媒体访问网页时的表现设置
 @page {
     size:8.5in 11in;
     margin:10%;
-  </div>
-      </a>
+  
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2019-03-03
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-03-03 00:00" pubdate>
+              2019-03-03
+            </time>
           </div>
         
         
@@ -466,73 +570,39 @@ console.log(uniqueArray); // Result: [1, 2, 3, 5]
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2019/03/03/JavaScript%E5%8E%9F%E5%9E%8B/">JavaScript原型</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/01/24/i%E6%A0%87%E7%AD%BE%E7%9A%84%E4%BD%BF%E7%94%A8/">i标签的使用</a>
+      </h1>
 
-      <a href="/2019/03/03/JavaScript%E5%8E%9F%E5%9E%8B/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2019/01/24/i%E6%A0%87%E7%AD%BE%E7%9A%84%E4%BD%BF%E7%94%A8/">
           
-        
-        <div>一、JavaScript 的原型：1、如果所有对象都有私有字段[[prototype]]，就是对象都原型；2、读一个属性，如果对象本身没有，则会继续访问对象的原型，直到原型为空或者找到为止。
-二、ES6提供了三个直接访问操作原型的方法1、Object.create 根据指定的原型创建新对象，原型可以是null;2、Object.getPrototypeOf 获取一个对象的原型；3、Object.s</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2019-03-03
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/JavaScript/">JavaScript</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2019/01/24/i%E6%A0%87%E7%AD%BE%E7%9A%84%E4%BD%BF%E7%94%A8/">i标签的使用</a>
-
-      <a href="/2019/01/24/i%E6%A0%87%E7%AD%BE%E7%9A%84%E4%BD%BF%E7%94%A8/" class="index-excerpt">
-        
-        
           
-        
-        <div>&emsp;&emsp;问题：使用i标签引入小图标如箭头、☑️ 等icon时不显示图标；
+            
+          
+          &emsp;&emsp;问题：使用i标签引入小图标如箭头、☑️ 等icon时不显示图标；
 
             i标签是行内元素，行内元素定义宽高是无效的，类比用a标签做button时定义宽高无效；需要设置display = block或者inline-block转化为块级元素才有效。
           
 
-&emsp;&emsp;此外，对于行内元素，margin上下对其无效（左右有效）；而</div>
-      </a>
+&emsp;&emsp;此外，对于行内元素，margin上下对其无效（左右有效）；而
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2019-01-24
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-01-24 00:00" pubdate>
+              2019-01-24
+            </time>
           </div>
         
         
@@ -552,29 +622,36 @@ console.log(uniqueArray); // Result: [1, 2, 3, 5]
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2018/12/01/CSS%E8%92%99%E5%B1%82%E6%95%88%E6%9E%9C/">CSS蒙层效果</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2018/12/01/CSS%E8%92%99%E5%B1%82%E6%95%88%E6%9E%9C/">CSS蒙层效果</a>
+      </h1>
 
-      <a href="/2018/12/01/CSS%E8%92%99%E5%B1%82%E6%95%88%E6%9E%9C/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2018/12/01/CSS%E8%92%99%E5%B1%82%E6%95%88%E6%9E%9C/">
           
-        
-        <div>&emsp;&emsp;今天在制作高保真视觉效果图的时候，遇到一个这样的需求：在一张图片的上层加了一层灰色的蒙板，使得整个图片达到变暗的效果。第一时间的想法就是现设置
+          
+            
+          
+          &emsp;&emsp;今天在制作高保真视觉效果图的时候，遇到一个这样的需求：在一张图片的上层加了一层灰色的蒙板，使得整个图片达到变暗的效果。第一时间的想法就是现设置
 background: gray url(…) no-repeat;然而这样达到的效果仅仅是图片覆盖背景色，并不能让他们重合。后来了解到了background-blend-mode 属性，他定义了背景层的混合模式（图片与颜色）。
-b</div>
-      </a>
+b
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2018-12-01
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-12-01 00:00" pubdate>
+              2018-12-01
+            </time>
           </div>
         
         
@@ -594,7 +671,7 @@ b</div>
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
 
@@ -706,6 +783,10 @@ b</div>
 
   
     <script  src="/js/lazyload.js" ></script>
+  
+
+
+
   
 
 

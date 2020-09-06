@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -25,11 +25,11 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -38,6 +38,7 @@
 
 
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 4.2.1"></head>
 
 
@@ -120,8 +121,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -129,12 +136,12 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('https://image-1302604489.cos.ap-nanjing.myqcloud.com/kv.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
@@ -167,25 +174,32 @@
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/07/23/CSS%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/">CSS变量设置</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/07/23/CSS%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/">CSS变量设置</a>
+      </h1>
 
-      <a href="/2020/07/23/CSS%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/07/23/CSS%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/">
           
-        
-        <div>  背景：之前对于大段文案的样式处理，通常采用富文本编辑器里设计颜色、字体等；如果需要根据运营人员配置的颜色来作为一个作用域内的非文本的，比如说分页的数字icon的底色、按钮的颜色、上传组件的颜色时，就需要用到CSS变量来进行样式控制。
+          
+            
+          
+            背景：之前对于大段文案的样式处理，通常采用富文本编辑器里设计颜色、字体等；如果需要根据运营人员配置的颜色来作为一个作用域内的非文本的，比如说分页的数字icon的底色、按钮的颜色、上传组件的颜色时，就需要用到CSS变量来进行样式控制。
   声明变量的时候，变量名前面要加两根连词线（–）(大小写敏感)
 body &#123;
     --foo: #7F583F;
-    --bar: #F7EF</div>
-      </a>
+    --bar: #F7EF
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-23
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-23 00:00" pubdate>
+              2020-07-23
+            </time>
           </div>
         
         
@@ -205,21 +219,24 @@ body &#123;
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/07/07/%E4%BC%AA%E5%85%83%E7%B4%A0%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/">伪元素清除浮动</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/07/07/%E4%BC%AA%E5%85%83%E7%B4%A0%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/">伪元素清除浮动</a>
+      </h1>
 
-      <a href="/2020/07/07/%E4%BC%AA%E5%85%83%E7%B4%A0%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/07/07/%E4%BC%AA%E5%85%83%E7%B4%A0%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/">
           
-        
-        <div>  在日常开发工作中，慎用“overflow:hidden;”清除浮动，对于父级元素内的绝对定位或者相对定位可能会起到遮挡作用。
+          
+            
+          
+            在日常开发工作中，慎用“overflow:hidden;”清除浮动，对于父级元素内的绝对定位或者相对定位可能会起到遮挡作用。
 单伪元素标签法：
 .clearfix:after&#123;
     content:"";
@@ -227,13 +244,17 @@ body &#123;
     line-height:0;
     display:block;
     visibility:hidden;
-    clear:bot</div>
-      </a>
+    clear:bot
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-07
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-07 00:00" pubdate>
+              2020-07-07
+            </time>
           </div>
         
         
@@ -253,31 +274,38 @@ body &#123;
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/05/23/Ajax%E4%B8%8EFetch%E7%9A%84%E5%8C%BA%E5%88%AB/">Ajax与Fetch的区别</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/05/23/Ajax%E4%B8%8EFetch%E7%9A%84%E5%8C%BA%E5%88%AB/">Ajax与Fetch的区别</a>
+      </h1>
 
-      <a href="/2020/05/23/Ajax%E4%B8%8EFetch%E7%9A%84%E5%8C%BA%E5%88%AB/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/05/23/Ajax%E4%B8%8EFetch%E7%9A%84%E5%8C%BA%E5%88%AB/">
           
-        
-        <div>fetch是ajax的替代品；基于标准Promise实现支持async/await，可读性更高，避免了ajax回调地狱的痛点。
+          
+            
+          
+          fetch是ajax的替代品；基于标准Promise实现支持async/await，可读性更高，避免了ajax回调地狱的痛点。
 Ajax的核心是XMLHttpRequest对象，浏览器正是通过XMLHttpRequest对象进行http通信；
 //1.创建Ajax对象
 if(window.XMLHttpRequest)&#123;
-    let oAjax=new XMLHttpRequest(</div>
-      </a>
+    let oAjax=new XMLHttpRequest(
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-05-23
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-05-23 00:00" pubdate>
+              2020-05-23
+            </time>
           </div>
         
         
@@ -297,28 +325,35 @@ if(window.XMLHttpRequest)&#123;
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/01/30/%E7%AC%94%E8%AE%B0-1/">笔记-1</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/01/30/%E7%AC%94%E8%AE%B0-1/">笔记-1</a>
+      </h1>
 
-      <a href="/2020/01/30/%E7%AC%94%E8%AE%B0-1/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/01/30/%E7%AC%94%E8%AE%B0-1/">
           
-        
-        <div>  本着有输入有输出的原则记录一下《大癫狂-群体性狂热与泡沫经济》
-密西西比计划：1、十七世纪约翰劳经法国政府特许，建立可以发行货币的私有银行；以此推行纸币以逐渐取代硬币2、因为劳的特权，其所创立的密西西比公司拥有密西西比河流域独有的贸易特权，由于当时传闻密西西比河遍地所金银；所以公司股票疯涨3、为了解决国债负担的问题，劳利用皇家银行的发行纸币的权利和密西西比公司的股票价值，不断发行股票以偿还国债</div>
-      </a>
+          
+            
+          
+            本着有输入有输出的原则记录一下《大癫狂-群体性狂热与泡沫经济》
+密西西比计划：1、十七世纪约翰劳经法国政府特许，建立可以发行货币的私有银行；以此推行纸币以逐渐取代硬币2、因为劳的特权，其所创立的密西西比公司拥有密西西比河流域独有的贸易特权，由于当时传闻密西西比河遍地所金银；所以公司股票疯涨3、为了解决国债负担的问题，劳利用皇家银行的发行纸币的权利和密西西比公司的股票价值，不断发行股票以偿还国债
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-01-30
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-01-30 00:00" pubdate>
+              2020-01-30
+            </time>
           </div>
         
         
@@ -331,31 +366,38 @@ if(window.XMLHttpRequest)&#123;
         
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/01/09/Angular%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%AD%E4%BF%AE%E9%A5%B0%E7%AC%A6%E7%9A%84%E5%8C%BA%E5%88%AB/">Angular构造函数中修饰符的区别</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/01/09/Angular%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%AD%E4%BF%AE%E9%A5%B0%E7%AC%A6%E7%9A%84%E5%8C%BA%E5%88%AB/">Angular构造函数中修饰符的区别</a>
+      </h1>
 
-      <a href="/2020/01/09/Angular%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%AD%E4%BF%AE%E9%A5%B0%E7%AC%A6%E7%9A%84%E5%8C%BA%E5%88%AB/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/01/09/Angular%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%AD%E4%BF%AE%E9%A5%B0%E7%AC%A6%E7%9A%84%E5%8C%BA%E5%88%AB/">
           
-        
-        <div>  众所周知，Angular中引入了大量Java的语法思想，在日常开发中，常常定义变量的时候是不写修饰符的，对修饰符的理解也仅仅停留在Java阶段，如下：
+          
+            
+          
+            众所周知，Angular中引入了大量Java的语法思想，在日常开发中，常常定义变量的时候是不写修饰符的，对修饰符的理解也仅仅停留在Java阶段，如下：
 修饰符       当前类       同包          子类         其他包
 
 public       √           √            √             √
-protected    √      </div>
-      </a>
+protected    √      
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-01-09
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-01-09 00:00" pubdate>
+              2020-01-09
+            </time>
           </div>
         
         
@@ -375,31 +417,38 @@ protected    √      </div>
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2019/12/05/ios%E5%BE%AE%E4%BF%A1%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5%E6%A1%86%E5%A4%B1%E5%8E%BB%E7%84%A6%E7%82%B9%E5%90%8E%E9%A1%B5%E9%9D%A2%E6%97%A0%E5%93%8D%E5%BA%94%E9%97%AE%E9%A2%98/">ios微信浏览器输入框失去焦点后页面无响应问题</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/12/05/ios%E5%BE%AE%E4%BF%A1%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5%E6%A1%86%E5%A4%B1%E5%8E%BB%E7%84%A6%E7%82%B9%E5%90%8E%E9%A1%B5%E9%9D%A2%E6%97%A0%E5%93%8D%E5%BA%94%E9%97%AE%E9%A2%98/">ios微信浏览器输入框失去焦点后页面无响应问题</a>
+      </h1>
 
-      <a href="/2019/12/05/ios%E5%BE%AE%E4%BF%A1%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5%E6%A1%86%E5%A4%B1%E5%8E%BB%E7%84%A6%E7%82%B9%E5%90%8E%E9%A1%B5%E9%9D%A2%E6%97%A0%E5%93%8D%E5%BA%94%E9%97%AE%E9%A2%98/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2019/12/05/ios%E5%BE%AE%E4%BF%A1%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5%E6%A1%86%E5%A4%B1%E5%8E%BB%E7%84%A6%E7%82%B9%E5%90%8E%E9%A1%B5%E9%9D%A2%E6%97%A0%E5%93%8D%E5%BA%94%E9%97%AE%E9%A2%98/">
           
-        
-        <div>  问题描述：在ios微信浏览器上访问表单注册页面，当输入框输入文字完毕，微信键盘收回之后，页面出现失去焦点现象，点击仍和按钮或者输入框都没反应
+          
+            
+          
+            问题描述：在ios微信浏览器上访问表单注册页面，当输入框输入文字完毕，微信键盘收回之后，页面出现失去焦点现象，点击仍和按钮或者输入框都没反应
   原因：微信键盘弹起后，若愿输入框被遮挡，页面整体会向上移动，当键盘收起时页面却未恢复，导致页面点击没反应
   解决方法：当输入框失去焦点时调用一下方法能完美解决问题
 function kickBack() &#123;
-    setTimeout(</div>
-      </a>
+    setTimeout(
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2019-12-05
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-12-05 00:00" pubdate>
+              2019-12-05
+            </time>
           </div>
         
         
@@ -419,28 +468,35 @@ function kickBack() &#123;
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2019/10/14/EXIF%E5%A4%84%E7%90%86%E7%85%A7%E7%89%87%E4%BF%A1%E6%81%AF/">EXIF处理照片信息</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/10/14/EXIF%E5%A4%84%E7%90%86%E7%85%A7%E7%89%87%E4%BF%A1%E6%81%AF/">EXIF处理照片信息</a>
+      </h1>
 
-      <a href="/2019/10/14/EXIF%E5%A4%84%E7%90%86%E7%85%A7%E7%89%87%E4%BF%A1%E6%81%AF/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2019/10/14/EXIF%E5%A4%84%E7%90%86%E7%85%A7%E7%89%87%E4%BF%A1%E6%81%AF/">
           
-        
-        <div>  最近在处理人脸照片时遇到一个奇怪现象，iphone 自拍照片总是显示未识别到人脸，Android 机则未出现任何问题。经过一番排查测试发现，iphone 手机在自拍时生成的人脸照片尽管显示是正常的，但是当转成 base64 格式之后恢复，自动逆时针旋转 45 度。导致人脸识别时，旋转之后的照片是无法检测出人脸的，带来极为糟糕的使用体验；所以需要在图片传给后端之前做一次复位操作。
-  解决方案就</div>
-      </a>
+          
+            
+          
+            最近在处理人脸照片时遇到一个奇怪现象，iphone 自拍照片总是显示未识别到人脸，Android 机则未出现任何问题。经过一番排查测试发现，iphone 手机在自拍时生成的人脸照片尽管显示是正常的，但是当转成 base64 格式之后恢复，自动逆时针旋转 45 度。导致人脸识别时，旋转之后的照片是无法检测出人脸的，带来极为糟糕的使用体验；所以需要在图片传给后端之前做一次复位操作。
+  解决方案就
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2019-10-14
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-10-14 00:00" pubdate>
+              2019-10-14
+            </time>
           </div>
         
         
@@ -460,32 +516,39 @@ function kickBack() &#123;
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2019/10/03/super%E5%85%B3%E9%94%AE%E5%AD%97/">super关键字</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/10/03/super%E5%85%B3%E9%94%AE%E5%AD%97/">super关键字</a>
+      </h1>
 
-      <a href="/2019/10/03/super%E5%85%B3%E9%94%AE%E5%AD%97/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2019/10/03/super%E5%85%B3%E9%94%AE%E5%AD%97/">
           
-        
-        <div>  this和super的区别：  this关键词指向函数所在的当前对象  super指向的是当前对象的原型对象
+          
+            
+          
+            this和super的区别：  this关键词指向函数所在的当前对象  super指向的是当前对象的原型对象
 const EventEmitter  = require('events').EventEmitter;
 class Publishorder extends EventEmitter &#123;
     constructor()&#123;
         super();
- </div>
-      </a>
+ 
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2019-10-03
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-10-03 00:00" pubdate>
+              2019-10-03
+            </time>
           </div>
         
         
@@ -505,32 +568,39 @@ class Publishorder extends EventEmitter &#123;
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/">模拟eventloop demo</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/">模拟eventloop demo</a>
+      </h1>
 
-      <a href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/">
           
-        
-        <div>  Node的异步非阻塞I/O特性依赖于其内部的事件循环机制；  下面简单模拟一下事件循环的实现：
+          
+            
+          
+            Node的异步非阻塞I/O特性依赖于其内部的事件循环机制；  下面简单模拟一下事件循环的实现：
 const eventloop = &#123;
     queue : [],
     loop()&#123;
         while(this.queue.length &gt; 0)&#123;
-            var callback = this.queue.shift();</div>
-      </a>
+            var callback = this.queue.shift();
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2019-10-03
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-10-03 00:00" pubdate>
+              2019-10-03
+            </time>
           </div>
         
         
@@ -550,31 +620,38 @@ const eventloop = &#123;
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2019/09/07/ngFor-trackBy/">ngFor-trackBy</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/09/07/ngFor-trackBy/">ngFor-trackBy</a>
+      </h1>
 
-      <a href="/2019/09/07/ngFor-trackBy/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2019/09/07/ngFor-trackBy/">
           
-        
-        <div>  今天在开发自定义表单功能时遇到这么一个问题，场景大致是通过循环生成所需的n个输入框，彼此之间保持独立。
+          
+            
+          
+            今天在开发自定义表单功能时遇到这么一个问题，场景大致是通过循环生成所需的n个输入框，彼此之间保持独立。
 先看这段代码存在到问题：
 &lt;div *ngFor="let child of item.option; let k = index"&gt;
     &lt;input nz-input class="option_input" [(ngModel)]="child"&gt;
-    </div>
-      </a>
+    
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2019-09-07
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-09-07 00:00" pubdate>
+              2019-09-07
+            </time>
           </div>
         
         
@@ -594,7 +671,7 @@ const eventloop = &#123;
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
 
@@ -706,6 +783,10 @@ const eventloop = &#123;
 
   
     <script  src="/js/lazyload.js" ></script>
+  
+
+
+
   
 
 

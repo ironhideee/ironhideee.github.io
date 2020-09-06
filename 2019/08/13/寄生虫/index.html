@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -26,7 +26,11 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
   
 
   
@@ -34,11 +38,11 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -47,6 +51,7 @@
 
 
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 4.2.1"></head>
 
 
@@ -129,8 +134,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -138,25 +149,28 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('https://image-1302604489.cos.ap-nanjing.myqcloud.com/kv2.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
 
             
-              
-  <div class="mt-3 post-meta">
-    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2019-08-13 00:00">
-      2019年8月13日 凌晨
-    </time>
-  </div>
-
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-08-13 00:00" pubdate>
+        2019年8月13日 凌晨
+      </time>
+    </span>
+  
+</div>
 
 <div class="mt-1">
   
@@ -201,9 +215,11 @@
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">寄生虫</h1>
             
-            <article class="markdown-body">
+            <div class="markdown-body" id="post-body">
               <p>  听取男神的安利，看完了韩国电影寄生虫立刻写一篇影评。此外特地鸣谢钟博士提供的枪版链接，让我没了推辞到周末看的借口，FSNB（破音）！</p>
 <p>  影片刚开始对长子基宇家庭环境对描写让我一度以为是上个世纪拍的影片。一家四口生活在半地下室对简陋且拥挤对房屋里，游手好闲得浑浑噩噩得生活着。</p>
 <p>  故事的起因大致就是基宇借同学引荐机会进入富豪社长家当家教，一步步将一家四口都引荐到富豪家获得工作。一开始我也对剧情产生怀疑，社长有钱有权力完全可以调查这一家人的背景；但是后来想想，对于家政及家教这种事由信任的人一步步引荐的选择，他似乎没理由怀疑；而且他们一家在各自本职工作上都满足了社长家各位的需求。男神说这是反映韩国阶级差距的电影，阶级差距这种东西有时候显得很远有时候显得很近；电影一开始，基宇一家本完全没有机会接触到社长这样的人物，这时候看他们离的好远；但是他们真正去到社长家工作时又完全满足了社长的要求；给他们以自己能过上上流社会生活的错觉。</p>
@@ -212,7 +228,7 @@
 <p>3、基宇父亲基泽最后捅向社长胸口的一刀，一方面来自他积怨已久的仇富心理，社长对地下室气味的敏感让他感觉到了侮辱。这里确实感觉父亲完全内心已经扭曲，整体而言社长一家的态度还是得体尊敬的，然而就是一些对气味不适应的小细节上，不断刺激着父亲的内心。另一方面是社长完全无视自己已被捅伤的女儿，只想着带自己儿子去医院；似乎看到女儿医治无望的父亲将全部仇恨都指向给他内心带来各种不公平的社长。</p>
 <p>  影片最后的结局也很有意思，基泽一直藏身于地下室过着担惊受怕的生活，基宇也梦想自己能发家致富买下宅子让父亲体面得从地下室走出来。但是一切都是梦，现实的差距只能让他们维持现状忍受着难以相见的痛苦。此时最近常听的一段歌词私以为很应景“明明我已昼夜无间踏尽面前路；梦想中的彼岸为何还未到；明明我已奋力无间天天上路；我不死也为活得好；有没有终点谁能知道；在这尘世的无间道”。佛曰:「受身无间者永远不死，去寿长乃无间地狱中之大劫。」犯下的罪终究逃不过命运，基宇一家最后虽免于牢狱之灾，也是尽受终极无间之苦。</p>
 
-            </article>
+            </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
@@ -231,7 +247,7 @@
               
               
                 <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                  <article class="post-prev col-6">
                     
                     
                       <a href="/2019/08/20/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E6%96%87%E4%BB%B6/">
@@ -240,8 +256,8 @@
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
                       <a href="/2019/08/03/%E5%93%8D%E5%BA%94%E7%A0%81%E6%8A%A5%E9%94%99%E7%9A%84%E4%BC%98%E5%8C%96%E5%86%99%E6%B3%95/">
@@ -250,14 +266,14 @@
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
               <!-- Comments -->
-              <div class="comments" id="comments">
+              <article class="comments" id="comments">
                 
                 
   <div id="vcomments"></div>
@@ -280,15 +296,15 @@
         });
       });
     }
-    createObserver(loadValine, 'vcomments');
+    waitElementVisible('vcomments', loadValine);
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
-              </div>
+              </article>
             
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -399,6 +415,10 @@
 
 
 
+  
+
+
+
   <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
   <script  src="/js/clipboard-use.js" ></script>
 
@@ -418,7 +438,7 @@
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: 'article.markdown-body',
+        contentSelector: '#post-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',

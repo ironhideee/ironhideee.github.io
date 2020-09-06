@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -26,7 +26,11 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
   
 
   
@@ -34,11 +38,11 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -47,6 +51,7 @@
 
 
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 4.2.1"></head>
 
 
@@ -129,8 +134,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -138,25 +149,28 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('https://image-1302604489.cos.ap-nanjing.myqcloud.com/kv2.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
 
             
-              
-  <div class="mt-3 post-meta">
-    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2019-07-27 00:00">
-      2019年7月27日 凌晨
-    </time>
-  </div>
-
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-07-27 00:00" pubdate>
+        2019年7月27日 凌晨
+      </time>
+    </span>
+  
+</div>
 
 <div class="mt-1">
   
@@ -201,9 +215,11 @@
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">HTTP缓存代理策略</h1>
             
-            <article class="markdown-body">
+            <div class="markdown-body" id="post-body">
               <p>  缓存代理，主要分为两部分，服务端的缓存控制和客户端的缓存控制；客户端的缓存控制由浏览器来实现，而服务端的缓存控制由代理服务器来实现。代理服务器介于浏览器客户端和源服务器之间，相当于一个数据中转站，将未更新可复用的数据缓存起来，以便降低源服务器的并发量。</p>
 <p>服务器端缓存控制策略<br>可以同时控制客户端和代理<br>首先总结一下常用的缓存控制属性的含义：<br>服务器端的Cache-Control主要包括以下属性</p>
 <p>max-age = x 缓存寿命（时间计算从报文创建开始，也就是离开服务器的时间，包含了在链路传输过程中所有节点所停留的时间）<br>s-maxage 只限定在代理上能够存多久，客户端仍然用max-age<br>no_store 禁用缓存<br>no_cache 可以缓存，但使用前必须向服务器验证是否过期<br>must-revalidate 缓存不过期就继续使用，过期了还想使用必须去服务器验证<br>procy-revalidate 只要求代理的缓存过期后必须验证，不必去源服务器验证，只验证到代理环节就行<br>private 缓存只能在客户端保存，任何中间代理都不能缓存<br>public 缓存完全开放，谁都可以存，主要针对代理服务器<br>no-transform 禁止对缓存下来的数据进行优化处理（例如将图片生成png、webp格式等）</p>
@@ -214,7 +230,7 @@
 <p>Chrome下的缓存区别</p>
 <p>Chrome开发者工具Network栏的Size除了资源大小的数值外，还会有from disk cache和form memory cache属性；两者都表示缓存，无需访问服务器。区别在于：<br>from disk cache（存在磁盘中） 浏览器关闭后，数据资源依然存在（一般存储样式css文件）<br>form memory cache（存在内存中） 浏览器关闭后，数据资源被释放掉，不再存在（一半存储脚本字体图片等）</p>
 
-            </article>
+            </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
@@ -240,7 +256,7 @@
               
               
                 <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                  <article class="post-prev col-6">
                     
                     
                       <a href="/2019/08/03/%E5%93%8D%E5%BA%94%E7%A0%81%E6%8A%A5%E9%94%99%E7%9A%84%E4%BC%98%E5%8C%96%E5%86%99%E6%B3%95/">
@@ -249,8 +265,8 @@
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
                       <a href="/2019/07/24/CSRF%E6%94%BB%E5%87%BB%E9%98%B2%E8%8C%83/">
@@ -259,14 +275,14 @@
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
               <!-- Comments -->
-              <div class="comments" id="comments">
+              <article class="comments" id="comments">
                 
                 
   <div id="vcomments"></div>
@@ -289,15 +305,15 @@
         });
       });
     }
-    createObserver(loadValine, 'vcomments');
+    waitElementVisible('vcomments', loadValine);
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
-              </div>
+              </article>
             
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -408,6 +424,10 @@
 
 
 
+  
+
+
+
   <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
   <script  src="/js/clipboard-use.js" ></script>
 
@@ -427,7 +447,7 @@
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: 'article.markdown-body',
+        contentSelector: '#post-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
