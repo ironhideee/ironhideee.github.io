@@ -185,12 +185,13 @@
           
             
           
-          input::-webkit-input-placeholder, textarea::-webkit-input-placeholder &#123;     /* WebKit browsers 适配谷歌 */
+          input::-webkit-input-placeholder, textarea::-webkit-input-placeholder &#123;     
+    /* WebKit browsers 适配谷歌 */
     color: #666;
     font-size: 16px;
 &#125;
 
-input:-moz-placeholder, textarea:-moz-placehol
+input:-moz-placeholder, textarea:-moz-pla
         </a>
       </p>
 
@@ -576,58 +577,6 @@ function kickBack() &#123;
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/">模拟eventloop demo</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/">
-          
-          
-            
-          
-            Node的异步非阻塞I/O特性依赖于其内部的事件循环机制；  下面简单模拟一下事件循环的实现：
-const eventloop = &#123;
-    queue : [],
-    loop()&#123;
-        while(this.queue.length &gt; 0)&#123;
-            var callback = this.queue.shift();
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-10-03 00:00" pubdate>
-              2019-10-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Node/">Node</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
         <a href="/2019/10/03/super%E5%85%B3%E9%94%AE%E5%AD%97/">super关键字</a>
       </h1>
 
@@ -668,6 +617,58 @@ class Publishorder extends EventEmitter &#123;
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/JavaScript/">JavaScript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/">模拟eventloop demo</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/">
+          
+          
+            
+          
+            Node的异步非阻塞I/O特性依赖于其内部的事件循环机制；  下面简单模拟一下事件循环的实现：
+const eventloop = &#123;
+    queue : [],
+    loop()&#123;
+        while(this.queue.length &gt; 0)&#123;
+            var callback = this.queue.shift();
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-10-03 00:00" pubdate>
+              2019-10-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Node/">Node</a>
             
           </div>
         
