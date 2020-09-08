@@ -17,23 +17,10 @@
   <meta name="description" content="">
   <meta name="author" content="Ironhideee">
   <meta name="keywords" content="">
-  <title>getClientRects() 和 getBoundingClientRect()的区别 - Blog</title>
+  <title>Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
-
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
-    
-  
-
-  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -56,7 +43,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -150,7 +137,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('https://image-1302604489.cos.ap-nanjing.myqcloud.com/kv2.jpg') no-repeat center center;
+         style="background: url('https://image-1302604489.cos.ap-nanjing.myqcloud.com/kv.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -160,45 +147,12 @@
             </span>
 
             
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2019-04-02 00:00" pubdate>
-        2019年4月2日 凌晨
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      87 字
-    </span>
-  
-
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      1
-       分钟
-    </span>
-  
-
-  
-  
-</div>
-
-            
           </div>
 
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
           
         </div>
       </div>
@@ -207,127 +161,86 @@
 
   <main>
     
-      
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto" id="post">
-            <!-- SEO header -->
-            <h1 style="display: none">getClientRects() 和 getBoundingClientRect()的区别</h1>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2018/12/01/CSS%E8%92%99%E5%B1%82%E6%95%88%E6%9E%9C/">CSS蒙层效果</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2018/12/01/CSS%E8%92%99%E5%B1%82%E6%95%88%E6%9E%9C/">
+          
+          
             
-            <div class="markdown-body" id="post-body">
-              <p>&emsp;&emsp;简单来说，getClientRects返回的其实是个数组，数组中有很多个类似getBoundingClientRect返回的对象(这样的对象称为TextRectangleList)。getBoundingClientRect返回的永远是最外框框的那个矩形区域相关的坐标偏移对象；而getClientRects是多行文字区域的坐标偏移集合。</p>
-<p>例如：</p>
-<p><img src="/image/getClientRects/img1.jpg" srcset="/img/loading.gif" alt=""></p>
-<p>结果为：</p>
-<p><img src="/image/getClientRects/img2.jpg" srcset="/img/loading.gif" alt=""></p>
+          
+          &emsp;&emsp;今天在制作高保真视觉效果图的时候，遇到一个这样的需求：在一张图片的上层加了一层灰色的蒙板，使得整个图片达到变暗的效果。第一时间的想法就是现设置
+background: gray url(…) no-repeat;然而这样达到的效果仅仅是图片覆盖背景色，并不能让他们重合。后来了解到了background-blend-mode 属性，他定义了背景层的混合模式（图片与颜色）。
+b
+        </a>
+      </p>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
-              
-              
-                <div class="post-prevnext row">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2019/04/25/Angular%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Angular生命周期钩子</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2019/03/31/%E5%B8%B8%E7%94%A8%E7%9A%84CSS3%E6%96%B0%E7%89%B9%E6%80%A7/">
-                        <span class="hidden-mobile">常用的CSS3新特性</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-12-01 00:00" pubdate>
+              2018-12-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
             
-              <!-- Comments -->
-              <article class="comments" id="comments">
-                
-                
-  <div id="vcomments"></div>
-  <script type="text/javascript">
-    function loadValine() {
-      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
-        new Valine({
-          el: "#vcomments",
-          app_id: "vdUMtfcvfJhPQmoYCWfqN02Y-gzGzoHsz",
-          app_key: "8OcQ9i9bBRpCSc0dzjSe3T5e",
-          placeholder: "说点什么",
-          path: window.location.pathname,
-          avatar: "retro",
-          meta: ["nick","mail","link"],
-          pageSize: "10",
-          lang: "zh-CN",
-          highlight: false,
-          recordIP: false,
-          serverURLs: "",
-        });
-      });
+              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CSS/">CSS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/3/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
     }
-    waitElementVisible('vcomments', loadValine);
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
-      powered by Valine.</a></noscript>
 
 
-              </article>
-            
-          </article>
+
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-
     
   </main>
 
@@ -435,31 +348,6 @@
 
 
 
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '#post-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
 
 
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
@@ -467,7 +355,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "getClientRects() 和 getBoundingClientRect()的区别&nbsp;",
+        "Believe in your code, even if it fails 100 times&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
@@ -482,21 +370,6 @@
 
 
 
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
-      
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
-  </script>
-
 
 
   <script  src="/js/local-search.js" ></script>
@@ -510,20 +383,6 @@
   </script>
 
 
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
-      }
-    );
-  </script>
 
 
 

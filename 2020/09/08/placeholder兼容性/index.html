@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Ironhideee">
   <meta name="keywords" content="">
-  <title>getClientRects() 和 getBoundingClientRect()的区别 - Blog</title>
+  <title>placeholder兼容性 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -165,8 +165,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2019-04-02 00:00" pubdate>
-        2019年4月2日 凌晨
+      <time datetime="2020-09-08 21:08" pubdate>
+        2020年9月8日 晚上
       </time>
     </span>
   
@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      87 字
+      74 字
     </span>
   
 
@@ -217,14 +217,28 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">getClientRects() 和 getBoundingClientRect()的区别</h1>
+            <h1 style="display: none">placeholder兼容性</h1>
             
             <div class="markdown-body" id="post-body">
-              <p>&emsp;&emsp;简单来说，getClientRects返回的其实是个数组，数组中有很多个类似getBoundingClientRect返回的对象(这样的对象称为TextRectangleList)。getBoundingClientRect返回的永远是最外框框的那个矩形区域相关的坐标偏移对象；而getClientRects是多行文字区域的坐标偏移集合。</p>
-<p>例如：</p>
-<p><img src="/image/getClientRects/img1.jpg" srcset="/img/loading.gif" alt=""></p>
-<p>结果为：</p>
-<p><img src="/image/getClientRects/img2.jpg" srcset="/img/loading.gif" alt=""></p>
+              <pre><code class="hljs css"><span class="hljs-selector-tag">input</span><span class="hljs-selector-pseudo">::-webkit-input-placeholder</span>, <span class="hljs-selector-tag">textarea</span><span class="hljs-selector-pseudo">::-webkit-input-placeholder</span> &#123;     <span class="hljs-comment">/* WebKit browsers 适配谷歌 */</span>
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#666</span>;
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;
+&#125;
+
+<span class="hljs-selector-tag">input</span><span class="hljs-selector-pseudo">:-moz-placeholder</span>, <span class="hljs-selector-tag">textarea</span><span class="hljs-selector-pseudo">:-moz-placeholder</span> &#123;                         <span class="hljs-comment">/* Mozilla Firefox 4 to 18 */</span>
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#666</span>;
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;
+&#125;
+
+<span class="hljs-selector-tag">input</span><span class="hljs-selector-pseudo">::-moz-placeholder</span>, <span class="hljs-selector-tag">textarea</span><span class="hljs-selector-pseudo">::-moz-placeholder</span> &#123;                       <span class="hljs-comment">/* Mozilla Firefox 19+ */</span>
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#666</span>;
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;
+&#125;
+
+<span class="hljs-selector-tag">input</span><span class="hljs-selector-pseudo">:-ms-input-placeholder</span>, <span class="hljs-selector-tag">textarea</span><span class="hljs-selector-pseudo">:-ms-input-placeholder</span> &#123;               <span class="hljs-comment">/* Internet Explorer 10-11 */</span> 
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#666</span>;
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;
+&#125;</code></pre>
 
             </div>
             <hr>
@@ -242,7 +256,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
+                      <a class="hover-with-bg" href="/tags/CSS/">CSS</a>
                     
                   </div>
                 
@@ -255,18 +269,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2019/04/25/Angular%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Angular生命周期钩子</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2019/03/31/%E5%B8%B8%E7%94%A8%E7%9A%84CSS3%E6%96%B0%E7%89%B9%E6%80%A7/">
-                        <span class="hidden-mobile">常用的CSS3新特性</span>
+                      <a href="/2020/07/23/CSS%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/">
+                        <span class="hidden-mobile">CSS变量设置</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -467,7 +475,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "getClientRects() 和 getBoundingClientRect()的区别&nbsp;",
+        "placeholder兼容性&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
