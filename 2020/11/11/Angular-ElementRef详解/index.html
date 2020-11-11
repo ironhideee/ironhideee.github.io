@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Ironhideee">
   <meta name="keywords" content="">
-  <title>super关键字 - Blog</title>
+  <title>Angular ElementRef详解 - Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -165,8 +165,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2019-10-03 00:00" pubdate>
-        2019年10月3日 凌晨
+      <time datetime="2020-11-11 09:43" pubdate>
+        2020年11月11日 上午
       </time>
     </span>
   
@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      398 字
+      680 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      7
        分钟
     </span>
   
@@ -217,34 +217,41 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">super关键字</h1>
+            <h1 style="display: none">Angular ElementRef详解</h1>
             
             <div class="markdown-body" id="post-body">
-              <p>  this和super的区别：<br>  this关键词指向函数所在的当前对象<br>  super指向的是当前对象的原型对象</p>
-<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> EventEmitter  = <span class="hljs-built_in">require</span>(<span class="hljs-string">'events'</span>).EventEmitter;
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Publishorder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">EventEmitter</span> </span>&#123;
-    <span class="hljs-keyword">constructor</span>()&#123;
-        <span class="hljs-keyword">super</span>();
-        setInterval(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;
-            <span class="hljs-keyword">this</span>.emit(<span class="hljs-string">'neworder'</span>, &#123; <span class="hljs-attr">price</span>: <span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100</span> &#125;);
-        &#125;,<span class="hljs-number">3000</span>)
-    &#125;
+              <h1 id="一-为什么要用ElementRef"><a href="#一-为什么要用ElementRef" class="headerlink" title="一.为什么要用ElementRef"></a>一.为什么要用ElementRef</h1><p>为了能够支持跨平台，Angular 通过抽象层封装了不同平台的差异，统一了 API 接口。如定义了抽象类 Renderer（已废弃，现在用Renderer2） 、抽象类 RootRenderer 等。此外还定义了以下引用类型：</p>
+<pre><code>1. ElementRef；
+
+2. TemplateRef；
+
+3. ViewRef ；
+
+4. ComponentRef ；
+
+5. ViewContainerRef ；</code></pre><h1 id="二-ElementRef有什么作用"><a href="#二-ElementRef有什么作用" class="headerlink" title="二.ElementRef有什么作用"></a>二.ElementRef有什么作用</h1><p>在应用层直接操作 DOM，就会造成应用层与渲染层之间强耦合，导致我们的应用无法运行在不同环境，如 web worker 中，因为在 web worker 环境中，是不能直接操作 DOM。有兴趣的读者，可以阅读一下 Web Workers 中支持的类和方法这篇文章。通过ElementRef 我们就可以封装不同平台下视图层中的 native 元素 (在浏览器环境中，native 元素通常是指 DOM 元素)，最后借助于 Angular 提供的强大的依赖注入特性，我们就可以轻松地访问到 native 元素。</p>
+<h1 id="三-如何使用ElementRef"><a href="#三-如何使用ElementRef" class="headerlink" title="三.如何使用ElementRef"></a>三.如何使用ElementRef</h1><p>ElementRef 的背后是一个可渲染的具体元素。在浏览器中，它通常是一个 DOM 元素。<br>nativeElement 是背后的原生元素，如果不支持直接访问原生元素，则为 null（比如：在 Web Worker 环境下运行此应用的时候）。<br>比如想要修改给一段富文本添加上颜色，就需要在渲染完成后给指定元素加上样式<br>1、引入相关模块</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; Component, ElementRef, OnInit, Renderer2, ViewChild &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;</code></pre>
+
+<p>2、构造函数依赖注入</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">constructor</span>(
+    private elementRef: ElementRef,
+    private renderer: Renderer2
+) &#123; &#125;</code></pre>
+
+<p>3、使用属性装饰符@ViewChild</p>
+<pre><code class="hljs javascript">@ViewChild(<span class="hljs-string">'divContent'</span>, &#123;<span class="hljs-attr">static</span>: <span class="hljs-literal">false</span>&#125;) greetDiv: ElementRef;</code></pre>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> [<span class="hljs-attr">innerHTML</span>]=<span class="hljs-string">"hypeLink"</span> #<span class="hljs-attr">divContent</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+
+<ul>
+<li>Angular8 在使用ViewChild时增加了静态标志static来定义何时需要解析@ViewChild()和@ContentChild();<br>对于静态查询（static：true），查询在视图创建后即可解决，但是在运行变更检测之前。不过，结果永远不会更新以反映视图的更改，例如ngIf和ngFor块的更改。<br>使用动态查询（static：false），分别在ngAfterViewInit()或ngAfterContentInit()之后对@ViewChild()和@ContentChild()进行查询解析。结果将根据视图的更改而更新，例如对ngIf和ngFor块的更改。</li>
+</ul>
+<p>4、通过render2写入样式</p>
+<pre><code class="hljs javascript">ngAfterViewInit() &#123;
+    <span class="hljs-keyword">this</span>.renderer.setStyle(<span class="hljs-keyword">this</span>.greetDiv.nativeElement, <span class="hljs-string">'color'</span>, <span class="hljs-string">'green'</span>);
 &#125;</code></pre>
-<p>  上面写了一个每隔3秒发布一个随机价格订单的事件发射器的类Publishorder，其中super()指的是父类的构造函数，即Nodejs中的events.EventEmitter；如果不去调用父类构造函数，将无法在构造函数中使用this。即抛出这样一个错误：</p>
-<pre><code>/Users/xuan/Desktop/Daily Demo/Daily-Demo/Node/eventemitter.js:6
-    setInterval(()=&gt;{
-    ^
-ReferenceError: Must call super constructor in derived class before accessing &apos;this&apos; or returning from derived constructor
-    at new Publishorder (/Users/xuan/Desktop/Daily Demo/Daily-Demo/Node/eventemitter.js:6:9)
-    at Object.&lt;anonymous&gt; (/Users/xuan/Desktop/Daily Demo/Daily-Demo/Node/eventemitter.js:12:22)
-    at Module._compile (internal/modules/cjs/loader.js:778:30)
-    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
-    at Module.load (internal/modules/cjs/loader.js:653:32)
-    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
-    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
-    at Function.Module.runMain (internal/modules/cjs/loader.js:831:12)
-    at startup (internal/bootstrap/node.js:283:19)
-    at bootstrapNodeJSCore (internal/bootstrap/node.js:622:3)</code></pre><p>  那么为什么javascript要有这样一个限制？因为有继承关系，子类创建了对象会用到父类的属性方法，所以父类也要初始化，不然继承父类而不用父类的属性和方法，那继承还有什么意义。<br>  所以，Class中的 super()，它在这里表示父类的构造函数，用来新建父类的 this 对象。<br>这里的super()相当于Parent.prototype.constructor.call(this)</p>
+
+<h1 id="四-安全风险"><a href="#四-安全风险" class="headerlink" title="四.安全风险"></a>四.安全风险</h1><p>ElementRef 允许直接访问 DOM 会导致应用在 XSS 攻击前面更加脆弱。要仔细评审对 ElementRef 的代码。<br>当需要直接访问 DOM 时，请把本 API 作为最后选择。优先使用 Angular 提供的模板和数据绑定机制。或者你还可以看看 Renderer2，它提供了可安全使用的 API —— 即使环境没有提供直接访问原生元素的功能。</p>
 
             </div>
             <hr>
@@ -262,7 +269,7 @@ ReferenceError: Must call super constructor in derived class before accessing &a
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
+                      <a class="hover-with-bg" href="/tags/Angular/">Angular</a>
                     
                   </div>
                 
@@ -275,18 +282,12 @@ ReferenceError: Must call super constructor in derived class before accessing &a
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">模拟eventloop demo</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2019/09/07/ngFor-trackBy/">
-                        <span class="hidden-mobile">ngFor-trackBy</span>
+                      <a href="/2020/09/08/placeholder%E5%85%BC%E5%AE%B9%E6%80%A7/">
+                        <span class="hidden-mobile">placeholder兼容性</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -487,7 +488,7 @@ ReferenceError: Must call super constructor in derived class before accessing &a
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "super关键字&nbsp;",
+        "Angular ElementRef详解&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
