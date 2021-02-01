@@ -228,6 +228,58 @@ class Publishorder extends EventEmitter &#123;
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        <a href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/">模拟eventloop demo</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/">
+          
+          
+            
+          
+            Node的异步非阻塞I/O特性依赖于其内部的事件循环机制；  下面简单模拟一下事件循环的实现：
+const eventloop = &#123;
+    queue : [],
+    loop()&#123;
+        while(this.queue.length &gt; 0)&#123;
+            var callback = this.queue.shift();
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-10-03 00:00" pubdate>
+              2019-10-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Node/">Node</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         <a href="/2019/09/07/ngFor-trackBy/">ngFor-trackBy</a>
       </h1>
 
@@ -609,54 +661,6 @@ CSRF攻击成功的两个必要
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/%E5%AE%89%E5%85%A8/">安全</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2019/07/16/HTTP%E5%AE%9E%E7%8E%B0%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%8E%9F%E7%90%86/">HTTP实现大文件传输原理</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/07/16/HTTP%E5%AE%9E%E7%8E%B0%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%8E%9F%E7%90%86/">
-          
-          
-            
-          
-          业务背景在编写视频播放功能时，没想明白如何实现大体积视频的一边加载一边播放，这里实际上是利用了HTTP所实现的分块传输，也可以称之为断点续传，下面介绍几个涉及到的关键字段。
-Transfer-Encoding: chunked对于响应报文，存在两种情况：报文长度已知、报文长度未知；这分别对应这响应头里Content-Length、Transfer-Encoding: chunked这两个互斥的字段
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-16 00:00" pubdate>
-              2019-07-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E9%80%9A%E4%BF%A1/">通信</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/HTTP/">HTTP</a>
             
           </div>
         
