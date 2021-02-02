@@ -15,11 +15,12 @@ tags:
 
 # @NgModule结构说明
 ``` javascript
-    @NgModule({ 　　
-        declarations: [], //属于当前模块的组件、指令及管道　　
+    @NgModule({
+        providers: [], //注入服务到当前模块
+        declarations: [], //属于当前模块的组件、指令及管道 (统称可声明对象)
         imports: [], //当前模板所依赖的项，即外部模块（包括httpModule、路由等）　　
-        export:[],//声明出应用给其他的module使用　　
-        providers: [], //注入服务到当前模块　　
+        export:[],//声明出应用给其他的module使用
+        entryComponents: [],//定义此NgModule中要编译的组件集，这样它们才可以动态加载到视图中(常用于动态加载组件)
         bootstrap: []//默认启动哪个组件(只有根模块才能设置bootstrap属性)
     })
 ```
