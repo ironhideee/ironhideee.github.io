@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.2k 字
+      1.3k 字
     </span>
   
 
@@ -226,11 +226,12 @@
 <li>NgModule 是打包时候用到的最小单位，打包的时候会检查所有 @NgModule 和路由配置，Angular底层是使用webpack打包。因为Angular已经帮我们配置好了webpack，所以开发者轻松很多，否则就需要自己配置环境。</li>
 <li>NgModule 是 Router 进行异步加载的最小单位，Router 能加载的最小单位是模块，而不是组件。当然，模块里面只放一个组件是允许的，很多组件库都是这样做的。</li>
 </ul>
-<h1 id="NgModule结构说明"><a href="#NgModule结构说明" class="headerlink" title="@NgModule结构说明"></a>@NgModule结构说明</h1><pre><code class="hljs javascript">@NgModule(&#123; 　　
-    declarations: [], <span class="hljs-comment">//属于当前模块的组件、指令及管道　　</span>
+<h1 id="NgModule结构说明"><a href="#NgModule结构说明" class="headerlink" title="@NgModule结构说明"></a>@NgModule结构说明</h1><pre><code class="hljs javascript">@NgModule(&#123;
+    providers: [], <span class="hljs-comment">//注入服务到当前模块</span>
+    declarations: [], <span class="hljs-comment">//属于当前模块的组件、指令及管道 (统称可声明对象)</span>
     imports: [], <span class="hljs-comment">//当前模板所依赖的项，即外部模块（包括httpModule、路由等）　　</span>
-    <span class="hljs-keyword">export</span>:[],<span class="hljs-comment">//声明出应用给其他的module使用　　</span>
-    providers: [], <span class="hljs-comment">//注入服务到当前模块　　</span>
+    <span class="hljs-keyword">export</span>:[],<span class="hljs-comment">//声明出应用给其他的module使用</span>
+    entryComponents: [],<span class="hljs-comment">//定义此NgModule中要编译的组件集，这样它们才可以动态加载到视图中(常用于动态加载组件)</span>
     bootstrap: []<span class="hljs-comment">//默认启动哪个组件(只有根模块才能设置bootstrap属性)</span>
 &#125;)</code></pre>
 
