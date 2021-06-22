@@ -223,7 +223,7 @@
               <p>1.ngOnChanges<br>当 Angular（重新）设置数据绑定输入属性时响应。 该方法接受当前和上一属性值的 SimpleChanges 对象。<br>在 ngOnInit() 之前以及所绑定的一个或多个输入属性的值发生变化时都会调用。</p>
 <p>2.ngOnInit<br>在 Angular 第一次显示数据绑定和设置指令/组件的输入属性之后，初始化指令/组件。<br>在第一轮 ngOnChanges() 完成之后调用，只调用一次。</p>
 <p>3.ngDoCheck<br>检测，并在发生 Angular 无法或不愿意自己检测的变化时作出反应。<br>在每个变更检测周期中，紧跟在 ngOnChanges() 和 ngOnInit() 后面调用。</p>
-<p>4.ngAfterContentInit<br>没当 Angular 把外部内容投影进组件/指令的视图之后调用。<br>第一次 ngDoCheck() 之后调用，只调用一次。</p>
+<p>4.ngAfterContentInit<br>每当 Angular 把外部内容投影进组件/指令的视图之后调用。<br>第一次 ngDoCheck() 之后调用，只调用一次。</p>
 <p>5.ngAfterContentChecked<br>每当 Angular 完成被投影组件内容的变更检测之后调用。<br>ngAfterContentInit() 和每次 ngDoCheck() 之后调用。</p>
 <p>6.ngAfterViewInit<br>每当 Angular 初始化完组件视图及其子视图之后调用。<br>第一次 ngAfterContentChecked() 之后调用，只调用一次。</p>
 <p>7.ngAfterViewChecked<br>每当 Angular 做完组件视图和子视图的变更检测之后调用。<br>ngAfterViewInit() 和每次 ngAfterContentChecked() 之后调用。</p>
@@ -259,9 +259,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2019/05/03/JS%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/">
+                      <a href="/2019/04/25/JS%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%8F%8A%E9%98%BB%E6%AD%A2/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JS优化技巧总结</span>
+                        <span class="hidden-mobile">JS事件冒泡及阻止</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -269,8 +269,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2019/04/25/JS%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%8F%8A%E9%98%BB%E6%AD%A2/">
-                        <span class="hidden-mobile">JS事件冒泡及阻止</span>
+                      <a href="/2019/04/02/getClientRects-%E5%92%8C-getBoundingClientRect-%E7%9A%84%E5%8C%BA%E5%88%AB/">
+                        <span class="hidden-mobile">getClientRects() 和 getBoundingClientRect()的区别</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
