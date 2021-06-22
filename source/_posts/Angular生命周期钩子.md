@@ -20,7 +20,7 @@ tags:
 在每个变更检测周期中，紧跟在 ngOnChanges() 和 ngOnInit() 后面调用。
 
 4.ngAfterContentInit
-没当 Angular 把外部内容投影进组件/指令的视图之后调用。
+每当 Angular 把外部内容投影进组件/指令的视图之后调用。
 第一次 ngDoCheck() 之后调用，只调用一次。
 
 5.ngAfterContentChecked
