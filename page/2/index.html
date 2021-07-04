@@ -176,21 +176,17 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/">模拟eventloop demo</a>
+        <a href="/2019/10/14/EXIF%E5%A4%84%E7%90%86%E7%85%A7%E7%89%87%E4%BF%A1%E6%81%AF/">EXIF处理照片信息</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/">
+        <a href="/2019/10/14/EXIF%E5%A4%84%E7%90%86%E7%85%A7%E7%89%87%E4%BF%A1%E6%81%AF/">
           
           
             
           
-            Node的异步非阻塞I/O特性依赖于其内部的事件循环机制；  下面简单模拟一下事件循环的实现：
-const eventloop = &#123;
-    queue : [],
-    loop()&#123;
-        while(this.queue.length &gt; 0)&#123;
-            var callback = this.queue.shift();
+            最近在处理人脸照片时遇到一个奇怪现象，iphone 自拍照片总是显示未识别到人脸，Android 机则未出现任何问题。经过一番排查测试发现，iphone 手机在自拍时生成的人脸照片尽管显示是正常的，但是当转成 base64 格式之后恢复，自动逆时针旋转 45 度。导致人脸识别时，旋转之后的照片是无法检测出人脸的，带来极为糟糕的使用体验；所以需要在图片传给后端之前做一次复位操作。
+  解决方案就
         </a>
       </p>
 
@@ -198,8 +194,8 @@ const eventloop = &#123;
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-10-03 00:00" pubdate>
-              2019-10-03
+            <time datetime="2019-10-14 00:00" pubdate>
+              2019-10-14
             </time>
           </div>
         
@@ -215,7 +211,7 @@ const eventloop = &#123;
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Node/">Node</a>
+              <a href="/tags/Exif/">Exif</a>
             
           </div>
         
@@ -268,6 +264,58 @@ class Publishorder extends EventEmitter &#123;
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/JavaScript/">JavaScript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/">模拟eventloop demo</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/">
+          
+          
+            
+          
+            Node的异步非阻塞I/O特性依赖于其内部的事件循环机制；  下面简单模拟一下事件循环的实现：
+const eventloop = &#123;
+    queue : [],
+    loop()&#123;
+        while(this.queue.length &gt; 0)&#123;
+            var callback = this.queue.shift();
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-10-03 00:00" pubdate>
+              2019-10-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Node/">Node</a>
             
           </div>
         
@@ -607,60 +655,6 @@ max
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/HTTP/">HTTP</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2019/07/24/CSRF%E6%94%BB%E5%87%BB%E9%98%B2%E8%8C%83/">CSRF攻击防范</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/07/24/CSRF%E6%94%BB%E5%87%BB%E9%98%B2%E8%8C%83/">
-          
-          
-            
-          
-          
-            CSRF（Cross-site request forgery）:跨站请求伪造，是一种挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法。
-          
-
-CSRF原理：CSRF攻击思想如下：
-
-引用自https://www.cnblogs.com/hyddd/archive/2009/04/09/1432744.html
-CSRF攻击成功的两个必要
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-24 00:00" pubdate>
-              2019-07-24
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AE%89%E5%85%A8/">安全</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%AE%89%E5%85%A8/">安全</a>
             
           </div>
         
