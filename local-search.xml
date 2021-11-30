@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>【转】浅谈script标签中的async和defer</title>
+    <link href="/2021/11/30/%E6%B5%85%E8%B0%88script%E6%A0%87%E7%AD%BE%E4%B8%AD%E7%9A%84async%E5%92%8Cdefer/"/>
+    <url>/2021/11/30/%E6%B5%85%E8%B0%88script%E6%A0%87%E7%AD%BE%E4%B8%AD%E7%9A%84async%E5%92%8Cdefer/</url>
+    
+    <content type="html"><![CDATA[<div class="note note-success">            <p>script标签用于加载脚本与执行脚本，在前端开发中可以说是非常重要的标签了。<br>直接使用script脚本的话，html会按照顺序来加载并执行脚本，在脚本加载&amp;执行的过程中，会阻塞后续的DOM渲染。</p>          </div><p>现在大家习惯于在页面中引用各种的第三方脚本，如果第三方服务商出现了一些小问题，比如延迟之类的，就会使得页面白屏。<br>好在script提供了两种方式来解决上述问题，async和defer，这两个属性使得script都不会阻塞DOM的渲染。<br>但既然会存在两个属性，那么就说明，这两个属性之间肯定是有差异的。</p><h1 id="defer"><a href="#defer" class="headerlink" title="defer"></a>defer</h1><div class="note note-success">            <p>如果script标签设置了该属性，则浏览器会异步的下载该文件并且不会影响到后续DOM的渲染；<br>如果有多个设置了defer的script标签存在，则会按照顺序执行所有的script；<br>defer脚本会在文档渲染完毕后，DOMContentLoaded事件调用前执行。</p>          </div><p>我们做了一个测试页面，页面中包含了两个script标签的加载，给他们都加上defer标识。<br>P.S. 为了更直观，我们给script1.js添加了1s的延迟，给script2.js添加了2s的延迟。<br><img src="/image/script-defer-async/1.png" srcset="/img/loading.gif" alt=""><br>下图是页面加载的过程中script脚本的输出顺序。<br>不难看出，虽然script1加载用时虽然比script2短，但因为defer的限制，所以Ta只能等前边的脚本执行完毕后才能执行。<br><img src="/image/script-defer-async/2.png" srcset="/img/loading.gif" alt=""><br><img src="/image/script-defer-async/3.png" srcset="/img/loading.gif" alt=""></p><h1 id="async"><a href="#async" class="headerlink" title="async"></a>async</h1><div class="note note-success">            <p>async的设置，会使得script脚本异步的加载并在允许的情况下执行；<br>async的执行，并不会按着script在页面中的顺序来执行，而是谁先加载完谁执行。</p>          </div><p><img src="/image/script-defer-async/4.png" srcset="/img/loading.gif" alt=""><br>遂得到了如下的结果，页面加载时长上，并没有什么变化，毕竟都是异步加载的脚本。<br>但是我们可以看到一个小细节，DOMContentLoaded事件的触发并不受async脚本加载的影响，在脚本加载完之前，就已经触发了DOMContentLoaded。<br><img src="/image/script-defer-async/5.png" srcset="/img/loading.gif" alt=""><br><img src="/image/script-defer-async/6.png" srcset="/img/loading.gif" alt=""><br><img src="/image/script-defer-async/7.png" srcset="/img/loading.gif" alt=""><br><img src="/image/script-defer-async/8.png" srcset="/img/loading.gif" alt=""><br>我们接着修改测试页面。加载一个没有延迟的script脚本，使得脚本可以即时的加载完毕。<br>我们要测试一下，如果async脚本加载的足够快，是否会在DOMContentLoaded之前就执行（这个实验是基于对async的描述“在允许的情况下执行”的论证）。<br>同时为了保证测试的稳定性，我们在script脚本引入的后边添加了数千个空的div节点，用来延长文档的渲染时间。<br><img src="/image/script-defer-async/9.png" srcset="/img/loading.gif" alt=""><br>执行结果不出所料，如果给async一定的时间，是有可能在DOMContentLoaded事件之前就执行的。<br><img src="/image/script-defer-async/10.png" srcset="/img/loading.gif" alt=""><br>P.S. 从上图中左上角的火焰图中，我们也能看到，出现了多段的蓝色（更新：紫色的才是渲染，蓝色的是解析）文档渲染。以及下边Console的顺序。<br>说明的确，async的执行是加载完成就会去执行，而不像defer那样要等待所有的脚本加载完后按照顺序执行。</p><h1 id="画几张图简要说明"><a href="#画几张图简要说明" class="headerlink" title="画几张图简要说明"></a>画几张图简要说明</h1><div class="note note-success">            <p>网上有了不少这种类似的图，但是基本都是拿一个script就举例的<br>咱们来画一下多个脚本加载时的甘特图</p>          </div><p>拿四个不同的颜色来标明各自代表的含义<br><img src="/image/script-defer-async/11.png" srcset="/img/loading.gif" alt=""></p><h2 id="普通script"><a href="#普通script" class="headerlink" title="普通script"></a>普通script</h2><p>文档解析的过程中，如果遇到script脚本，就会停止页面的渲染进行下载（但是并不会影响后续的解析，解析和渲染是两码事）。<br>资源的下载是在解析过程中进行的，虽说script1脚本会很快的加载完毕，但是他前边的script2并没有加载&amp;执行，所以他只能处于一个挂起的状态，等待script2执行完毕后再执行。<br>当这两个脚本都执行完毕后，才会继续渲染页面。<br><img src="/image/script-defer-async/12.png" srcset="/img/loading.gif" alt=""></p><h2 id="defer-1"><a href="#defer-1" class="headerlink" title="defer"></a>defer</h2><p>文档解析时，遇到设置了defer的脚本，就会在后台进行下载，但是并不会阻止文档的渲染，当页面解析&amp;渲染完毕后。<br>会等到所有的defer脚本加载完毕并按照顺序执行，执行完毕后会触发DOMContentLoaded事件。<br><img src="/image/script-defer-async/13.png" srcset="/img/loading.gif" alt=""></p><h2 id="async-1"><a href="#async-1" class="headerlink" title="async"></a>async</h2><p>async脚本会在加载完毕后执行。<br>async脚本的加载不计入DOMContentLoaded事件统计，也就是说下图两种情况都是有可能发生的<br><img src="/image/script-defer-async/14.png" srcset="/img/loading.gif" alt=""><br><img src="/image/script-defer-async/15.png" srcset="/img/loading.gif" alt=""></p><h1 id="推荐的应用场景"><a href="#推荐的应用场景" class="headerlink" title="推荐的应用场景"></a>推荐的应用场景</h1><h2 id="defer-2"><a href="#defer-2" class="headerlink" title="defer"></a>defer</h2><p>defer是表明脚本在执行时不会影响页面的构造。也就是说，脚本会被延迟到整个页面都解析完毕后再运行。浏览器渲染页面，读取到包含defer属性的外部script标签时不会停止DOM渲染，而是异步下载，加载完整个页面再运行js。有多个defer的标签时，会按照顺序下载执行。<br>如果你的脚本代码依赖于页面中的DOM元素（文档是否渲染完毕），或者被其他脚本文件依赖。<br>例如：<br>1、评论框<br>2、代码语法高亮<br>3、polyfill.js</p><h2 id="async-2"><a href="#async-2" class="headerlink" title="async"></a>async</h2><p>async浏览器立即异步下载文件，不同于defer得是，下载完成会立即执行，此时会阻塞dom渲染，所以async的script最好不要操作dom。因为是下载完立即执行，不能保证多个加载时的先后顺序。<br>如果你的脚本并不关心页面中的DOM元素（文档是否渲染完毕），并且也不会产生其他脚本需要的数据。<br>例如：<br>1、百度统计</p><p>如果不太能确定的话，用defer总是会比async稳定。</p><p>参考资料: <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script</a></p><p>原文章链接地址：<a href="https://www.cnblogs.com/jiasm/p/7683930.html" target="_blank" rel="noopener">https://www.cnblogs.com/jiasm/p/7683930.html</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>HTML</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Vue双向绑定原理及实现</title>
     <link href="/2021/07/04/Vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/"/>
     <url>/2021/07/04/Vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/</url>
@@ -273,31 +298,6 @@
   
   
   <entry>
-    <title>super关键字</title>
-    <link href="/2019/10/03/super%E5%85%B3%E9%94%AE%E5%AD%97/"/>
-    <url>/2019/10/03/super%E5%85%B3%E9%94%AE%E5%AD%97/</url>
-    
-    <content type="html"><![CDATA[<p>  this和super的区别：<br>  this关键词指向函数所在的当前对象<br>  super指向的是当前对象的原型对象</p><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> EventEmitter  = <span class="hljs-built_in">require</span>(<span class="hljs-string">'events'</span>).EventEmitter;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Publishorder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">EventEmitter</span> </span>&#123;    <span class="hljs-keyword">constructor</span>()&#123;        <span class="hljs-keyword">super</span>();        setInterval(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;            <span class="hljs-keyword">this</span>.emit(<span class="hljs-string">'neworder'</span>, &#123; <span class="hljs-attr">price</span>: <span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100</span> &#125;);        &#125;,<span class="hljs-number">3000</span>)    &#125;&#125;</code></pre><p>  上面写了一个每隔3秒发布一个随机价格订单的事件发射器的类Publishorder，其中super()指的是父类的构造函数，即Nodejs中的events.EventEmitter；如果不去调用父类构造函数，将无法在构造函数中使用this。即抛出这样一个错误：</p><pre><code>/Users/xuan/Desktop/Daily Demo/Daily-Demo/Node/eventemitter.js:6    setInterval(()=&gt;{    ^ReferenceError: Must call super constructor in derived class before accessing &apos;this&apos; or returning from derived constructor    at new Publishorder (/Users/xuan/Desktop/Daily Demo/Daily-Demo/Node/eventemitter.js:6:9)    at Object.&lt;anonymous&gt; (/Users/xuan/Desktop/Daily Demo/Daily-Demo/Node/eventemitter.js:12:22)    at Module._compile (internal/modules/cjs/loader.js:778:30)    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)    at Module.load (internal/modules/cjs/loader.js:653:32)    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)    at Function.Module._load (internal/modules/cjs/loader.js:585:3)    at Function.Module.runMain (internal/modules/cjs/loader.js:831:12)    at startup (internal/bootstrap/node.js:283:19)    at bootstrapNodeJSCore (internal/bootstrap/node.js:622:3)</code></pre><p>  那么为什么javascript要有这样一个限制？因为有继承关系，子类创建了对象会用到父类的属性方法，所以父类也要初始化，不然继承父类而不用父类的属性和方法，那继承还有什么意义。<br>  所以，Class中的 super()，它在这里表示父类的构造函数，用来新建父类的 this 对象。<br>这里的super()相当于Parent.prototype.constructor.call(this)</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>前端</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>JavaScript</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>模拟eventloop demo</title>
     <link href="/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/"/>
     <url>/2019/10/03/%E6%A8%A1%E6%8B%9Feventloop-demo/</url>
@@ -315,6 +315,31 @@
     <tags>
       
       <tag>Node</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>super关键字</title>
+    <link href="/2019/10/03/super%E5%85%B3%E9%94%AE%E5%AD%97/"/>
+    <url>/2019/10/03/super%E5%85%B3%E9%94%AE%E5%AD%97/</url>
+    
+    <content type="html"><![CDATA[<p>  this和super的区别：<br>  this关键词指向函数所在的当前对象<br>  super指向的是当前对象的原型对象</p><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> EventEmitter  = <span class="hljs-built_in">require</span>(<span class="hljs-string">'events'</span>).EventEmitter;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Publishorder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">EventEmitter</span> </span>&#123;    <span class="hljs-keyword">constructor</span>()&#123;        <span class="hljs-keyword">super</span>();        setInterval(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;            <span class="hljs-keyword">this</span>.emit(<span class="hljs-string">'neworder'</span>, &#123; <span class="hljs-attr">price</span>: <span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100</span> &#125;);        &#125;,<span class="hljs-number">3000</span>)    &#125;&#125;</code></pre><p>  上面写了一个每隔3秒发布一个随机价格订单的事件发射器的类Publishorder，其中super()指的是父类的构造函数，即Nodejs中的events.EventEmitter；如果不去调用父类构造函数，将无法在构造函数中使用this。即抛出这样一个错误：</p><pre><code>/Users/xuan/Desktop/Daily Demo/Daily-Demo/Node/eventemitter.js:6    setInterval(()=&gt;{    ^ReferenceError: Must call super constructor in derived class before accessing &apos;this&apos; or returning from derived constructor    at new Publishorder (/Users/xuan/Desktop/Daily Demo/Daily-Demo/Node/eventemitter.js:6:9)    at Object.&lt;anonymous&gt; (/Users/xuan/Desktop/Daily Demo/Daily-Demo/Node/eventemitter.js:12:22)    at Module._compile (internal/modules/cjs/loader.js:778:30)    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)    at Module.load (internal/modules/cjs/loader.js:653:32)    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)    at Function.Module._load (internal/modules/cjs/loader.js:585:3)    at Function.Module.runMain (internal/modules/cjs/loader.js:831:12)    at startup (internal/bootstrap/node.js:283:19)    at bootstrapNodeJSCore (internal/bootstrap/node.js:622:3)</code></pre><p>  那么为什么javascript要有这样一个限制？因为有继承关系，子类创建了对象会用到父类的属性方法，所以父类也要初始化，不然继承父类而不用父类的属性和方法，那继承还有什么意义。<br>  所以，Class中的 super()，它在这里表示父类的构造函数，用来新建父类的 this 对象。<br>这里的super()相当于Parent.prototype.constructor.call(this)</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>JavaScript</tag>
       
     </tags>
     
@@ -636,31 +661,6 @@
   
   
   <entry>
-    <title>Angular生命周期钩子</title>
-    <link href="/2019/04/25/Angular%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/"/>
-    <url>/2019/04/25/Angular%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/</url>
-    
-    <content type="html"><![CDATA[<p>1.ngOnChanges<br>当 Angular（重新）设置数据绑定输入属性时响应。 该方法接受当前和上一属性值的 SimpleChanges 对象。<br>在 ngOnInit() 之前以及所绑定的一个或多个输入属性的值发生变化时都会调用。</p><p>2.ngOnInit<br>在 Angular 第一次显示数据绑定和设置指令/组件的输入属性之后，初始化指令/组件。<br>在第一轮 ngOnChanges() 完成之后调用，只调用一次。</p><p>3.ngDoCheck<br>检测，并在发生 Angular 无法或不愿意自己检测的变化时作出反应。<br>在每个变更检测周期中，紧跟在 ngOnChanges() 和 ngOnInit() 后面调用。</p><p>4.ngAfterContentInit<br>每当 Angular 把外部内容投影进组件/指令的视图之后调用。<br>第一次 ngDoCheck() 之后调用，只调用一次。</p><p>5.ngAfterContentChecked<br>每当 Angular 完成被投影组件内容的变更检测之后调用。<br>ngAfterContentInit() 和每次 ngDoCheck() 之后调用。</p><p>6.ngAfterViewInit<br>每当 Angular 初始化完组件视图及其子视图之后调用。<br>第一次 ngAfterContentChecked() 之后调用，只调用一次。</p><p>7.ngAfterViewChecked<br>每当 Angular 做完组件视图和子视图的变更检测之后调用。<br>ngAfterViewInit() 和每次 ngAfterContentChecked() 之后调用。</p><p>8.ngOnDestroy<br>当 Angular 每次销毁指令/组件之前调用并清扫。 在这儿反订阅可观察对象和分离事件处理器，以防内存泄漏。<br>在 Angular 销毁指令/组件之前调用。</p><p><img src="/image/angular/img1.jpg" srcset="/img/loading.gif" alt=""></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>前端</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Angular</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>JS事件冒泡及阻止</title>
     <link href="/2019/04/25/JS%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%8F%8A%E9%98%BB%E6%AD%A2/"/>
     <url>/2019/04/25/JS%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%8F%8A%E9%98%BB%E6%AD%A2/</url>
@@ -678,6 +678,31 @@
     <tags>
       
       <tag>JavaScript</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Angular生命周期钩子</title>
+    <link href="/2019/04/25/Angular%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/"/>
+    <url>/2019/04/25/Angular%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/</url>
+    
+    <content type="html"><![CDATA[<p>1.ngOnChanges<br>当 Angular（重新）设置数据绑定输入属性时响应。 该方法接受当前和上一属性值的 SimpleChanges 对象。<br>在 ngOnInit() 之前以及所绑定的一个或多个输入属性的值发生变化时都会调用。</p><p>2.ngOnInit<br>在 Angular 第一次显示数据绑定和设置指令/组件的输入属性之后，初始化指令/组件。<br>在第一轮 ngOnChanges() 完成之后调用，只调用一次。</p><p>3.ngDoCheck<br>检测，并在发生 Angular 无法或不愿意自己检测的变化时作出反应。<br>在每个变更检测周期中，紧跟在 ngOnChanges() 和 ngOnInit() 后面调用。</p><p>4.ngAfterContentInit<br>每当 Angular 把外部内容投影进组件/指令的视图之后调用。<br>第一次 ngDoCheck() 之后调用，只调用一次。</p><p>5.ngAfterContentChecked<br>每当 Angular 完成被投影组件内容的变更检测之后调用。<br>ngAfterContentInit() 和每次 ngDoCheck() 之后调用。</p><p>6.ngAfterViewInit<br>每当 Angular 初始化完组件视图及其子视图之后调用。<br>第一次 ngAfterContentChecked() 之后调用，只调用一次。</p><p>7.ngAfterViewChecked<br>每当 Angular 做完组件视图和子视图的变更检测之后调用。<br>ngAfterViewInit() 和每次 ngAfterContentChecked() 之后调用。</p><p>8.ngOnDestroy<br>当 Angular 每次销毁指令/组件之前调用并清扫。 在这儿反订阅可观察对象和分离事件处理器，以防内存泄漏。<br>在 Angular 销毁指令/组件之前调用。</p><p><img src="/image/angular/img1.jpg" srcset="/img/loading.gif" alt=""></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Angular</tag>
       
     </tags>
     
@@ -736,31 +761,6 @@
   
   
   <entry>
-    <title>CSS规则</title>
-    <link href="/2019/03/03/CSS%E8%A7%84%E5%88%99/"/>
-    <url>/2019/03/03/CSS%E8%A7%84%E5%88%99/</url>
-    
-    <content type="html"><![CDATA[<p>@规则<br>1.@charset<br>用于提示CSS文件使用的字符编码方式，必须出现在最前面</p><pre><code>@charset “utf-8”</code></pre><p>2.@import<br>用于引入一个CSS文件，除了@charset规则不会被引入，其他文件的全部内容都能被引入</p><p>3.@media<br>对设备类型进行判断</p><p>4.@page<br>用于分页媒体访问网页时的表现设置</p><pre><code>@page {    size:8.5in 11in;    margin:10%;    @top-left {        content: “Hamlet”;    }    @top-right {        content: “Page” counter(page);    }}</code></pre><p>5.@counte-style<br>产生一种数据，用于定义列表项的表现</p><p>6.@key-frames<br>产生一种数据，用于定义动画关键帧</p><p>7.@fontface<br>用于定义一种字体， icon font技术就是利用这个特性来实现的</p><p>8.support<br>检查环境的特性，与media类似</p><p>9.@namespace<br>用于跟XML命名空间配合的一个规则，表示内部的CSS选择器全都带上特定命名空间</p><p>10.viewport<br>用于设置视口的一些特性，不过兼容性目前不是很好，多数时候被html的meta代替</p><p>普通规则<br>分为两块：选择器、声明列表（分为属性和值（值的类型、函数））</p><p>CSS支持的计算型函数（仅举例）<br>1、calc()支持加减乘除四则运算<br>针对纬度进行计算时，允许不同单位混合运算</p><pre><code>width：calc(100%/3 - 21rem -21px);</code></pre><p>2、max()</p><p>3、min()</p><p>4、clamp()<br>给一个值限定一个范围，超出范围外则使用范围的最大值或最小值</p><p>5、toggle()<br>在规则选中多个元素时生效，它会在几个值之间来回切换<br>例如想让一个列表项的样式圆点和方点间隔出现，可以使用</p><pre><code>ul { list-style-type: toggle( circle, square); }</code></pre><p>6、attr()<br>允许CSS接受属性值（html的属性值）的控制</p><p>后期查阅整理后，按功能分为5个类别</p><p>图片</p><pre><code>filterblur()brightness()contrast()drop-shadow()grayscale()hue_rotate()invert()opacity()saturate()sepia()cross-fade()element()image-set()imagefunction()</code></pre><p>图形绘制</p><pre><code>conic-gradient()linear-gradient()radial-gradient()repeating-linear-gradient()repeating-radial-gradient()shape()</code></pre><p>布局</p><pre><code>calc()clamp()fit-content()max()min()minmax()repeat()</code></pre><p>变形/动画</p><pre><code>transformmatrix()matrix3d()perspective()rotate()rotate3d()rotateX()rotateY()rotateZ()scale()scale3d()scaleX()scaleY()scaleZ()skew()skewX()skewY()translate()translate3d()translateX()translateY()translateZ()</code></pre><p>环境与元素</p><pre><code>var()env()attr()</code></pre>]]></content>
-    
-    
-    <categories>
-      
-      <category>前端</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>CSS</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>JavaScript原型</title>
     <link href="/2019/03/03/JavaScript%E5%8E%9F%E5%9E%8B/"/>
     <url>/2019/03/03/JavaScript%E5%8E%9F%E5%9E%8B/</url>
@@ -778,6 +778,31 @@
     <tags>
       
       <tag>JavaScript</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>CSS规则</title>
+    <link href="/2019/03/03/CSS%E8%A7%84%E5%88%99/"/>
+    <url>/2019/03/03/CSS%E8%A7%84%E5%88%99/</url>
+    
+    <content type="html"><![CDATA[<p>@规则<br>1.@charset<br>用于提示CSS文件使用的字符编码方式，必须出现在最前面</p><pre><code>@charset “utf-8”</code></pre><p>2.@import<br>用于引入一个CSS文件，除了@charset规则不会被引入，其他文件的全部内容都能被引入</p><p>3.@media<br>对设备类型进行判断</p><p>4.@page<br>用于分页媒体访问网页时的表现设置</p><pre><code>@page {    size:8.5in 11in;    margin:10%;    @top-left {        content: “Hamlet”;    }    @top-right {        content: “Page” counter(page);    }}</code></pre><p>5.@counte-style<br>产生一种数据，用于定义列表项的表现</p><p>6.@key-frames<br>产生一种数据，用于定义动画关键帧</p><p>7.@fontface<br>用于定义一种字体， icon font技术就是利用这个特性来实现的</p><p>8.support<br>检查环境的特性，与media类似</p><p>9.@namespace<br>用于跟XML命名空间配合的一个规则，表示内部的CSS选择器全都带上特定命名空间</p><p>10.viewport<br>用于设置视口的一些特性，不过兼容性目前不是很好，多数时候被html的meta代替</p><p>普通规则<br>分为两块：选择器、声明列表（分为属性和值（值的类型、函数））</p><p>CSS支持的计算型函数（仅举例）<br>1、calc()支持加减乘除四则运算<br>针对纬度进行计算时，允许不同单位混合运算</p><pre><code>width：calc(100%/3 - 21rem -21px);</code></pre><p>2、max()</p><p>3、min()</p><p>4、clamp()<br>给一个值限定一个范围，超出范围外则使用范围的最大值或最小值</p><p>5、toggle()<br>在规则选中多个元素时生效，它会在几个值之间来回切换<br>例如想让一个列表项的样式圆点和方点间隔出现，可以使用</p><pre><code>ul { list-style-type: toggle( circle, square); }</code></pre><p>6、attr()<br>允许CSS接受属性值（html的属性值）的控制</p><p>后期查阅整理后，按功能分为5个类别</p><p>图片</p><pre><code>filterblur()brightness()contrast()drop-shadow()grayscale()hue_rotate()invert()opacity()saturate()sepia()cross-fade()element()image-set()imagefunction()</code></pre><p>图形绘制</p><pre><code>conic-gradient()linear-gradient()radial-gradient()repeating-linear-gradient()repeating-radial-gradient()shape()</code></pre><p>布局</p><pre><code>calc()clamp()fit-content()max()min()minmax()repeat()</code></pre><p>变形/动画</p><pre><code>transformmatrix()matrix3d()perspective()rotate()rotate3d()rotateX()rotateY()rotateZ()scale()scale3d()scaleX()scaleY()scaleZ()skew()skewX()skewY()translate()translate3d()translateX()translateY()translateZ()</code></pre><p>环境与元素</p><pre><code>var()env()attr()</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CSS</tag>
       
     </tags>
     
